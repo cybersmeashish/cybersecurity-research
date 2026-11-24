@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "required": [
+    "event_id",
+    "tenant_id",
+    "source",
+    "domain",
+    "timestamp",
+    "ingested_at",
+    "action"
+  ],
+  "timestamp": "timezone-aware UTC; naive timestamps rejected",
+  "identity_join": "canonical principal plus tenant; no email-local-part or display-name joins",
+  "kind": "Simplified local model; not OCSF-conformant",
+  "typed_optional": {
+    "strings": [
+      "principal_id",
+      "target_principal_id",
+      "delegator_id",
+      "asset_id",
+      "runtime_id",
+      "workload_id",
+      "parent",
+      "process",
+      "sha256",
+      "dest",
+      "device_id",
+      "app_id",
+      "digest",
+      "approved_digest"
+    ],
+    "nonnegative_integers": [
+      "dest_port",
+      "bytes"
+    ],
+    "booleans": [
+      "is_privileged",
+      "approved",
+      "suspicious",
+      "is_sensitive",
+      "out_of_scope"
+    ]
+  },
+  "source_health": "Required separately; an empty event list is not proof that collection is working"
+}

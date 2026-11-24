@@ -1,0 +1,1 @@
+SELECT e.tenant_id, e.principal_id AS entity_id, e.event_id AS evidence_ids FROM events e WHERE e.phase=1 AND e.domain='saas' AND e.action='bulk_export' AND e.bytes>=1000000 AND NOT EXISTS (SELECT 1 FROM events b WHERE b.phase=0 AND b.tenant_id=e.tenant_id AND b.principal_id=e.principal_id AND b.app_id=e.app_id);

@@ -1,0 +1,14 @@
+domain,source_families,required_context,common_gaps
+endpoint,"EDR process/file/network, OS authentication","Process ancestry, hashes, actor/session, host","Sensor loss, PID reuse, missing hash/ancestry"
+identity,"IdP sign-in/MFA, directory/consent/privilege audit","Immutable principal/tenant, device/session, grant/approval","Display-name joins, incomplete MFA/approval context"
+email,"Delivery, click and mailbox/rule audit","Canonical mailbox actor, rule/destination, click provenance","Scanner clicks, unavailable mailbox audit"
+cloud-aws,"CloudTrail, service job, selected object/data, VPC flow","Caller/runtime role, job/workload, object/action",Data events not configured; PassRole not standalone event
+cloud-azure,"Activity Log, Entra, resource/data logs","Grantor/grantee, resource scope, data operation",Activity Log alone cannot show secret reads
+cloud-gcp,"Admin Activity, available Data Access/delegation","Originating/effective actor, resource, auth decision","Disabled Data Access, absent delegation context"
+kubernetes,Audit/admission/runtime/CNI,"Namespace, actor, pod request/admission/runtime","Metadata-only policy, request versus actual settings"
+network,Flow/proxy/authenticated administration,Asset/source/destination/direction/port/session,"NAT ambiguity, missing endpoint attribution"
+dns,Resolver/query/response and endpoint attribution,"Asset/principal, query, answer, timestamp","Resolver bypass, CDN churn, truncated baseline"
+saas,Admin/consent/export/session audit,"Principal/app, object/export volume, destination","Connector availability, incorrect subject mapping"
+ai,Retrieval/tool/policy gate and workload audit,"Actor/runtime, object/chunk/tool scope, policy version","LLM labels treated as entitlement, missing lineage"
+cicd,Admission/approval/provenance and consumption,"Approved/consumed digest, publisher/runner/identity","Mutable tag mistaken for content, untrusted approval"
+backup,Protection/delete/retention/restore/independent audit,"Actor, object, effective change and recovery copy","Lifecycle changes misclassified, missing independent logs"

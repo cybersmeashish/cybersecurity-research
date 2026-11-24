@@ -1,0 +1,28 @@
+{
+  "framework": "Proactive Threat Hunting",
+  "version": "0.1",
+  "generated_at_utc": "2026-11-24T10:18:29.827594+00:00",
+  "hunt_cards": 17,
+  "telemetry_domains": 13,
+  "synthetic_scenarios": 34,
+  "positive_scenarios": 17,
+  "benign_or_broken_chain_scenarios": 17,
+  "all_scenario_expectations_match": true,
+  "combined_demo_candidate_leads": 17,
+  "regression_test_methods": 19,
+  "runtime": {
+    "python": "3.12.16",
+    "sqlite": "3.46.1",
+    "os": "Linux",
+    "architecture": "aarch64"
+  },
+  "isolation": {
+    "network_errno": 101,
+    "external_network_unreachable": true,
+    "root_read_only": true,
+    "workspace_read_only": true
+  },
+  "live_customer_hunts": 0,
+  "production_query_validation": "Not performed; only local normalized SQLite queries tested",
+  "scope": "Synthetic reference consistency and security-boundary tests, not detection sensitivity/specificity or attacker attribution"
+}

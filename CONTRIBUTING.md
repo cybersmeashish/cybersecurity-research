@@ -1,9 +1,7 @@
-# Contributing research
+# Contribution protocol
 
-Add focused studies with a research question, primary sources, prior-art assessment, threat model, explicit prerequisites, reproducible code/data, positive/negative controls, results and limitations. Use the canonical container workflow in AGENTS.md.
+Place research studies under `research/` and reusable operating frameworks under `frameworks/`. Keep each contribution self-contained, with a question/hypothesis, source register, assumptions, runnable instructions, data, positive/negative controls, evidence and limitations.
 
-New categories require evidence of a distinct mechanism and a bounded novelty claim. Existing behavior deserves clear attribution. A new fixture must explain the entitlement boundary and expected result independently of the implementation. Missing evidence is unknown, never silently allowed.
+For hunts, define business scope, telemetry coverage, canonical identity/tenant joins, baseline/window boundaries, required fields, benign alternatives, investigation evidence and disposition. Treat a candidate as an investigative lead until corroborated. Missing telemetry must not become a clean bill of health. Include approved/benign operations so a rule is not "effective" merely because it flags every event.
 
-The first study accepts synthetic inputs only. Future provider-validation evidence must have authorization, observed configuration/version, all necessary preconditions, safe synthetic resources, reproducible outcomes and disclosure status. Do not submit credentials, customer information or non-public vulnerability details in public issues. Use the security reporting route.
-
-Disclose material AI assistance and independent review status. Include permitted same-tenant operations alongside denied cases so a control is not "successful" merely by disabling everything.
+Native SIEM queries and provider adapters must be labelled unvalidated until tested against the actual product version, enabled tables/connectors and representative data. Submit synthetic fixtures rather than client records or credentials. Report non-public issues via SECURITY.md. Use the canonical container workflow and disclose material AI assistance.

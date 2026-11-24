@@ -1,6 +1,6 @@
 # Reproduce the isolated reference study
 
-Requires Docker/OrbStack and the pinned Python image. No cloud credentials, paid services or package installation. Canonical source is in container `cybersecurity-research-dev`, volume `cybersecurity-research-workspace`, folder `/workspaces/cybersecurity-research/repo`. Use the existing volume when continuing this workspace.
+Requires Docker/OrbStack and the pinned Python image. No cloud credentials, paid services or package installation. Canonical source is in container `cybersecurity-research-dev`, volume `cybersecurity-research-workspace`, folder `/workspaces/cybersecurity-research/repo/research/001-cloud-ai-infrastructure`. Use the existing volume when continuing this workspace.
 
 ## Existing canonical workspace
 
@@ -9,7 +9,7 @@ docker --context orbstack run --rm --network none --read-only --user 1000:1000 \
   --cap-drop ALL --security-opt no-new-privileges --cpus 1 --memory 512m --pids-limit 64 \
   --tmpfs /tmp:rw,nosuid,nodev,size=128m \
   --mount source=cybersecurity-research-workspace,target=/workspaces,readonly \
-  --workdir /workspaces/cybersecurity-research/repo \
+  --workdir /workspaces/cybersecurity-research/repo/research/001-cloud-ai-infrastructure \
   python:3.12-slim@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b \
   python -B tools/run_study.py --out /tmp/aia-001
 ```

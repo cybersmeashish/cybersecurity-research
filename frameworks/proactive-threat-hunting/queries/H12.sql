@@ -1,0 +1,1 @@
+SELECT e.tenant_id, e.asset_id AS entity_id, GROUP_CONCAT(e.event_id,'|') AS evidence_ids FROM events e WHERE e.phase=1 AND e.domain='dns' AND e.action='dns_query' AND NOT EXISTS (SELECT 1 FROM events b WHERE b.phase=0 AND b.tenant_id=e.tenant_id AND b.asset_id=e.asset_id AND b.dest=e.dest) GROUP BY e.tenant_id,e.asset_id HAVING COUNT(DISTINCT e.dest)>=3;

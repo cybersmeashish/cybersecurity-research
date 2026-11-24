@@ -1,0 +1,331 @@
+{
+  "repository": "cybersmeashish/cybersecurity-research",
+  "original_commit": "4352c68fb566cb3c65498a3c05172a00b183f13f",
+  "destination_folder": "research/001-cloud-ai-infrastructure",
+  "original_files": 40,
+  "bytes_unchanged_files": 37,
+  "all_original_files_have_destination": true,
+  "history": "Original commit retained; no history rewriting",
+  "files": [
+    {
+      "old_path": ".gitignore",
+      "new_path": "research/001-cloud-ai-infrastructure/.gitignore",
+      "source_sha256": "b3c938a421bee7638434505ffac3e5b09fc7f7d2919e260028b0cc9444ec2338",
+      "destination_sha256": "b3c938a421bee7638434505ffac3e5b09fc7f7d2919e260028b0cc9444ec2338",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "AGENTS.md",
+      "new_path": "research/001-cloud-ai-infrastructure/AGENTS.md",
+      "source_sha256": "6c12a9fcd408965ec58ce667443f4cad7c369978d9fc6f2dcf32a5ad24224fc1",
+      "destination_sha256": "6c12a9fcd408965ec58ce667443f4cad7c369978d9fc6f2dcf32a5ad24224fc1",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "CONTRIBUTING.md",
+      "new_path": "research/001-cloud-ai-infrastructure/CONTRIBUTING.md",
+      "source_sha256": "0fe5b30d0d756811b3e433751e55e6f69d5ae78069183d56cec6e4ae0f878c5e",
+      "destination_sha256": "0fe5b30d0d756811b3e433751e55e6f69d5ae78069183d56cec6e4ae0f878c5e",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "LICENSE",
+      "new_path": "research/001-cloud-ai-infrastructure/LICENSE",
+      "source_sha256": "4712bbf0105191f1948ca6fc0d391a4ca8deb875eaadd97f8495d875f8e9343f",
+      "destination_sha256": "4712bbf0105191f1948ca6fc0d391a4ca8deb875eaadd97f8495d875f8e9343f",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "PROVENANCE.md",
+      "new_path": "research/001-cloud-ai-infrastructure/PROVENANCE.md",
+      "source_sha256": "2d32f9f5ba0d09bf8ee819c95f91654b795fe32bcbcf5045843bcd90f60d4567",
+      "destination_sha256": "2d32f9f5ba0d09bf8ee819c95f91654b795fe32bcbcf5045843bcd90f60d4567",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "README.md",
+      "new_path": "research/001-cloud-ai-infrastructure/README.md",
+      "source_sha256": "74e2ce8f1e3894a039bf0e1284b6de98579a32a56c5524ab50a81cd3cb2471da",
+      "destination_sha256": "74e2ce8f1e3894a039bf0e1284b6de98579a32a56c5524ab50a81cd3cb2471da",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "RESEARCH-BACKLOG.md",
+      "new_path": "research/001-cloud-ai-infrastructure/RESEARCH-BACKLOG.md",
+      "source_sha256": "d7b141b3452e70627cc09677a1ad9073ab309342f9119b9a7b5173f207387ecc",
+      "destination_sha256": "d7b141b3452e70627cc09677a1ad9073ab309342f9119b9a7b5173f207387ecc",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "SECURITY.md",
+      "new_path": "research/001-cloud-ai-infrastructure/SECURITY.md",
+      "source_sha256": "9eff489c09f3758f3195a01bc8b09b5817a56086984da7fb5ac616f379d73361",
+      "destination_sha256": "9eff489c09f3758f3195a01bc8b09b5817a56086984da7fb5ac616f379d73361",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "evidence/README.md",
+      "new_path": "research/001-cloud-ai-infrastructure/evidence/README.md",
+      "source_sha256": "2cdcce08ef5e819f92ca64b33a0ee99d161d5899cb73636f1359729843052387",
+      "destination_sha256": "2cdcce08ef5e819f92ca64b33a0ee99d161d5899cb73636f1359729843052387",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "evidence/graph-results.json",
+      "new_path": "research/001-cloud-ai-infrastructure/evidence/graph-results.json",
+      "source_sha256": "9b99eceaa87ecd79a080d53d725931bb1fc460ccb3ff4d6e126a48740d978a39",
+      "destination_sha256": "9b99eceaa87ecd79a080d53d725931bb1fc460ccb3ff4d6e126a48740d978a39",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "evidence/results.csv",
+      "new_path": "research/001-cloud-ai-infrastructure/evidence/results.csv",
+      "source_sha256": "c01fa78ea59547bf1c8b845387c1635c433ececd91326ff1a771ffaf52919308",
+      "destination_sha256": "c01fa78ea59547bf1c8b845387c1635c433ececd91326ff1a771ffaf52919308",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "evidence/runtime-results.json",
+      "new_path": "research/001-cloud-ai-infrastructure/evidence/runtime-results.json",
+      "source_sha256": "9ec2feb1b569dbd0461aae928aff7b7f3e2ee35065eb0137d7d3d843728b5709",
+      "destination_sha256": "9ec2feb1b569dbd0461aae928aff7b7f3e2ee35065eb0137d7d3d843728b5709",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "evidence/source-manifest.json",
+      "new_path": "research/001-cloud-ai-infrastructure/evidence/source-manifest.json",
+      "source_sha256": "8d038c18bdfbdcf872fde0023f493fda495c0aea2ef045ab3476a7c23e052401",
+      "destination_sha256": "a418a3186b3341744e296a32f1fb79a672fca2b79cc4eae7204cd79d3665abe3",
+      "bytes_unchanged": false,
+      "change_note": "Regenerated verification evidence after relocation"
+    },
+    {
+      "old_path": "evidence/summary.json",
+      "new_path": "research/001-cloud-ai-infrastructure/evidence/summary.json",
+      "source_sha256": "4843252993ba361f83dc36792b98d75c3a814fc1dd8032e1f5a486fea43a0919",
+      "destination_sha256": "7fd9374527532bb6cb689810cfad62cc79c8bb9faacf5dfa4f7be945556558e1",
+      "bytes_unchanged": false,
+      "change_note": "Regenerated verification evidence after relocation"
+    },
+    {
+      "old_path": "evidence/tests.txt",
+      "new_path": "research/001-cloud-ai-infrastructure/evidence/tests.txt",
+      "source_sha256": "32c4ace65d27e8fe9aa6c5a3c2a21fdf842f6d642250e29a8f86916b0e03c5c9",
+      "destination_sha256": "32c4ace65d27e8fe9aa6c5a3c2a21fdf842f6d642250e29a8f86916b0e03c5c9",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "lab/README.md",
+      "new_path": "research/001-cloud-ai-infrastructure/lab/README.md",
+      "source_sha256": "3ea34e8154a6f454df54e6d0024e2227bc4a8869864a6479cdc82b26ba2fc2bd",
+      "destination_sha256": "9b906d7e4b041a94cb0ca81cf2e43e634b6c51d8e00511f490ad9d96b32f2c2a",
+      "bytes_unchanged": false,
+      "change_note": "Canonical absolute lab/workflow path updated"
+    },
+    {
+      "old_path": "providers/aws.md",
+      "new_path": "research/001-cloud-ai-infrastructure/providers/aws.md",
+      "source_sha256": "af427de091c2ac0c784a729de60e772c321c90cf97b460cdf36940ad4b279f5b",
+      "destination_sha256": "af427de091c2ac0c784a729de60e772c321c90cf97b460cdf36940ad4b279f5b",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "providers/azure.md",
+      "new_path": "research/001-cloud-ai-infrastructure/providers/azure.md",
+      "source_sha256": "885c2de75ca400b14122e5dcfb214f65e03cae1b18550fb7cde13026348aa5ab",
+      "destination_sha256": "885c2de75ca400b14122e5dcfb214f65e03cae1b18550fb7cde13026348aa5ab",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "providers/google-cloud.md",
+      "new_path": "research/001-cloud-ai-infrastructure/providers/google-cloud.md",
+      "source_sha256": "0d7ec9debfb8f0686db0816ddedf47c2f5bdc3aea1c7acf29fa2ad33cb2221f4",
+      "destination_sha256": "0d7ec9debfb8f0686db0816ddedf47c2f5bdc3aea1c7acf29fa2ad33cb2221f4",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "providers/kubernetes.md",
+      "new_path": "research/001-cloud-ai-infrastructure/providers/kubernetes.md",
+      "source_sha256": "8f786f0217777f4d1c47cacc667e721d3b902c620ab1bae62b0c7b90c95343a4",
+      "destination_sha256": "8f786f0217777f4d1c47cacc667e721d3b902c620ab1bae62b0c7b90c95343a4",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "src/authority_graph.py",
+      "new_path": "research/001-cloud-ai-infrastructure/src/authority_graph.py",
+      "source_sha256": "345e39f3639bd84e488b8822f5bbb27bf26d1f775cda59d5c114c50ceda6cead",
+      "destination_sha256": "345e39f3639bd84e488b8822f5bbb27bf26d1f775cda59d5c114c50ceda6cead",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "src/local_runtime.py",
+      "new_path": "research/001-cloud-ai-infrastructure/src/local_runtime.py",
+      "source_sha256": "febf210bd894ebaa82e36b8eccd0e66df9d934592547abcbb9239708ad50690e",
+      "destination_sha256": "febf210bd894ebaa82e36b8eccd0e66df9d934592547abcbb9239708ad50690e",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "studies/001-ai-infrastructure-authority-bindings/DEFAULTS.md",
+      "new_path": "research/001-cloud-ai-infrastructure/studies/001-ai-infrastructure-authority-bindings/DEFAULTS.md",
+      "source_sha256": "ed0ceeec9a7f78297ec8f98ef68220f3903db9b30abed82e03899786ca7e7e69",
+      "destination_sha256": "ed0ceeec9a7f78297ec8f98ef68220f3903db9b30abed82e03899786ca7e7e69",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "studies/001-ai-infrastructure-authority-bindings/EXECUTIVE-BRIEF.md",
+      "new_path": "research/001-cloud-ai-infrastructure/studies/001-ai-infrastructure-authority-bindings/EXECUTIVE-BRIEF.md",
+      "source_sha256": "45d421c6e91633f71695e72133eb34ac751da1846c18ba0396393eb4802d7c38",
+      "destination_sha256": "45d421c6e91633f71695e72133eb34ac751da1846c18ba0396393eb4802d7c38",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "studies/001-ai-infrastructure-authority-bindings/LIMITATIONS.md",
+      "new_path": "research/001-cloud-ai-infrastructure/studies/001-ai-infrastructure-authority-bindings/LIMITATIONS.md",
+      "source_sha256": "5064c960108da55b25619f9c842027f837f6be3a3cc057aaeb61b0f824ad9760",
+      "destination_sha256": "5064c960108da55b25619f9c842027f837f6be3a3cc057aaeb61b0f824ad9760",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "studies/001-ai-infrastructure-authority-bindings/METHOD.md",
+      "new_path": "research/001-cloud-ai-infrastructure/studies/001-ai-infrastructure-authority-bindings/METHOD.md",
+      "source_sha256": "3f189a621e2a7506967390b078ac70397f193d432c04211debd47e53568e0905",
+      "destination_sha256": "3f189a621e2a7506967390b078ac70397f193d432c04211debd47e53568e0905",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "studies/001-ai-infrastructure-authority-bindings/NOVELTY.md",
+      "new_path": "research/001-cloud-ai-infrastructure/studies/001-ai-infrastructure-authority-bindings/NOVELTY.md",
+      "source_sha256": "ae8e69132c4d359696ad7581923a7218a2dc2034d1cf71ee5fb0673682e72dee",
+      "destination_sha256": "ae8e69132c4d359696ad7581923a7218a2dc2034d1cf71ee5fb0673682e72dee",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "studies/001-ai-infrastructure-authority-bindings/PAPER.md",
+      "new_path": "research/001-cloud-ai-infrastructure/studies/001-ai-infrastructure-authority-bindings/PAPER.md",
+      "source_sha256": "ef45bc75a61ab5989e29210e8c893d44468e9cb6ea57da4a57a1d75938260bb7",
+      "destination_sha256": "ef45bc75a61ab5989e29210e8c893d44468e9cb6ea57da4a57a1d75938260bb7",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "studies/001-ai-infrastructure-authority-bindings/RESULTS.md",
+      "new_path": "research/001-cloud-ai-infrastructure/studies/001-ai-infrastructure-authority-bindings/RESULTS.md",
+      "source_sha256": "e6011cf1c7265c3b8d4a23efc7be70bd8704b6bf42819fccf576880dee94d3dc",
+      "destination_sha256": "e6011cf1c7265c3b8d4a23efc7be70bd8704b6bf42819fccf576880dee94d3dc",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "studies/001-ai-infrastructure-authority-bindings/SOURCES.md",
+      "new_path": "research/001-cloud-ai-infrastructure/studies/001-ai-infrastructure-authority-bindings/SOURCES.md",
+      "source_sha256": "b190244ca5148850dd30b10c05f012e08656c25f0ac219218fdd297e9837bfac",
+      "destination_sha256": "b190244ca5148850dd30b10c05f012e08656c25f0ac219218fdd297e9837bfac",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "studies/001-ai-infrastructure-authority-bindings/THREAT-MODEL.md",
+      "new_path": "research/001-cloud-ai-infrastructure/studies/001-ai-infrastructure-authority-bindings/THREAT-MODEL.md",
+      "source_sha256": "613e7bbfca398443728f3f570fa07eecc91db73d12c2c0c8e045ddd5d6ae880c",
+      "destination_sha256": "613e7bbfca398443728f3f570fa07eecc91db73d12c2c0c8e045ddd5d6ae880c",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "studies/001-ai-infrastructure-authority-bindings/VALIDATION-PROTOCOL.md",
+      "new_path": "research/001-cloud-ai-infrastructure/studies/001-ai-infrastructure-authority-bindings/VALIDATION-PROTOCOL.md",
+      "source_sha256": "25537af11ec4c26bd2b4c2b1fc1f711f4d60e171de08520e5c45bfa986b6be6e",
+      "destination_sha256": "25537af11ec4c26bd2b4c2b1fc1f711f4d60e171de08520e5c45bfa986b6be6e",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "studies/001-ai-infrastructure-authority-bindings/candidate-classes.csv",
+      "new_path": "research/001-cloud-ai-infrastructure/studies/001-ai-infrastructure-authority-bindings/candidate-classes.csv",
+      "source_sha256": "12ac7a3f66bea3708a5c815779bbe61d1201a7aa6aa7cb28eeb65cbd4d192d9c",
+      "destination_sha256": "12ac7a3f66bea3708a5c815779bbe61d1201a7aa6aa7cb28eeb65cbd4d192d9c",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "studies/001-ai-infrastructure-authority-bindings/chains.json",
+      "new_path": "research/001-cloud-ai-infrastructure/studies/001-ai-infrastructure-authority-bindings/chains.json",
+      "source_sha256": "4b8fc75d4a852699344b74852eedf892ba3827e84d30895ad5f6a5931793dcda",
+      "destination_sha256": "4b8fc75d4a852699344b74852eedf892ba3827e84d30895ad5f6a5931793dcda",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "studies/001-ai-infrastructure-authority-bindings/fixtures.json",
+      "new_path": "research/001-cloud-ai-infrastructure/studies/001-ai-infrastructure-authority-bindings/fixtures.json",
+      "source_sha256": "e2af7c5f2540ae5e0b37b82ec799dc49734cb741cb1f9c95a76091ebf6919a18",
+      "destination_sha256": "e2af7c5f2540ae5e0b37b82ec799dc49734cb741cb1f9c95a76091ebf6919a18",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "studies/001-ai-infrastructure-authority-bindings/source-review.json",
+      "new_path": "research/001-cloud-ai-infrastructure/studies/001-ai-infrastructure-authority-bindings/source-review.json",
+      "source_sha256": "28278f9487c5ca5c23fb9c40ee9bfbb91ab053c5342e3c3bd0c160b25a77d9eb",
+      "destination_sha256": "28278f9487c5ca5c23fb9c40ee9bfbb91ab053c5342e3c3bd0c160b25a77d9eb",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "studies/001-ai-infrastructure-authority-bindings/sources.json",
+      "new_path": "research/001-cloud-ai-infrastructure/studies/001-ai-infrastructure-authority-bindings/sources.json",
+      "source_sha256": "0d76c099db2629548b47b657a623052c29b39df353e354d05de119d2c346bd91",
+      "destination_sha256": "0d76c099db2629548b47b657a623052c29b39df353e354d05de119d2c346bd91",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "study-index.json",
+      "new_path": "research/001-cloud-ai-infrastructure/study-index.json",
+      "source_sha256": "41000b581ca520a9d9d8b407a3cee98e1d76d46f798b346df646501b53d30c6c",
+      "destination_sha256": "41000b581ca520a9d9d8b407a3cee98e1d76d46f798b346df646501b53d30c6c",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "tests/test_security_boundaries.py",
+      "new_path": "research/001-cloud-ai-infrastructure/tests/test_security_boundaries.py",
+      "source_sha256": "fe588c4c9cff0eb66d02229c573c0979fd884fcc1765a9611bbd75050485465a",
+      "destination_sha256": "fe588c4c9cff0eb66d02229c573c0979fd884fcc1765a9611bbd75050485465a",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    },
+    {
+      "old_path": "tools/run_study.py",
+      "new_path": "research/001-cloud-ai-infrastructure/tools/run_study.py",
+      "source_sha256": "17c4dce8f428164a826f642954615b120387c55da378626119503ce5bc7a666a",
+      "destination_sha256": "17c4dce8f428164a826f642954615b120387c55da378626119503ce5bc7a666a",
+      "bytes_unchanged": true,
+      "change_note": "Original bytes retained"
+    }
+  ]
+}

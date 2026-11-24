@@ -1,9 +1,11 @@
-# Canonical development workflow
+# Canonical workflow
 
-Use OrbStack explicitly: `docker --context orbstack`. Canonical development container: `cybersecurity-research-dev`; persistent volume: `cybersecurity-research-workspace`; workspace: `/workspaces/cybersecurity-research`.
+Use `docker --context orbstack` explicitly. Development container: `cybersecurity-research-dev`; persistent volume: `cybersecurity-research-workspace`; canonical root: `/workspaces/cybersecurity-research/repo`.
 
-Run source edits, study analysis, tests and artifact generation inside this repository-specific container. Host copies are for review and guarded publication only. Keep root read-only, UID 1000, no external networking, capabilities dropped, no-new-privileges, bounded resources and a temporary result directory. Never mount home directories, credentials or the Docker socket. Preserve persistent volumes.
+Research package: `research/001-cloud-ai-infrastructure`. Hunting package: `frameworks/proactive-threat-hunting`. Keep package-local relative links and reproduction instructions correct after any movement.
 
-Run final verification with the workspace mounted read-only. Source manifest and reviewed file hashes must match before publication. Preserve unrelated existing remote files, reject a moving main branch and verify published bytes. Do not provision a cloud environment or run live attacks from this synthetic study without explicit scope and the future-validation protocol.
+All edits, analysis, code, tests and artifacts run inside this repository-specific OrbStack container. Host copies are for review and guarded publishing only. Keep the root read-only, use UID 1000, drop capabilities, enforce no-new-privileges, bound resources and disable external networking for lab execution. Do not mount home folders, credentials or the Docker socket. Preserve the persistent volume.
 
-Do not label hypotheses or mock results as new provider vulnerabilities. Keep documented defaults, model assumptions, local results and observed provider behavior separate.
+Run both package verifiers against a read-only workspace; regenerate their evidence and source manifests when source changes. Do not present synthetic tests as live provider exploits, operational hunt results or a real-world detection benchmark. Raw event/reference identifiers and source-health assumptions need documented normalization; maintain tenant and canonical principal boundaries.
+
+For a relocation publication, validate the exact original remote file set and hashes, enumerate each removed old path and corresponding destination, preserve Git history, refuse unexpected deletion or moving main, and verify every resulting public file. Do not force-push.

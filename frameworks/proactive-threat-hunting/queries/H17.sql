@@ -1,0 +1,1 @@
+SELECT e.tenant_id, e.principal_id AS entity_id, e.event_id AS evidence_ids FROM events e WHERE e.phase=1 AND e.domain IN ('cloud-aws','cloud-azure','cloud-gcp') AND e.action='audit_logging_disabled' AND e.approved=0;

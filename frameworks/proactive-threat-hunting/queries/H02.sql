@@ -1,0 +1,1 @@
+SELECT e.tenant_id, e.asset_id AS entity_id, e.event_id AS evidence_ids FROM events e JOIN iocs i ON i.kind='sha256' AND i.value=e.sha256 WHERE e.phase=1 AND e.domain='endpoint' AND e.action='process_launch' AND i.revoked=0 AND i.valid_from<=e.ts AND i.valid_until>=:window_end;

@@ -1,0 +1,308 @@
+[
+  {
+    "case_id": "H01-positive",
+    "expected_hunt_ids": [
+      "H01"
+    ],
+    "actual_hunt_ids": [
+      "H01"
+    ],
+    "matches_expected": true,
+    "candidate_count": 1
+  },
+  {
+    "case_id": "H01-negative",
+    "expected_hunt_ids": [],
+    "actual_hunt_ids": [],
+    "matches_expected": true,
+    "candidate_count": 0
+  },
+  {
+    "case_id": "H02-positive",
+    "expected_hunt_ids": [
+      "H02"
+    ],
+    "actual_hunt_ids": [
+      "H02"
+    ],
+    "matches_expected": true,
+    "candidate_count": 1
+  },
+  {
+    "case_id": "H02-negative",
+    "expected_hunt_ids": [],
+    "actual_hunt_ids": [],
+    "matches_expected": true,
+    "candidate_count": 0
+  },
+  {
+    "case_id": "H03-positive",
+    "expected_hunt_ids": [
+      "H03"
+    ],
+    "actual_hunt_ids": [
+      "H03"
+    ],
+    "matches_expected": true,
+    "candidate_count": 1
+  },
+  {
+    "case_id": "H03-negative",
+    "expected_hunt_ids": [],
+    "actual_hunt_ids": [],
+    "matches_expected": true,
+    "candidate_count": 0
+  },
+  {
+    "case_id": "H04-positive",
+    "expected_hunt_ids": [
+      "H04"
+    ],
+    "actual_hunt_ids": [
+      "H04"
+    ],
+    "matches_expected": true,
+    "candidate_count": 1
+  },
+  {
+    "case_id": "H04-negative",
+    "expected_hunt_ids": [],
+    "actual_hunt_ids": [],
+    "matches_expected": true,
+    "candidate_count": 0
+  },
+  {
+    "case_id": "H05-positive",
+    "expected_hunt_ids": [
+      "H05"
+    ],
+    "actual_hunt_ids": [
+      "H05"
+    ],
+    "matches_expected": true,
+    "candidate_count": 1
+  },
+  {
+    "case_id": "H05-negative",
+    "expected_hunt_ids": [],
+    "actual_hunt_ids": [],
+    "matches_expected": true,
+    "candidate_count": 0
+  },
+  {
+    "case_id": "H06-positive",
+    "expected_hunt_ids": [
+      "H06"
+    ],
+    "actual_hunt_ids": [
+      "H06"
+    ],
+    "matches_expected": true,
+    "candidate_count": 1
+  },
+  {
+    "case_id": "H06-negative",
+    "expected_hunt_ids": [],
+    "actual_hunt_ids": [],
+    "matches_expected": true,
+    "candidate_count": 0
+  },
+  {
+    "case_id": "H07-positive",
+    "expected_hunt_ids": [
+      "H07"
+    ],
+    "actual_hunt_ids": [
+      "H07"
+    ],
+    "matches_expected": true,
+    "candidate_count": 1
+  },
+  {
+    "case_id": "H07-negative",
+    "expected_hunt_ids": [],
+    "actual_hunt_ids": [],
+    "matches_expected": true,
+    "candidate_count": 0
+  },
+  {
+    "case_id": "H08-positive",
+    "expected_hunt_ids": [
+      "H08"
+    ],
+    "actual_hunt_ids": [
+      "H08"
+    ],
+    "matches_expected": true,
+    "candidate_count": 1
+  },
+  {
+    "case_id": "H08-negative",
+    "expected_hunt_ids": [],
+    "actual_hunt_ids": [],
+    "matches_expected": true,
+    "candidate_count": 0
+  },
+  {
+    "case_id": "H09-positive",
+    "expected_hunt_ids": [
+      "H09"
+    ],
+    "actual_hunt_ids": [
+      "H09"
+    ],
+    "matches_expected": true,
+    "candidate_count": 1
+  },
+  {
+    "case_id": "H09-negative",
+    "expected_hunt_ids": [],
+    "actual_hunt_ids": [],
+    "matches_expected": true,
+    "candidate_count": 0
+  },
+  {
+    "case_id": "H10-positive",
+    "expected_hunt_ids": [
+      "H10"
+    ],
+    "actual_hunt_ids": [
+      "H10"
+    ],
+    "matches_expected": true,
+    "candidate_count": 1
+  },
+  {
+    "case_id": "H10-negative",
+    "expected_hunt_ids": [],
+    "actual_hunt_ids": [],
+    "matches_expected": true,
+    "candidate_count": 0
+  },
+  {
+    "case_id": "H11-positive",
+    "expected_hunt_ids": [
+      "H11"
+    ],
+    "actual_hunt_ids": [
+      "H11"
+    ],
+    "matches_expected": true,
+    "candidate_count": 1
+  },
+  {
+    "case_id": "H11-negative",
+    "expected_hunt_ids": [],
+    "actual_hunt_ids": [],
+    "matches_expected": true,
+    "candidate_count": 0
+  },
+  {
+    "case_id": "H12-positive",
+    "expected_hunt_ids": [
+      "H12"
+    ],
+    "actual_hunt_ids": [
+      "H12"
+    ],
+    "matches_expected": true,
+    "candidate_count": 1
+  },
+  {
+    "case_id": "H12-negative",
+    "expected_hunt_ids": [],
+    "actual_hunt_ids": [],
+    "matches_expected": true,
+    "candidate_count": 0
+  },
+  {
+    "case_id": "H13-positive",
+    "expected_hunt_ids": [
+      "H13"
+    ],
+    "actual_hunt_ids": [
+      "H13"
+    ],
+    "matches_expected": true,
+    "candidate_count": 1
+  },
+  {
+    "case_id": "H13-negative",
+    "expected_hunt_ids": [],
+    "actual_hunt_ids": [],
+    "matches_expected": true,
+    "candidate_count": 0
+  },
+  {
+    "case_id": "H14-positive",
+    "expected_hunt_ids": [
+      "H14"
+    ],
+    "actual_hunt_ids": [
+      "H14"
+    ],
+    "matches_expected": true,
+    "candidate_count": 1
+  },
+  {
+    "case_id": "H14-negative",
+    "expected_hunt_ids": [],
+    "actual_hunt_ids": [],
+    "matches_expected": true,
+    "candidate_count": 0
+  },
+  {
+    "case_id": "H15-positive",
+    "expected_hunt_ids": [
+      "H15"
+    ],
+    "actual_hunt_ids": [
+      "H15"
+    ],
+    "matches_expected": true,
+    "candidate_count": 1
+  },
+  {
+    "case_id": "H15-negative",
+    "expected_hunt_ids": [],
+    "actual_hunt_ids": [],
+    "matches_expected": true,
+    "candidate_count": 0
+  },
+  {
+    "case_id": "H16-positive",
+    "expected_hunt_ids": [
+      "H16"
+    ],
+    "actual_hunt_ids": [
+      "H16"
+    ],
+    "matches_expected": true,
+    "candidate_count": 1
+  },
+  {
+    "case_id": "H16-negative",
+    "expected_hunt_ids": [],
+    "actual_hunt_ids": [],
+    "matches_expected": true,
+    "candidate_count": 0
+  },
+  {
+    "case_id": "H17-positive",
+    "expected_hunt_ids": [
+      "H17"
+    ],
+    "actual_hunt_ids": [
+      "H17"
+    ],
+    "matches_expected": true,
+    "candidate_count": 1
+  },
+  {
+    "case_id": "H17-negative",
+    "expected_hunt_ids": [],
+    "actual_hunt_ids": [],
+    "matches_expected": true,
+    "candidate_count": 0
+  }
+]

@@ -1,7 +1,5 @@
 # Security reporting
 
-Use GitHub's private vulnerability reporting for non-public issues in this repository. Enable it at the repository security settings before publication. Do not place secrets, personal/client records or undisclosed provider findings in public issues.
+Use the repository's GitHub private vulnerability reporting for unpublished issues. Public issues are appropriate for reproducibility failures, documentation corrections and already-public prior art. Do not submit credentials or customer/personal security telemetry to this public repository.
 
-This repository is a local research reference, not a deployable cloud-security product. The first study uses synthetic data and makes no vulnerability report about AWS, Microsoft, Google or Kubernetes. Issues affecting an external product must follow that product's disclosure process and authorized scope.
-
-Public issues are suitable for reproducibility failures, documentation corrections and already-public prior art. Confirmed unpublished issues should be discussed privately before release.
+Both packages are local reference research. Neither accesses cloud accounts, collects telemetry, hunts a customer environment, performs response actions or establishes a provider vulnerability. A confirmed external-product issue needs that product's disclosure process; a live operational hunt needs the agreed organizational scope and incident escalation process.

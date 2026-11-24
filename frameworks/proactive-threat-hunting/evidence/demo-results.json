@@ -1,0 +1,546 @@
+{
+  "scope": "Synthetic local reference; no live telemetry or production detection claim",
+  "window": {
+    "baseline_start": "2026-11-23T08:00:00Z",
+    "window_start": "2026-11-24T08:00:00Z",
+    "window_end": "2026-11-24T09:00:00Z",
+    "min_baseline_events": 2,
+    "max_ingestion_lag_seconds": 120,
+    "max_clock_uncertainty_seconds": 30
+  },
+  "assessments": [
+    {
+      "hunt_id": "H01",
+      "title": "Rare script-interpreter parent",
+      "status": "candidate_leads",
+      "query_executed": true,
+      "coverage_gaps": [],
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "hunt_id": "H01",
+          "tenant_id": "synthetic-tenant-A",
+          "entity_id": "H01-asset",
+          "evidence": [
+            {
+              "event_id": "H01-p",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "endpoint-synthetic-sensor",
+              "domain": "endpoint",
+              "timestamp": "2026-11-24T08:01:00Z"
+            }
+          ],
+          "interpretation": "Candidate association; corroboration required"
+        }
+      ],
+      "decision_scope": "Only this observed window/schema; no clear-of-compromise conclusion"
+    },
+    {
+      "hunt_id": "H02",
+      "title": "Active indicator match in process telemetry",
+      "status": "candidate_leads",
+      "query_executed": true,
+      "coverage_gaps": [],
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "hunt_id": "H02",
+          "tenant_id": "synthetic-tenant-A",
+          "entity_id": "H02-asset",
+          "evidence": [
+            {
+              "event_id": "H02-p",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "endpoint-synthetic-sensor",
+              "domain": "endpoint",
+              "timestamp": "2026-11-24T08:01:00Z"
+            }
+          ],
+          "interpretation": "Candidate association; corroboration required"
+        }
+      ],
+      "decision_scope": "Only this observed window/schema; no clear-of-compromise conclusion"
+    },
+    {
+      "hunt_id": "H03",
+      "title": "Failure burst followed by new-device success",
+      "status": "candidate_leads",
+      "query_executed": true,
+      "coverage_gaps": [],
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "hunt_id": "H03",
+          "tenant_id": "synthetic-tenant-A",
+          "entity_id": "H03-principal",
+          "evidence": [
+            {
+              "event_id": "H03-f1",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "identity-synthetic-sensor",
+              "domain": "identity",
+              "timestamp": "2026-11-24T08:01:00Z"
+            },
+            {
+              "event_id": "H03-f2",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "identity-synthetic-sensor",
+              "domain": "identity",
+              "timestamp": "2026-11-24T08:02:00Z"
+            },
+            {
+              "event_id": "H03-s",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "identity-synthetic-sensor",
+              "domain": "identity",
+              "timestamp": "2026-11-24T08:04:00Z"
+            },
+            {
+              "event_id": "H03-f3",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "identity-synthetic-sensor",
+              "domain": "identity",
+              "timestamp": "2026-11-24T08:03:00Z"
+            }
+          ],
+          "interpretation": "Candidate association; corroboration required"
+        }
+      ],
+      "decision_scope": "Only this observed window/schema; no clear-of-compromise conclusion"
+    },
+    {
+      "hunt_id": "H04",
+      "title": "Privileged identity grant outside approved change",
+      "status": "candidate_leads",
+      "query_executed": true,
+      "coverage_gaps": [],
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "hunt_id": "H04",
+          "tenant_id": "synthetic-tenant-A",
+          "entity_id": "H04-target",
+          "evidence": [
+            {
+              "event_id": "H04-p",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "identity-synthetic-sensor",
+              "domain": "identity",
+              "timestamp": "2026-11-24T08:01:00Z"
+            }
+          ],
+          "interpretation": "Candidate association; corroboration required"
+        }
+      ],
+      "decision_scope": "Only this observed window/schema; no clear-of-compromise conclusion"
+    },
+    {
+      "hunt_id": "H05",
+      "title": "Unapproved external mailbox forwarding",
+      "status": "candidate_leads",
+      "query_executed": true,
+      "coverage_gaps": [],
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "hunt_id": "H05",
+          "tenant_id": "synthetic-tenant-A",
+          "entity_id": "H05-principal",
+          "evidence": [
+            {
+              "event_id": "H05-p",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "email-synthetic-sensor",
+              "domain": "email",
+              "timestamp": "2026-11-24T08:01:00Z"
+            }
+          ],
+          "interpretation": "Candidate association; corroboration required"
+        }
+      ],
+      "decision_scope": "Only this observed window/schema; no clear-of-compromise conclusion"
+    },
+    {
+      "hunt_id": "H06",
+      "title": "Suspicious email click followed by new-device sign-in",
+      "status": "candidate_leads",
+      "query_executed": true,
+      "coverage_gaps": [],
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "hunt_id": "H06",
+          "tenant_id": "synthetic-tenant-A",
+          "entity_id": "H06-principal",
+          "evidence": [
+            {
+              "event_id": "H06-s",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "identity-synthetic-sensor",
+              "domain": "identity",
+              "timestamp": "2026-11-24T08:03:00Z"
+            },
+            {
+              "event_id": "H06-c",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "email-synthetic-sensor",
+              "domain": "email",
+              "timestamp": "2026-11-24T08:01:00Z"
+            }
+          ],
+          "interpretation": "Candidate association; corroboration required"
+        }
+      ],
+      "decision_scope": "Only this observed window/schema; no clear-of-compromise conclusion"
+    },
+    {
+      "hunt_id": "H07",
+      "title": "First-observed AWS AI runtime followed by sensitive data access",
+      "status": "candidate_leads",
+      "query_executed": true,
+      "coverage_gaps": [],
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "hunt_id": "H07",
+          "tenant_id": "synthetic-tenant-A",
+          "entity_id": "H07-principal",
+          "evidence": [
+            {
+              "event_id": "H07-r",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "cloud-aws-synthetic-sensor",
+              "domain": "cloud-aws",
+              "timestamp": "2026-11-24T08:03:00Z"
+            },
+            {
+              "event_id": "H07-j",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "cloud-aws-synthetic-sensor",
+              "domain": "cloud-aws",
+              "timestamp": "2026-11-24T08:01:00Z"
+            }
+          ],
+          "interpretation": "Candidate association; corroboration required"
+        }
+      ],
+      "decision_scope": "Only this observed window/schema; no clear-of-compromise conclusion"
+    },
+    {
+      "hunt_id": "H08",
+      "title": "Azure role grant followed by sensitive secret read",
+      "status": "candidate_leads",
+      "query_executed": true,
+      "coverage_gaps": [],
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "hunt_id": "H08",
+          "tenant_id": "synthetic-tenant-A",
+          "entity_id": "H08-target",
+          "evidence": [
+            {
+              "event_id": "H08-r",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "cloud-azure-synthetic-sensor",
+              "domain": "cloud-azure",
+              "timestamp": "2026-11-24T08:03:00Z"
+            },
+            {
+              "event_id": "H08-g",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "cloud-azure-synthetic-sensor",
+              "domain": "cloud-azure",
+              "timestamp": "2026-11-24T08:01:00Z"
+            }
+          ],
+          "interpretation": "Candidate association; corroboration required"
+        }
+      ],
+      "decision_scope": "Only this observed window/schema; no clear-of-compromise conclusion"
+    },
+    {
+      "hunt_id": "H09",
+      "title": "Google service-account delegation followed by data read",
+      "status": "candidate_leads",
+      "query_executed": true,
+      "coverage_gaps": [],
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "hunt_id": "H09",
+          "tenant_id": "synthetic-tenant-A",
+          "entity_id": "H09-principal",
+          "evidence": [
+            {
+              "event_id": "H09-g",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "cloud-gcp-synthetic-sensor",
+              "domain": "cloud-gcp",
+              "timestamp": "2026-11-24T08:01:00Z"
+            },
+            {
+              "event_id": "H09-r",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "cloud-gcp-synthetic-sensor",
+              "domain": "cloud-gcp",
+              "timestamp": "2026-11-24T08:03:00Z"
+            }
+          ],
+          "interpretation": "Candidate association; corroboration required"
+        }
+      ],
+      "decision_scope": "Only this observed window/schema; no clear-of-compromise conclusion"
+    },
+    {
+      "hunt_id": "H10",
+      "title": "Unapproved privileged Kubernetes workload",
+      "status": "candidate_leads",
+      "query_executed": true,
+      "coverage_gaps": [],
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "hunt_id": "H10",
+          "tenant_id": "synthetic-tenant-A",
+          "entity_id": "H10-workload",
+          "evidence": [
+            {
+              "event_id": "H10-p",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "kubernetes-synthetic-sensor",
+              "domain": "kubernetes",
+              "timestamp": "2026-11-24T08:01:00Z"
+            }
+          ],
+          "interpretation": "Candidate association; corroboration required"
+        }
+      ],
+      "decision_scope": "Only this observed window/schema; no clear-of-compromise conclusion"
+    },
+    {
+      "hunt_id": "H11",
+      "title": "First-observed lateral administration destination",
+      "status": "candidate_leads",
+      "query_executed": true,
+      "coverage_gaps": [],
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "hunt_id": "H11",
+          "tenant_id": "synthetic-tenant-A",
+          "entity_id": "H11-asset",
+          "evidence": [
+            {
+              "event_id": "H11-p",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "network-synthetic-sensor",
+              "domain": "network",
+              "timestamp": "2026-11-24T08:01:00Z"
+            }
+          ],
+          "interpretation": "Candidate association; corroboration required"
+        }
+      ],
+      "decision_scope": "Only this observed window/schema; no clear-of-compromise conclusion"
+    },
+    {
+      "hunt_id": "H12",
+      "title": "Burst of first-observed DNS destinations",
+      "status": "candidate_leads",
+      "query_executed": true,
+      "coverage_gaps": [],
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "hunt_id": "H12",
+          "tenant_id": "synthetic-tenant-A",
+          "entity_id": "H12-asset",
+          "evidence": [
+            {
+              "event_id": "H12-d3",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "dns-synthetic-sensor",
+              "domain": "dns",
+              "timestamp": "2026-11-24T08:03:00Z"
+            },
+            {
+              "event_id": "H12-d1",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "dns-synthetic-sensor",
+              "domain": "dns",
+              "timestamp": "2026-11-24T08:01:00Z"
+            },
+            {
+              "event_id": "H12-d2",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "dns-synthetic-sensor",
+              "domain": "dns",
+              "timestamp": "2026-11-24T08:02:00Z"
+            }
+          ],
+          "interpretation": "Candidate association; corroboration required"
+        }
+      ],
+      "decision_scope": "Only this observed window/schema; no clear-of-compromise conclusion"
+    },
+    {
+      "hunt_id": "H13",
+      "title": "Large SaaS export through first-observed application",
+      "status": "candidate_leads",
+      "query_executed": true,
+      "coverage_gaps": [],
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "hunt_id": "H13",
+          "tenant_id": "synthetic-tenant-A",
+          "entity_id": "H13-principal",
+          "evidence": [
+            {
+              "event_id": "H13-p",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "saas-synthetic-sensor",
+              "domain": "saas",
+              "timestamp": "2026-11-24T08:01:00Z"
+            }
+          ],
+          "interpretation": "Candidate association; corroboration required"
+        }
+      ],
+      "decision_scope": "Only this observed window/schema; no clear-of-compromise conclusion"
+    },
+    {
+      "hunt_id": "H14",
+      "title": "AI retrieval or tool action outside logged policy scope",
+      "status": "candidate_leads",
+      "query_executed": true,
+      "coverage_gaps": [],
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "hunt_id": "H14",
+          "tenant_id": "synthetic-tenant-A",
+          "entity_id": "H14-principal",
+          "evidence": [
+            {
+              "event_id": "H14-p",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "ai-synthetic-sensor",
+              "domain": "ai",
+              "timestamp": "2026-11-24T08:01:00Z"
+            }
+          ],
+          "interpretation": "Candidate association; corroboration required"
+        }
+      ],
+      "decision_scope": "Only this observed window/schema; no clear-of-compromise conclusion"
+    },
+    {
+      "hunt_id": "H15",
+      "title": "Consumed artifact differs from approved digest",
+      "status": "candidate_leads",
+      "query_executed": true,
+      "coverage_gaps": [],
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "hunt_id": "H15",
+          "tenant_id": "synthetic-tenant-A",
+          "entity_id": "H15-principal",
+          "evidence": [
+            {
+              "event_id": "H15-p",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "cicd-synthetic-sensor",
+              "domain": "cicd",
+              "timestamp": "2026-11-24T08:01:00Z"
+            }
+          ],
+          "interpretation": "Candidate association; corroboration required"
+        }
+      ],
+      "decision_scope": "Only this observed window/schema; no clear-of-compromise conclusion"
+    },
+    {
+      "hunt_id": "H16",
+      "title": "Unapproved recovery protection change",
+      "status": "candidate_leads",
+      "query_executed": true,
+      "coverage_gaps": [],
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "hunt_id": "H16",
+          "tenant_id": "synthetic-tenant-A",
+          "entity_id": "H16-principal",
+          "evidence": [
+            {
+              "event_id": "H16-p",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "backup-synthetic-sensor",
+              "domain": "backup",
+              "timestamp": "2026-11-24T08:01:00Z"
+            }
+          ],
+          "interpretation": "Candidate association; corroboration required"
+        }
+      ],
+      "decision_scope": "Only this observed window/schema; no clear-of-compromise conclusion"
+    },
+    {
+      "hunt_id": "H17",
+      "title": "Unapproved cloud audit logging change",
+      "status": "candidate_leads",
+      "query_executed": true,
+      "coverage_gaps": [],
+      "candidate_count": 1,
+      "candidates": [
+        {
+          "hunt_id": "H17",
+          "tenant_id": "synthetic-tenant-A",
+          "entity_id": "H17-principal",
+          "evidence": [
+            {
+              "event_id": "H17-p",
+              "tenant_id": "synthetic-tenant-A",
+              "source": "cloud-aws-synthetic-sensor",
+              "domain": "cloud-aws",
+              "timestamp": "2026-11-24T08:01:00Z"
+            }
+          ],
+          "interpretation": "Candidate association; corroboration required"
+        }
+      ],
+      "decision_scope": "Only this observed window/schema; no clear-of-compromise conclusion"
+    }
+  ],
+  "normalization": {
+    "accepted_in_window_or_baseline": 52,
+    "identical_duplicates_removed": 0,
+    "conflicting_scoped_keys": 0,
+    "quarantined_records": [],
+    "excluded_records": {}
+  },
+  "candidate_count": 17,
+  "hunt_ids_with_candidates": [
+    "H01",
+    "H02",
+    "H03",
+    "H04",
+    "H05",
+    "H06",
+    "H07",
+    "H08",
+    "H09",
+    "H10",
+    "H11",
+    "H12",
+    "H13",
+    "H14",
+    "H15",
+    "H16",
+    "H17"
+  ],
+  "inconclusive_hunt_ids": []
+}

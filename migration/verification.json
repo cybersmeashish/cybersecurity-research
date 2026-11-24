@@ -1,0 +1,74 @@
+{
+  "research_package": "research/001-cloud-ai-infrastructure",
+  "hunting_package": "frameworks/proactive-threat-hunting",
+  "original_files_relocated": 40,
+  "unchanged_original_bytes": 37,
+  "local_markdown_links_checked": 246,
+  "package_source_hashes_checked": 93,
+  "research": {
+    "study_id": "AIA-001",
+    "generated_at_utc": "2026-11-24T10:15:54.115132+00:00",
+    "chains": 8,
+    "candidate_classes": 5,
+    "primary_sources": 9,
+    "synthetic_fixture_cases": 144,
+    "outcomes": {
+      "reachable": 8,
+      "blocked": 76,
+      "unknown": 60
+    },
+    "all_fixture_expectations_match": true,
+    "unit_test_methods": 13,
+    "local_runtime_cases": 24,
+    "local_runtime_baseline_disclosures": 4,
+    "local_runtime_control_cases": 20,
+    "local_runtime_control_disclosures": 0,
+    "runtime_profiles": "One shared mock ACL backend with four labels; not four independent cloud environments",
+    "runtime": {
+      "python": "3.12.16",
+      "os": "Linux",
+      "architecture": "aarch64"
+    },
+    "isolation": {
+      "network_probe_destination": "198.51.100.1:443 (documentation address)",
+      "errno": 101,
+      "external_network_unreachable": true,
+      "root_read_only": true,
+      "workspace_read_only": true
+    },
+    "live_provider_experiments": 0,
+    "new_provider_vulnerabilities_confirmed": 0,
+    "novelty_status": "candidate taxonomy; global novelty not established",
+    "scope": "Original comparative synthesis and synthetic experiments; no deployed AWS/Azure/Google Cloud/Kubernetes exploit validation"
+  },
+  "hunting": {
+    "framework": "Proactive Threat Hunting",
+    "version": "0.1",
+    "generated_at_utc": "2026-11-24T10:18:29.827594+00:00",
+    "hunt_cards": 17,
+    "telemetry_domains": 13,
+    "synthetic_scenarios": 34,
+    "positive_scenarios": 17,
+    "benign_or_broken_chain_scenarios": 17,
+    "all_scenario_expectations_match": true,
+    "combined_demo_candidate_leads": 17,
+    "regression_test_methods": 19,
+    "runtime": {
+      "python": "3.12.16",
+      "sqlite": "3.46.1",
+      "os": "Linux",
+      "architecture": "aarch64"
+    },
+    "isolation": {
+      "network_errno": 101,
+      "external_network_unreachable": true,
+      "root_read_only": true,
+      "workspace_read_only": true
+    },
+    "live_customer_hunts": 0,
+    "production_query_validation": "Not performed; only local normalized SQLite queries tested",
+    "scope": "Synthetic reference consistency and security-boundary tests, not detection sensitivity/specificity or attacker attribution"
+  },
+  "scope": "Structural preservation, source/link checks and isolated synthetic reference tests; no live provider/customer validation",
+  "problems": []
+}

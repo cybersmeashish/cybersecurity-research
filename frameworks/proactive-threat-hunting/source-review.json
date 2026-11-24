@@ -1,0 +1,106 @@
+[
+  {
+    "id": "MITRE",
+    "requested_url": "https://attack.mitre.org/",
+    "resolved_url": "https://attack.mitre.org/",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T10:12:43.285862+00:00",
+    "raw_html_sha256": "52a0352afa8f34bd2520590e498d36c2ffec43c2b783ff3fae4bc700076c2561"
+  },
+  {
+    "id": "CISA",
+    "requested_url": "https://www.cisa.gov/resources-tools/resources/best-practices-event-logging-and-threat-detection",
+    "resolved_url": "https://www.cisa.gov/resources-tools/resources/best-practices-event-logging-and-threat-detection",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T10:12:43.227565+00:00",
+    "raw_html_sha256": "7438b2c1275914a0f5ba1b19d8c5aabd01169b7d6e5ebc16d804a8e027d69772"
+  },
+  {
+    "id": "MDE",
+    "requested_url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-overview",
+    "resolved_url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-overview",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T10:12:43.450121+00:00",
+    "raw_html_sha256": "d5c4aca2fb3555317c53637c77e56fda642b791710ff6cc8ebabb1324f574d7f"
+  },
+  {
+    "id": "AWS",
+    "requested_url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html",
+    "resolved_url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T10:12:43.277922+00:00",
+    "raw_html_sha256": "d50a4d7c8893fc499885cafdd6209b4cecd3e1658530c902271c6999fb390a07"
+  },
+  {
+    "id": "AZURE",
+    "requested_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/platform/activity-log-schema",
+    "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/fundamentals/activity-log-schema",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T10:12:44.541475+00:00",
+    "raw_html_sha256": "6293737b4c34a8af767303d007e2b67f2f2ae799723b68e0a203e5a58bc45676"
+  },
+  {
+    "id": "GCP",
+    "requested_url": "https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs",
+    "resolved_url": "https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T10:12:44.568811+00:00",
+    "raw_html_sha256": "230cc4e00105e0aa99c38e91fe19ac282c170112373b5068da28d83c15efb3d7"
+  },
+  {
+    "id": "GCP-DATA",
+    "requested_url": "https://docs.cloud.google.com/logging/docs/audit/configure-data-access",
+    "resolved_url": "https://docs.cloud.google.com/logging/docs/audit/configure-data-access",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T10:12:44.457124+00:00",
+    "raw_html_sha256": "80b794e1b7bbd1993e222a84c7324572fd92c4cfa93f3dc8b0e2dda310618d98"
+  },
+  {
+    "id": "K8S",
+    "requested_url": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/",
+    "resolved_url": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T10:12:43.950077+00:00",
+    "raw_html_sha256": "24131303b080d6aeeeb8d9ac3b0db284c1cd77f758cde183bbc862b8fc39ec96"
+  },
+  {
+    "id": "OCSF",
+    "requested_url": "https://github.com/ocsf/ocsf-schema",
+    "resolved_url": "https://github.com/ocsf/ocsf-schema",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T10:12:44.876582+00:00",
+    "raw_html_sha256": "0fe72a49a667fb857d9574a311753333318652c1bd08266ce6ebd17103de5524"
+  },
+  {
+    "id": "T1114.003",
+    "requested_url": "https://attack.mitre.org/techniques/T1114/003/",
+    "resolved_url": "https://attack.mitre.org/techniques/T1114/003/",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T10:12:44.809936+00:00",
+    "raw_html_sha256": "f327ab30cc29923117c13535bc76dc5f65e70809dcd9117cadc3b1ac491d52ef"
+  },
+  {
+    "id": "T1059.001",
+    "requested_url": "https://attack.mitre.org/techniques/T1059/001/",
+    "resolved_url": "https://attack.mitre.org/techniques/T1059/001/",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T10:12:44.916344+00:00",
+    "raw_html_sha256": "a28cc88f326f36e953dfe1a73998dc1652526f76b444c13024a63dee99f7120d"
+  },
+  {
+    "id": "T1078",
+    "requested_url": "https://attack.mitre.org/techniques/T1078/",
+    "resolved_url": "https://attack.mitre.org/techniques/T1078/",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T10:12:44.928977+00:00",
+    "raw_html_sha256": "6c58f548295c29bdb000d1a34f5146b6a8f47ecb12567f3169531a81d24928c1"
+  },
+  {
+    "id": "T1490",
+    "requested_url": "https://attack.mitre.org/techniques/T1490/",
+    "resolved_url": "https://attack.mitre.org/techniques/T1490/",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T10:12:47.018918+00:00",
+    "raw_html_sha256": "6e4b41f0cd4cf0e7a1ce1fc28b6a97028e94afe950dee900532086a6887b1e76"
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "research": [
+    {
+      "id": "AIA-001",
+      "folder": "research/001-cloud-ai-infrastructure",
+      "stage": "Comparative research and synthetic local experiments"
+    }
+  ],
+  "frameworks": [
+    {
+      "id": "PTH-001",
+      "folder": "frameworks/proactive-threat-hunting",
+      "stage": "Operating framework and tested local reference queries"
+    }
+  ]
+}

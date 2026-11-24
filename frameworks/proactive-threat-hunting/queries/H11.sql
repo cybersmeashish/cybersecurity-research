@@ -1,0 +1,1 @@
+SELECT e.tenant_id, e.asset_id AS entity_id, e.event_id AS evidence_ids FROM events e WHERE e.phase=1 AND e.domain='network' AND e.action='connection' AND e.dest_port IN (22,3389,445) AND e.approved=0 AND NOT EXISTS (SELECT 1 FROM events b WHERE b.phase=0 AND b.tenant_id=e.tenant_id AND b.asset_id=e.asset_id AND b.dest=e.dest AND b.dest_port=e.dest_port);

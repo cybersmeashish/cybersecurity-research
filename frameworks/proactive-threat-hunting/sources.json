@@ -1,0 +1,132 @@
+[
+  {
+    "id": "MITRE",
+    "title": "MITRE ATT&CK",
+    "url": "https://attack.mitre.org/",
+    "reviewed_on": "2026-11-24",
+    "scope": "Behavior vocabulary and technique context; a mapping is not proof of attacker identity.",
+    "kind": "primary_documentation",
+    "resolved_url": "https://attack.mitre.org/",
+    "raw_html_sha256": "52a0352afa8f34bd2520590e498d36c2ffec43c2b783ff3fae4bc700076c2561"
+  },
+  {
+    "id": "CISA",
+    "title": "Best practices for event logging and threat detection",
+    "url": "https://www.cisa.gov/resources-tools/resources/best-practices-event-logging-and-threat-detection",
+    "reviewed_on": "2026-11-24",
+    "scope": "Logging and centralized visibility guidance; local source-health evidence is still required.",
+    "kind": "primary_documentation",
+    "resolved_url": "https://www.cisa.gov/resources-tools/resources/best-practices-event-logging-and-threat-detection",
+    "raw_html_sha256": "7438b2c1275914a0f5ba1b19d8c5aabd01169b7d6e5ebc16d804a8e027d69772"
+  },
+  {
+    "id": "MDE",
+    "title": "Advanced hunting overview",
+    "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-overview",
+    "reviewed_on": "2026-11-24",
+    "scope": "Defender hunting across supported security domains; table availability depends on product, connector and license.",
+    "kind": "primary_documentation",
+    "resolved_url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-overview",
+    "raw_html_sha256": "d5c4aca2fb3555317c53637c77e56fda642b791710ff6cc8ebabb1324f574d7f"
+  },
+  {
+    "id": "AWS",
+    "title": "CloudTrail userIdentity element",
+    "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html",
+    "reviewed_on": "2026-11-24",
+    "scope": "Principal, session and delegation context in CloudTrail; selected runtime identity needs separate service/data events.",
+    "kind": "primary_documentation",
+    "resolved_url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html",
+    "raw_html_sha256": "d50a4d7c8893fc499885cafdd6209b4cecd3e1658530c902271c6999fb390a07"
+  },
+  {
+    "id": "AZURE",
+    "title": "Azure Activity Log schema",
+    "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/platform/activity-log-schema",
+    "reviewed_on": "2026-11-24",
+    "scope": "Control-plane actor, resource and correlation metadata; data-plane reads require additional resource logs.",
+    "kind": "primary_documentation",
+    "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/fundamentals/activity-log-schema",
+    "raw_html_sha256": "6293737b4c34a8af767303d007e2b67f2f2ae799723b68e0a203e5a58bc45676"
+  },
+  {
+    "id": "GCP",
+    "title": "Understanding audit logs",
+    "url": "https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs",
+    "reviewed_on": "2026-11-24",
+    "scope": "Audit authentication, authorization and operation context; delegated actor evidence must be preserved.",
+    "kind": "primary_documentation",
+    "resolved_url": "https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs",
+    "raw_html_sha256": "230cc4e00105e0aa99c38e91fe19ac282c170112373b5068da28d83c15efb3d7"
+  },
+  {
+    "id": "GCP-DATA",
+    "title": "Configure Data Access audit logs",
+    "url": "https://docs.cloud.google.com/logging/docs/audit/configure-data-access",
+    "reviewed_on": "2026-11-24",
+    "scope": "Data Access logging configuration must be checked rather than assumed.",
+    "kind": "primary_documentation",
+    "resolved_url": "https://docs.cloud.google.com/logging/docs/audit/configure-data-access",
+    "raw_html_sha256": "80b794e1b7bbd1993e222a84c7324572fd92c4cfa93f3dc8b0e2dda310618d98"
+  },
+  {
+    "id": "K8S",
+    "title": "Auditing",
+    "url": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/",
+    "reviewed_on": "2026-11-24",
+    "scope": "Audit policies/stages determine which request fields are observable; Metadata alone does not show full pod settings.",
+    "kind": "primary_documentation",
+    "resolved_url": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/",
+    "raw_html_sha256": "24131303b080d6aeeeb8d9ac3b0db284c1cd77f758cde183bbc862b8fc39ec96"
+  },
+  {
+    "id": "OCSF",
+    "title": "Open Cybersecurity Schema Framework",
+    "url": "https://github.com/ocsf/ocsf-schema",
+    "reviewed_on": "2026-11-24",
+    "scope": "An optional normalization reference; this lab uses its own simplified schema and does not claim OCSF conformance.",
+    "kind": "primary_documentation",
+    "resolved_url": "https://github.com/ocsf/ocsf-schema",
+    "raw_html_sha256": "0fe72a49a667fb857d9574a311753333318652c1bd08266ce6ebd17103de5524"
+  },
+  {
+    "id": "T1114.003",
+    "title": "Email Forwarding Rule",
+    "url": "https://attack.mitre.org/techniques/T1114/003/",
+    "reviewed_on": "2026-11-24",
+    "scope": "Context for mailbox forwarding hunts, subject to the actual observed behavior.",
+    "kind": "primary_documentation",
+    "resolved_url": "https://attack.mitre.org/techniques/T1114/003/",
+    "raw_html_sha256": "f327ab30cc29923117c13535bc76dc5f65e70809dcd9117cadc3b1ac491d52ef"
+  },
+  {
+    "id": "T1059.001",
+    "title": "PowerShell",
+    "url": "https://attack.mitre.org/techniques/T1059/001/",
+    "reviewed_on": "2026-11-24",
+    "scope": "Context for the process-interpreter hunt; process name alone does not establish malicious use.",
+    "kind": "primary_documentation",
+    "resolved_url": "https://attack.mitre.org/techniques/T1059/001/",
+    "raw_html_sha256": "a28cc88f326f36e953dfe1a73998dc1652526f76b444c13024a63dee99f7120d"
+  },
+  {
+    "id": "T1078",
+    "title": "Valid Accounts",
+    "url": "https://attack.mitre.org/techniques/T1078/",
+    "reviewed_on": "2026-11-24",
+    "scope": "Context for identity hunts; a new device or failed login is not by itself account compromise.",
+    "kind": "primary_documentation",
+    "resolved_url": "https://attack.mitre.org/techniques/T1078/",
+    "raw_html_sha256": "6c58f548295c29bdb000d1a34f5146b6a8f47ecb12567f3169531a81d24928c1"
+  },
+  {
+    "id": "T1490",
+    "title": "Inhibit System Recovery",
+    "url": "https://attack.mitre.org/techniques/T1490/",
+    "reviewed_on": "2026-11-24",
+    "scope": "Context for recovery-control changes; legitimate maintenance is a required alternative explanation.",
+    "kind": "primary_documentation",
+    "resolved_url": "https://attack.mitre.org/techniques/T1490/",
+    "raw_html_sha256": "6e4b41f0cd4cf0e7a1ce1fc28b6a97028e94afe950dee900532086a6887b1e76"
+  }
+]

@@ -1,0 +1,522 @@
+{
+  "version": "0.1",
+  "schema_version": 1,
+  "hunts": [
+    {
+      "id": "H01",
+      "title": "Rare script-interpreter parent",
+      "category": "endpoint",
+      "required_domains": [
+        "endpoint"
+      ],
+      "requires_baseline": true,
+      "requires_ordering": false,
+      "technique_context": "T1059.001",
+      "source_refs": [
+        "MDE",
+        "T1059.001"
+      ],
+      "required_fields_by_action": {
+        "process_launch": [
+          "asset_id",
+          "parent",
+          "process"
+        ]
+      },
+      "query": "queries/H01.sql",
+      "hypothesis": "Office or script-host ancestry plus a first-observed interpreter relationship deserves review.",
+      "benign_alternatives": "Approved automation, testing and software deployment.",
+      "verification_needed": "Process ancestry, signed binary, operator intent, follow-on actions and actual connection evidence.",
+      "decision": "candidate lead only; analyst corroboration required",
+      "priority": "review",
+      "threshold_scope": "illustrative synthetic lab; production calibration required"
+    },
+    {
+      "id": "H02",
+      "title": "Active indicator match in process telemetry",
+      "category": "endpoint",
+      "required_domains": [
+        "endpoint"
+      ],
+      "requires_baseline": false,
+      "requires_ordering": false,
+      "technique_context": "No exact ATT&CK mapping asserted",
+      "source_refs": [
+        "MDE"
+      ],
+      "required_fields_by_action": {
+        "process_launch": [
+          "asset_id",
+          "sha256"
+        ]
+      },
+      "query": "queries/H02.sql",
+      "hypothesis": "An active scoped indicator matched a process record. This is an investigation lead.",
+      "benign_alternatives": "Test indicators, stale attribution, hash classification changes or sanctioned testing.",
+      "verification_needed": "Original indicator provenance, revocation/TTL, actual file, signer and process execution context.",
+      "decision": "candidate lead only; analyst corroboration required",
+      "priority": "review",
+      "threshold_scope": "illustrative synthetic lab; production calibration required"
+    },
+    {
+      "id": "H03",
+      "title": "Failure burst followed by new-device success",
+      "category": "identity",
+      "required_domains": [
+        "identity"
+      ],
+      "requires_baseline": true,
+      "requires_ordering": true,
+      "technique_context": "T1078",
+      "source_refs": [
+        "MDE",
+        "T1078"
+      ],
+      "required_fields_by_action": {
+        "login_failure": [
+          "principal_id"
+        ],
+        "login_success": [
+          "principal_id",
+          "device_id"
+        ]
+      },
+      "query": "queries/H03.sql",
+      "hypothesis": "Authentication failures followed by first-observed device success warrant identity validation.",
+      "benign_alternatives": "Password mistakes, device enrollment, VPN changes or helpdesk-assisted recovery.",
+      "verification_needed": "Session/device authentication, MFA details, conditional-access result, user confirmation and downstream activity.",
+      "decision": "candidate lead only; analyst corroboration required",
+      "priority": "review",
+      "threshold_scope": "illustrative synthetic lab; production calibration required"
+    },
+    {
+      "id": "H04",
+      "title": "Privileged identity grant outside approved change",
+      "category": "identity",
+      "required_domains": [
+        "identity"
+      ],
+      "requires_baseline": false,
+      "requires_ordering": false,
+      "technique_context": "T1078",
+      "source_refs": [
+        "MDE",
+        "T1078"
+      ],
+      "required_fields_by_action": {
+        "privilege_granted": [
+          "principal_id",
+          "target_principal_id",
+          "is_privileged",
+          "approved"
+        ]
+      },
+      "query": "queries/H04.sql",
+      "hypothesis": "A privileged grant with an explicit unapproved-change flag deserves review.",
+      "benign_alternatives": "PIM activation, emergency access, approved onboarding or incorrect ticket enrichment.",
+      "verification_needed": "Grant scope/expiry, authoritative approval record, grantee activity and effective role evidence.",
+      "decision": "candidate lead only; analyst corroboration required",
+      "priority": "review",
+      "threshold_scope": "illustrative synthetic lab; production calibration required"
+    },
+    {
+      "id": "H05",
+      "title": "Unapproved external mailbox forwarding",
+      "category": "email",
+      "required_domains": [
+        "email"
+      ],
+      "requires_baseline": false,
+      "requires_ordering": false,
+      "technique_context": "T1114.003",
+      "source_refs": [
+        "MDE",
+        "T1114.003"
+      ],
+      "required_fields_by_action": {
+        "external_forward_created": [
+          "principal_id",
+          "dest",
+          "approved"
+        ]
+      },
+      "query": "queries/H05.sql",
+      "hypothesis": "An unapproved external forwarding rule may enable collection outside the organization.",
+      "benign_alternatives": "Authorized routing, third-party case management or mailbox migration.",
+      "verification_needed": "Full rule/filter/scope, actual recipients and delivery, change owner, mailbox sessions and approval.",
+      "decision": "candidate lead only; analyst corroboration required",
+      "priority": "review",
+      "threshold_scope": "illustrative synthetic lab; production calibration required"
+    },
+    {
+      "id": "H06",
+      "title": "Suspicious email click followed by new-device sign-in",
+      "category": "email / identity",
+      "required_domains": [
+        "email",
+        "identity"
+      ],
+      "requires_baseline": true,
+      "requires_ordering": true,
+      "technique_context": "T1078",
+      "source_refs": [
+        "MDE",
+        "T1078"
+      ],
+      "required_fields_by_action": {
+        "link_clicked": [
+          "principal_id",
+          "suspicious"
+        ],
+        "login_success": [
+          "principal_id",
+          "device_id"
+        ]
+      },
+      "query": "queries/H06.sql",
+      "hypothesis": "A suspicious click and new-device sign-in share verified principal context and a bounded time association.",
+      "benign_alternatives": "Security-scanner clicks, legitimate travel/device change or coincidental events.",
+      "verification_needed": "Human versus scanner click, URL verdict provenance, raw sign-in session, device and user corroboration.",
+      "decision": "candidate lead only; analyst corroboration required",
+      "priority": "review",
+      "threshold_scope": "illustrative synthetic lab; production calibration required"
+    },
+    {
+      "id": "H07",
+      "title": "First-observed AWS AI runtime followed by sensitive data access",
+      "category": "cloud-aws",
+      "required_domains": [
+        "cloud-aws"
+      ],
+      "requires_baseline": true,
+      "requires_ordering": true,
+      "technique_context": "No exact ATT&CK mapping asserted",
+      "source_refs": [
+        "AWS"
+      ],
+      "required_fields_by_action": {
+        "ai_job_created": [
+          "principal_id",
+          "runtime_id",
+          "workload_id"
+        ],
+        "data_read": [
+          "principal_id",
+          "workload_id",
+          "is_sensitive"
+        ]
+      },
+      "query": "queries/H07.sql",
+      "hypothesis": "A first-observed caller/runtime relationship followed by linked sensitive access requires business-entitlement review.",
+      "benign_alternatives": "Approved training pipelines, intentional delegation or a new legitimate role.",
+      "verification_needed": "Service operation, selected role, effective permission/trust, runtime/workload join and sensitive-object entitlement. PassRole is not a standalone API event.",
+      "decision": "candidate lead only; analyst corroboration required",
+      "priority": "review",
+      "threshold_scope": "illustrative synthetic lab; production calibration required"
+    },
+    {
+      "id": "H08",
+      "title": "Azure role grant followed by sensitive secret read",
+      "category": "cloud-azure",
+      "required_domains": [
+        "cloud-azure"
+      ],
+      "requires_baseline": false,
+      "requires_ordering": true,
+      "technique_context": "No exact ATT&CK mapping asserted",
+      "source_refs": [
+        "AZURE"
+      ],
+      "required_fields_by_action": {
+        "role_granted": [
+          "principal_id",
+          "target_principal_id",
+          "is_privileged",
+          "approved"
+        ],
+        "secret_read": [
+          "principal_id",
+          "is_sensitive"
+        ]
+      },
+      "query": "queries/H08.sql",
+      "hypothesis": "An explicitly unapproved privileged grant is followed by linked sensitive-secret access.",
+      "benign_alternatives": "Approved deployment, emergency repair, delayed ticket synchronization or expected application bootstrap.",
+      "verification_needed": "Role assignment scope/grantee, actual resource/data-plane logs, secret access and approved business purpose.",
+      "decision": "candidate lead only; analyst corroboration required",
+      "priority": "review",
+      "threshold_scope": "illustrative synthetic lab; production calibration required"
+    },
+    {
+      "id": "H09",
+      "title": "Google service-account delegation followed by data read",
+      "category": "cloud-gcp",
+      "required_domains": [
+        "cloud-gcp"
+      ],
+      "requires_baseline": false,
+      "requires_ordering": true,
+      "technique_context": "No exact ATT&CK mapping asserted",
+      "source_refs": [
+        "GCP",
+        "GCP-DATA"
+      ],
+      "required_fields_by_action": {
+        "service_account_delegated": [
+          "principal_id",
+          "target_principal_id",
+          "approved"
+        ],
+        "data_read": [
+          "principal_id",
+          "delegator_id",
+          "is_sensitive"
+        ]
+      },
+      "query": "queries/H09.sql",
+      "hypothesis": "An unapproved delegation and data read share the delegated identity and recorded originating principal.",
+      "benign_alternatives": "Authorized build/deployment, maintenance or incorrect change-context enrichment.",
+      "verification_needed": "Original delegation chain, effective account scope, Data Access configuration and authorization result; missing delegation evidence is inconclusive.",
+      "decision": "candidate lead only; analyst corroboration required",
+      "priority": "review",
+      "threshold_scope": "illustrative synthetic lab; production calibration required"
+    },
+    {
+      "id": "H10",
+      "title": "Unapproved privileged Kubernetes workload",
+      "category": "kubernetes",
+      "required_domains": [
+        "kubernetes"
+      ],
+      "requires_baseline": false,
+      "requires_ordering": false,
+      "technique_context": "No exact ATT&CK mapping asserted",
+      "source_refs": [
+        "K8S"
+      ],
+      "required_fields_by_action": {
+        "pod_created": [
+          "principal_id",
+          "workload_id",
+          "is_privileged",
+          "approved"
+        ]
+      },
+      "query": "queries/H10.sql",
+      "hypothesis": "A workload request with privileged settings lacks an approved-change context.",
+      "benign_alternatives": "Authorized DaemonSet, node troubleshooting or a deliberately isolated test.",
+      "verification_needed": "Audit stage/level, requested pod settings, admission decision, actual running settings and namespace owner.",
+      "decision": "candidate lead only; analyst corroboration required",
+      "priority": "review",
+      "threshold_scope": "illustrative synthetic lab; production calibration required"
+    },
+    {
+      "id": "H11",
+      "title": "First-observed lateral administration destination",
+      "category": "network",
+      "required_domains": [
+        "network"
+      ],
+      "requires_baseline": true,
+      "requires_ordering": false,
+      "technique_context": "No exact ATT&CK mapping asserted",
+      "source_refs": [
+        "CISA"
+      ],
+      "required_fields_by_action": {
+        "connection": [
+          "asset_id",
+          "dest",
+          "dest_port",
+          "approved"
+        ]
+      },
+      "query": "queries/H11.sql",
+      "hypothesis": "An unapproved first-observed remote-administration destination merits workload/identity correlation.",
+      "benign_alternatives": "Maintenance, authorized inventory scanning, migrations or NAT/context mistakes.",
+      "verification_needed": "Asset owner, inventory role, flow direction/NAT, authenticated session, permitted management routes and endpoint activity.",
+      "decision": "candidate lead only; analyst corroboration required",
+      "priority": "review",
+      "threshold_scope": "illustrative synthetic lab; production calibration required"
+    },
+    {
+      "id": "H12",
+      "title": "Burst of first-observed DNS destinations",
+      "category": "dns",
+      "required_domains": [
+        "dns"
+      ],
+      "requires_baseline": true,
+      "requires_ordering": false,
+      "technique_context": "No exact ATT&CK mapping asserted",
+      "source_refs": [
+        "CISA"
+      ],
+      "required_fields_by_action": {
+        "dns_query": [
+          "asset_id",
+          "dest"
+        ]
+      },
+      "query": "queries/H12.sql",
+      "hypothesis": "A burst of destinations absent from the provided baseline calls for DNS/process inspection.",
+      "benign_alternatives": "CDN changes, updates, new SaaS or DNS sensor changes.",
+      "verification_needed": "Full queries/responses, process origin, authoritative baseline coverage, destination context and periodicity. This count alone cannot establish tunneling.",
+      "decision": "candidate lead only; analyst corroboration required",
+      "priority": "review",
+      "threshold_scope": "illustrative synthetic lab; production calibration required"
+    },
+    {
+      "id": "H13",
+      "title": "Large SaaS export through first-observed application",
+      "category": "saas",
+      "required_domains": [
+        "saas"
+      ],
+      "requires_baseline": true,
+      "requires_ordering": false,
+      "technique_context": "No exact ATT&CK mapping asserted",
+      "source_refs": [
+        "CISA"
+      ],
+      "required_fields_by_action": {
+        "bulk_export": [
+          "principal_id",
+          "app_id",
+          "bytes"
+        ]
+      },
+      "query": "queries/H13.sql",
+      "hypothesis": "A large export by an application absent from the supplied actor baseline warrants consent/data-scope review.",
+      "benign_alternatives": "Approved reporting, eDiscovery, customer migration or baseline onboarding gaps.",
+      "verification_needed": "Application consent/scope, source/destination ownership, effective actor rights, business approval and actual exported objects.",
+      "decision": "candidate lead only; analyst corroboration required",
+      "priority": "review",
+      "threshold_scope": "illustrative synthetic lab; production calibration required"
+    },
+    {
+      "id": "H14",
+      "title": "AI retrieval or tool action outside logged policy scope",
+      "category": "ai",
+      "required_domains": [
+        "ai"
+      ],
+      "requires_baseline": false,
+      "requires_ordering": false,
+      "technique_context": "No exact ATT&CK mapping asserted",
+      "source_refs": [
+        "CISA"
+      ],
+      "required_fields_by_action": {
+        "retrieval": [
+          "principal_id",
+          "workload_id",
+          "out_of_scope"
+        ],
+        "tool_action": [
+          "principal_id",
+          "workload_id",
+          "out_of_scope"
+        ]
+      },
+      "query": "queries/H14.sql",
+      "hypothesis": "An application policy observation reports an operation outside approved actor/document/tool scope.",
+      "benign_alternatives": "Synthetic tests, an incorrect entitlement mapping or a stale policy version.",
+      "verification_needed": "Verified actor, document/chunk/tool scope, policy version and deterministic authorization result; a model label is not sufficient evidence.",
+      "decision": "candidate lead only; analyst corroboration required",
+      "priority": "review",
+      "threshold_scope": "illustrative synthetic lab; production calibration required"
+    },
+    {
+      "id": "H15",
+      "title": "Consumed artifact differs from approved digest",
+      "category": "cicd",
+      "required_domains": [
+        "cicd"
+      ],
+      "requires_baseline": false,
+      "requires_ordering": false,
+      "technique_context": "No exact ATT&CK mapping asserted",
+      "source_refs": [
+        "CISA"
+      ],
+      "required_fields_by_action": {
+        "artifact_consumed": [
+          "principal_id",
+          "digest",
+          "approved_digest"
+        ]
+      },
+      "query": "queries/H15.sql",
+      "hypothesis": "Observed consumed content differs from the recorded admitted artifact identity.",
+      "benign_alternatives": "Authorized rollback/rebuild, incorrect approval binding or a source-record error.",
+      "verification_needed": "Actual consumption digest, admission record, trusted publisher/provenance inputs and workload runtime identity. Hashes alone do not establish provenance.",
+      "decision": "candidate lead only; analyst corroboration required",
+      "priority": "review",
+      "threshold_scope": "illustrative synthetic lab; production calibration required"
+    },
+    {
+      "id": "H16",
+      "title": "Unapproved recovery protection change",
+      "category": "backup",
+      "required_domains": [
+        "backup"
+      ],
+      "requires_baseline": false,
+      "requires_ordering": false,
+      "technique_context": "T1490",
+      "source_refs": [
+        "CISA",
+        "T1490"
+      ],
+      "required_fields_by_action": {
+        "recovery_disabled": [
+          "principal_id",
+          "approved"
+        ],
+        "backup_deleted": [
+          "principal_id",
+          "approved"
+        ]
+      },
+      "query": "queries/H16.sql",
+      "hypothesis": "A recovery/backup change has an explicit unapproved-change context.",
+      "benign_alternatives": "Retention expiration, controlled restoration, decommissioning or ticket enrichment delay.",
+      "verification_needed": "Owner/change evidence, actual recovery configuration, surviving copies, independent audit record and restore feasibility.",
+      "decision": "candidate lead only; analyst corroboration required",
+      "priority": "review",
+      "threshold_scope": "illustrative synthetic lab; production calibration required"
+    },
+    {
+      "id": "H17",
+      "title": "Unapproved cloud audit logging change",
+      "category": "cloud",
+      "required_domains": [
+        "cloud-aws",
+        "cloud-azure",
+        "cloud-gcp"
+      ],
+      "requires_baseline": false,
+      "requires_ordering": false,
+      "technique_context": "No exact ATT&CK mapping asserted",
+      "source_refs": [
+        "AWS",
+        "AZURE",
+        "GCP"
+      ],
+      "required_fields_by_action": {
+        "audit_logging_disabled": [
+          "principal_id",
+          "approved"
+        ]
+      },
+      "query": "queries/H17.sql",
+      "hypothesis": "A cloud logging disablement has an explicit unapproved-change context.",
+      "benign_alternatives": "Approved migration, duplicate pipeline removal or incorrect configuration/change mapping.",
+      "verification_needed": "Actual logger configuration, independent control-plane logs, collector heartbeat, effective coverage and change authorization.",
+      "decision": "candidate lead only; analyst corroboration required",
+      "priority": "review",
+      "threshold_scope": "illustrative synthetic lab; production calibration required"
+    }
+  ]
+}

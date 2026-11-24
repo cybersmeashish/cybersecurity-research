@@ -1,0 +1,24 @@
+test_absent_indicator_registry_is_inconclusive (test_hunting_boundaries.HuntingBoundaryTests.test_absent_indicator_registry_is_inconclusive) ... ok
+test_all_seeded_positive_and_benign_scenarios (test_hunting_boundaries.HuntingBoundaryTests.test_all_seeded_positive_and_benign_scenarios) ... ok
+test_conflicting_event_identity_is_inconclusive (test_hunting_boundaries.HuntingBoundaryTests.test_conflicting_event_identity_is_inconclusive) ... ok
+test_cross_tenant_events_do_not_correlate (test_hunting_boundaries.HuntingBoundaryTests.test_cross_tenant_events_do_not_correlate) ... ok
+test_event_ingested_after_snapshot_is_not_visible (test_hunting_boundaries.HuntingBoundaryTests.test_event_ingested_after_snapshot_is_not_visible) ... ok
+test_expired_or_revoked_ioc_does_not_match (test_hunting_boundaries.HuntingBoundaryTests.test_expired_or_revoked_ioc_does_not_match) ... ok
+test_future_event_does_not_pollute_baseline (test_hunting_boundaries.HuntingBoundaryTests.test_future_event_does_not_pollute_baseline) ... ok
+test_identity_local_name_or_wrong_runtime_cannot_join (test_hunting_boundaries.HuntingBoundaryTests.test_identity_local_name_or_wrong_runtime_cannot_join) ... ok
+test_input_order_does_not_change_hunt_assessment (test_hunting_boundaries.HuntingBoundaryTests.test_input_order_does_not_change_hunt_assessment) ... ok
+test_insufficient_baseline_does_not_assert_novelty (test_hunting_boundaries.HuntingBoundaryTests.test_insufficient_baseline_does_not_assert_novelty) ... ok
+test_known_baseline_relationship_suppresses_only_its_novelty (test_hunting_boundaries.HuntingBoundaryTests.test_known_baseline_relationship_suppresses_only_its_novelty) ... ok
+test_missing_join_or_policy_mapping_is_inconclusive (test_hunting_boundaries.HuntingBoundaryTests.test_missing_join_or_policy_mapping_is_inconclusive) ... ok
+test_missing_sensor_is_not_no_threat (test_hunting_boundaries.HuntingBoundaryTests.test_missing_sensor_is_not_no_threat) ... ok
+test_naive_clock_and_non_boolean_approval_are_rejected (test_hunting_boundaries.HuntingBoundaryTests.test_naive_clock_and_non_boolean_approval_are_rejected) ... ok
+test_query_path_cannot_escape_framework (test_hunting_boundaries.HuntingBoundaryTests.test_query_path_cannot_escape_framework) ... ok
+test_replayed_failures_do_not_inflate_burst (test_hunting_boundaries.HuntingBoundaryTests.test_replayed_failures_do_not_inflate_burst) ... ok
+test_reverse_time_correlation_is_not_a_lead (test_hunting_boundaries.HuntingBoundaryTests.test_reverse_time_correlation_is_not_a_lead) ... ok
+test_same_raw_id_in_different_tenants_is_not_deduplicated (test_hunting_boundaries.HuntingBoundaryTests.test_same_raw_id_in_different_tenants_is_not_deduplicated) ... ok
+test_stale_sensor_and_large_clock_uncertainty_are_inconclusive (test_hunting_boundaries.HuntingBoundaryTests.test_stale_sensor_and_large_clock_uncertainty_are_inconclusive) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.132s
+
+OK
