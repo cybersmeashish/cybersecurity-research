@@ -1,0 +1,14 @@
+{
+  "repository": "cybersecurity-research",
+  "studies": [
+    {
+      "id": "AIA-001",
+      "version": "0.1",
+      "title": "Who authorizes the runtime?",
+      "path": "studies/001-ai-infrastructure-authority-bindings/PAPER.md",
+      "status": "original synthesis and locally tested synthetic experiments",
+      "independent_review": "pending",
+      "provider_vulnerabilities_confirmed": 0
+    }
+  ]
+}

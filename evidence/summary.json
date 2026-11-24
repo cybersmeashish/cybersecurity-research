@@ -1,0 +1,36 @@
+{
+  "study_id": "AIA-001",
+  "generated_at_utc": "2026-11-24T09:54:51.185317+00:00",
+  "chains": 8,
+  "candidate_classes": 5,
+  "primary_sources": 9,
+  "synthetic_fixture_cases": 144,
+  "outcomes": {
+    "reachable": 8,
+    "blocked": 76,
+    "unknown": 60
+  },
+  "all_fixture_expectations_match": true,
+  "unit_test_methods": 13,
+  "local_runtime_cases": 24,
+  "local_runtime_baseline_disclosures": 4,
+  "local_runtime_control_cases": 20,
+  "local_runtime_control_disclosures": 0,
+  "runtime_profiles": "One shared mock ACL backend with four labels; not four independent cloud environments",
+  "runtime": {
+    "python": "3.12.16",
+    "os": "Linux",
+    "architecture": "aarch64"
+  },
+  "isolation": {
+    "network_probe_destination": "198.51.100.1:443 (documentation address)",
+    "errno": 101,
+    "external_network_unreachable": true,
+    "root_read_only": true,
+    "workspace_read_only": true
+  },
+  "live_provider_experiments": 0,
+  "new_provider_vulnerabilities_confirmed": 0,
+  "novelty_status": "candidate taxonomy; global novelty not established",
+  "scope": "Original comparative synthesis and synthetic experiments; no deployed AWS/Azure/Google Cloud/Kubernetes exploit validation"
+}

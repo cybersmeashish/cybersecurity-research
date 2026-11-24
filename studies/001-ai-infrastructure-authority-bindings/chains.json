@@ -1,0 +1,444 @@
+[
+  {
+    "schema_version": 1,
+    "id": "aws-training",
+    "provider": "AWS / SageMaker",
+    "candidate_class": "AB-01",
+    "source_refs": [
+      "AWS-IAM",
+      "AWS-TRAIN"
+    ],
+    "description": "Caller can run chosen training code with an approved execution role, read a synthetic tenant-B record and return it via a permitted output path.",
+    "fact_definitions": {
+      "actor_can_submit_job": "Reviewer-normalized synthetic precondition: actor can submit job",
+      "actor_can_pass_selected_role": "Reviewer-normalized synthetic precondition: actor can pass selected role",
+      "same_account_passrole": "Reviewer-normalized synthetic precondition: same account passrole",
+      "service_trust_allows_role": "Reviewer-normalized synthetic precondition: service trust allows role",
+      "actor_controls_job_code": "Reviewer-normalized synthetic precondition: actor controls job code",
+      "runtime_data_read_effective_allow": "Reviewer-normalized synthetic precondition: runtime data read effective allow",
+      "unapproved_disclosure_path_allowed": "Reviewer-normalized synthetic precondition: unapproved disclosure path allowed",
+      "caller_outside_business_entitlement": "Reviewer-normalized synthetic precondition: caller outside business entitlement"
+    },
+    "rules": [
+      {
+        "id": "aws-training-admit",
+        "requires": [
+          "actor_can_submit_job",
+          "actor_can_pass_selected_role",
+          "same_account_passrole",
+          "service_trust_allows_role",
+          "actor_controls_job_code"
+        ],
+        "produces": "job_runtime_obtained"
+      },
+      {
+        "id": "aws-training-execute",
+        "requires": [
+          "job_runtime_obtained",
+          "runtime_data_read_effective_allow"
+        ],
+        "produces": "sensitive_record_read"
+      },
+      {
+        "id": "aws-training-impact",
+        "requires": [
+          "sensitive_record_read",
+          "unapproved_disclosure_path_allowed",
+          "caller_outside_business_entitlement"
+        ],
+        "produces": "unauthorized_disclosure"
+      }
+    ],
+    "target": "unauthorized_disclosure",
+    "control_fact": "actor_can_pass_selected_role",
+    "control_name": "Restricted approved execution-role choices",
+    "context_annotations": {
+      "private_ingress_present": true,
+      "evidence_kind": "synthetic",
+      "cloud_execution": false
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "azure-training",
+    "provider": "Azure / Azure Machine Learning",
+    "candidate_class": "AB-01",
+    "source_refs": [
+      "AZ-IDENTITY"
+    ],
+    "description": "Compute-managed-identity data access is deliberately selected, but the synthetic business rule prohibits this actor from obtaining the tenant-B record.",
+    "fact_definitions": {
+      "actor_can_submit_job": "Reviewer-normalized synthetic precondition: actor can submit job",
+      "actor_can_use_selected_compute": "Reviewer-normalized synthetic precondition: actor can use selected compute",
+      "actor_controls_job_code": "Reviewer-normalized synthetic precondition: actor controls job code",
+      "compute_identity_available": "Reviewer-normalized synthetic precondition: compute identity available",
+      "runtime_data_read_effective_allow": "Reviewer-normalized synthetic precondition: runtime data read effective allow",
+      "unapproved_disclosure_path_allowed": "Reviewer-normalized synthetic precondition: unapproved disclosure path allowed",
+      "caller_outside_business_entitlement": "Reviewer-normalized synthetic precondition: caller outside business entitlement"
+    },
+    "rules": [
+      {
+        "id": "azure-training-admit",
+        "requires": [
+          "actor_can_submit_job",
+          "actor_can_use_selected_compute",
+          "actor_controls_job_code",
+          "compute_identity_available"
+        ],
+        "produces": "job_runtime_obtained"
+      },
+      {
+        "id": "azure-training-execute",
+        "requires": [
+          "job_runtime_obtained",
+          "runtime_data_read_effective_allow"
+        ],
+        "produces": "sensitive_record_read"
+      },
+      {
+        "id": "azure-training-impact",
+        "requires": [
+          "sensitive_record_read",
+          "unapproved_disclosure_path_allowed",
+          "caller_outside_business_entitlement"
+        ],
+        "produces": "unauthorized_disclosure"
+      }
+    ],
+    "target": "unauthorized_disclosure",
+    "control_fact": "actor_can_use_selected_compute",
+    "control_name": "Restrict workload admission to scoped compute identities",
+    "context_annotations": {
+      "private_ingress_present": true,
+      "evidence_kind": "synthetic",
+      "cloud_execution": false
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "gcp-training",
+    "provider": "Google Cloud / ML custom training",
+    "candidate_class": "AB-01",
+    "source_refs": [
+      "GCP-IDENTITY"
+    ],
+    "description": "Chosen custom training service account has synthetic tenant-B access; no prediction-default equivalence is assumed.",
+    "fact_definitions": {
+      "actor_can_submit_job": "Reviewer-normalized synthetic precondition: actor can submit job",
+      "actor_can_act_as_selected_account": "Reviewer-normalized synthetic precondition: actor can act as selected account",
+      "actor_controls_job_code": "Reviewer-normalized synthetic precondition: actor controls job code",
+      "platform_service_agent_setup_allows_runtime": "Reviewer-normalized synthetic precondition: vertex service agent setup allows runtime",
+      "runtime_data_read_effective_allow": "Reviewer-normalized synthetic precondition: runtime data read effective allow",
+      "unapproved_disclosure_path_allowed": "Reviewer-normalized synthetic precondition: unapproved disclosure path allowed",
+      "caller_outside_business_entitlement": "Reviewer-normalized synthetic precondition: caller outside business entitlement"
+    },
+    "rules": [
+      {
+        "id": "gcp-training-admit",
+        "requires": [
+          "actor_can_submit_job",
+          "actor_can_act_as_selected_account",
+          "actor_controls_job_code",
+          "platform_service_agent_setup_allows_runtime"
+        ],
+        "produces": "job_runtime_obtained"
+      },
+      {
+        "id": "gcp-training-execute",
+        "requires": [
+          "job_runtime_obtained",
+          "runtime_data_read_effective_allow"
+        ],
+        "produces": "sensitive_record_read"
+      },
+      {
+        "id": "gcp-training-impact",
+        "requires": [
+          "sensitive_record_read",
+          "unapproved_disclosure_path_allowed",
+          "caller_outside_business_entitlement"
+        ],
+        "produces": "unauthorized_disclosure"
+      }
+    ],
+    "target": "unauthorized_disclosure",
+    "control_fact": "actor_can_act_as_selected_account",
+    "control_name": "Restrict actAs to scoped runtime accounts",
+    "context_annotations": {
+      "private_ingress_present": true,
+      "evidence_kind": "synthetic",
+      "cloud_execution": false
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-workload",
+    "provider": "Kubernetes / IAM and workload admission",
+    "candidate_class": "AB-01",
+    "source_refs": [
+      "K8S-SA",
+      "K8S-RBAC"
+    ],
+    "description": "Synthetic workload creator selects a separately privileged service account; no token theft, token bypass or default-admin claim is made.",
+    "fact_definitions": {
+      "actor_can_create_workload": "Reviewer-normalized synthetic precondition: actor can create workload",
+      "admission_allows_selected_service_account": "Reviewer-normalized synthetic precondition: admission allows selected service account",
+      "actor_controls_job_code": "Reviewer-normalized synthetic precondition: actor controls job code",
+      "service_account_token_available_and_valid": "Reviewer-normalized synthetic precondition: service account token available and valid",
+      "runtime_data_read_effective_allow": "Reviewer-normalized synthetic precondition: runtime data read effective allow",
+      "unapproved_disclosure_path_allowed": "Reviewer-normalized synthetic precondition: unapproved disclosure path allowed",
+      "caller_outside_business_entitlement": "Reviewer-normalized synthetic precondition: caller outside business entitlement"
+    },
+    "rules": [
+      {
+        "id": "k8s-workload-admit",
+        "requires": [
+          "actor_can_create_workload",
+          "admission_allows_selected_service_account",
+          "actor_controls_job_code",
+          "service_account_token_available_and_valid"
+        ],
+        "produces": "job_runtime_obtained"
+      },
+      {
+        "id": "k8s-workload-execute",
+        "requires": [
+          "job_runtime_obtained",
+          "runtime_data_read_effective_allow"
+        ],
+        "produces": "sensitive_record_read"
+      },
+      {
+        "id": "k8s-workload-impact",
+        "requires": [
+          "sensitive_record_read",
+          "unapproved_disclosure_path_allowed",
+          "caller_outside_business_entitlement"
+        ],
+        "produces": "unauthorized_disclosure"
+      }
+    ],
+    "target": "unauthorized_disclosure",
+    "control_fact": "admission_allows_selected_service_account",
+    "control_name": "Reject unapproved service-account assignment",
+    "context_annotations": {
+      "private_ingress_present": true,
+      "evidence_kind": "synthetic",
+      "cloud_execution": false
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "artifact-promotion",
+    "provider": "Provider-neutral AI artifact pipeline",
+    "candidate_class": "AB-02",
+    "source_refs": [
+      "SLSA-VERIFY"
+    ],
+    "description": "A mutable reference changes between approval and load. This model does not implement signature or provenance verification.",
+    "fact_definitions": {
+      "actor_can_change_consumed_artifact": "Reviewer-normalized synthetic precondition: actor can change consumed artifact",
+      "consumer_uses_mutable_reference": "Reviewer-normalized synthetic precondition: consumer uses mutable reference",
+      "admission_does_not_bind_digest": "Reviewer-normalized synthetic precondition: admission does not bind digest",
+      "artifact_executes_with_privileged_identity": "Reviewer-normalized synthetic precondition: artifact executes with privileged identity",
+      "runtime_sensitive_action_allowed": "Reviewer-normalized synthetic precondition: runtime sensitive action allowed",
+      "caller_outside_business_entitlement": "Reviewer-normalized synthetic precondition: caller outside business entitlement"
+    },
+    "rules": [
+      {
+        "id": "artifact-promotion-admit",
+        "requires": [
+          "actor_can_change_consumed_artifact",
+          "consumer_uses_mutable_reference",
+          "admission_does_not_bind_digest"
+        ],
+        "produces": "unapproved_artifact_selected"
+      },
+      {
+        "id": "artifact-promotion-execute",
+        "requires": [
+          "unapproved_artifact_selected",
+          "artifact_executes_with_privileged_identity"
+        ],
+        "produces": "privileged_runtime_obtained"
+      },
+      {
+        "id": "artifact-promotion-impact",
+        "requires": [
+          "privileged_runtime_obtained",
+          "runtime_sensitive_action_allowed",
+          "caller_outside_business_entitlement"
+        ],
+        "produces": "unauthorized_sensitive_action"
+      }
+    ],
+    "target": "unauthorized_sensitive_action",
+    "control_fact": "admission_does_not_bind_digest",
+    "control_name": "Reject artifact whose digest differs from admission record",
+    "context_annotations": {
+      "private_ingress_present": true,
+      "evidence_kind": "synthetic",
+      "cloud_execution": false
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "shared-retrieval",
+    "provider": "Provider-neutral RAG retrieval",
+    "candidate_class": "AB-03",
+    "source_refs": [
+      "OWASP-AGENCY"
+    ],
+    "description": "Deterministic record selection tests authorization, without embeddings, a language model or a hallucination metric.",
+    "fact_definitions": {
+      "actor_can_query_retriever": "Reviewer-normalized synthetic precondition: actor can query retriever",
+      "retriever_has_target_document_access": "Reviewer-normalized synthetic precondition: retriever has target document access",
+      "downstream_entitlement_check_missing": "Reviewer-normalized synthetic precondition: downstream entitlement check missing",
+      "retrieved_content_visible_to_answer_step": "Reviewer-normalized synthetic precondition: retrieved content visible to answer step",
+      "answer_returned_to_actor": "Reviewer-normalized synthetic precondition: answer returned to actor",
+      "caller_outside_business_entitlement": "Reviewer-normalized synthetic precondition: caller outside business entitlement"
+    },
+    "rules": [
+      {
+        "id": "shared-retrieval-admit",
+        "requires": [
+          "actor_can_query_retriever",
+          "retriever_has_target_document_access",
+          "downstream_entitlement_check_missing"
+        ],
+        "produces": "out_of_scope_document_retrieved"
+      },
+      {
+        "id": "shared-retrieval-execute",
+        "requires": [
+          "out_of_scope_document_retrieved",
+          "retrieved_content_visible_to_answer_step"
+        ],
+        "produces": "answer_contains_out_of_scope_content"
+      },
+      {
+        "id": "shared-retrieval-impact",
+        "requires": [
+          "answer_contains_out_of_scope_content",
+          "answer_returned_to_actor",
+          "caller_outside_business_entitlement"
+        ],
+        "produces": "unauthorized_disclosure"
+      }
+    ],
+    "target": "unauthorized_disclosure",
+    "control_fact": "downstream_entitlement_check_missing",
+    "control_name": "Enforce tenant/document entitlement before retrieval",
+    "context_annotations": {
+      "private_ingress_present": true,
+      "evidence_kind": "synthetic",
+      "cloud_execution": false
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-egress",
+    "provider": "Kubernetes / networking",
+    "candidate_class": "AB-04",
+    "source_refs": [
+      "K8S-NET"
+    ],
+    "description": "Private ingress is an annotation, not a sufficient condition for outbound restriction. No CNI or live network packet behavior is tested.",
+    "fact_definitions": {
+      "workload_has_sensitive_record": "Reviewer-normalized synthetic precondition: workload has sensitive record",
+      "workload_can_attempt_outbound_connection": "Reviewer-normalized synthetic precondition: workload can attempt outbound connection",
+      "effective_egress_to_unapproved_sink_allowed": "Reviewer-normalized synthetic precondition: effective egress to unapproved sink allowed",
+      "payload_can_be_sent": "Reviewer-normalized synthetic precondition: payload can be sent",
+      "caller_outside_business_entitlement": "Reviewer-normalized synthetic precondition: caller outside business entitlement"
+    },
+    "rules": [
+      {
+        "id": "k8s-egress-admit",
+        "requires": [
+          "workload_has_sensitive_record",
+          "workload_can_attempt_outbound_connection"
+        ],
+        "produces": "outbound_attempt_possible"
+      },
+      {
+        "id": "k8s-egress-execute",
+        "requires": [
+          "outbound_attempt_possible",
+          "effective_egress_to_unapproved_sink_allowed"
+        ],
+        "produces": "unapproved_sink_reachable"
+      },
+      {
+        "id": "k8s-egress-impact",
+        "requires": [
+          "unapproved_sink_reachable",
+          "payload_can_be_sent",
+          "caller_outside_business_entitlement"
+        ],
+        "produces": "unauthorized_disclosure"
+      }
+    ],
+    "target": "unauthorized_disclosure",
+    "control_fact": "effective_egress_to_unapproved_sink_allowed",
+    "control_name": "Observe effective egress restriction independently of ingress",
+    "context_annotations": {
+      "private_ingress_present": true,
+      "evidence_kind": "synthetic",
+      "cloud_execution": false
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "agent-tool",
+    "provider": "Provider-neutral tool-using AI workload",
+    "candidate_class": "AB-05",
+    "source_refs": [
+      "OWASP-AGENCY"
+    ],
+    "description": "An untrusted action request is deterministic test input; no claim is made about any model following a prompt.",
+    "fact_definitions": {
+      "untrusted_input_can_request_tool_action": "Reviewer-normalized synthetic precondition: untrusted input can request tool action",
+      "tool_accepts_requested_action": "Reviewer-normalized synthetic precondition: tool accepts requested action",
+      "actor_action_authorization_missing": "Reviewer-normalized synthetic precondition: actor action authorization missing",
+      "tool_identity_has_effective_action_permission": "Reviewer-normalized synthetic precondition: tool identity has effective action permission",
+      "tool_executes_requested_action": "Reviewer-normalized synthetic precondition: tool executes requested action",
+      "caller_outside_business_entitlement": "Reviewer-normalized synthetic precondition: caller outside business entitlement"
+    },
+    "rules": [
+      {
+        "id": "agent-tool-admit",
+        "requires": [
+          "untrusted_input_can_request_tool_action",
+          "tool_accepts_requested_action",
+          "actor_action_authorization_missing"
+        ],
+        "produces": "unapproved_action_admitted"
+      },
+      {
+        "id": "agent-tool-execute",
+        "requires": [
+          "unapproved_action_admitted",
+          "tool_identity_has_effective_action_permission"
+        ],
+        "produces": "privileged_action_possible"
+      },
+      {
+        "id": "agent-tool-impact",
+        "requires": [
+          "privileged_action_possible",
+          "tool_executes_requested_action",
+          "caller_outside_business_entitlement"
+        ],
+        "produces": "unauthorized_sensitive_action"
+      }
+    ],
+    "target": "unauthorized_sensitive_action",
+    "control_fact": "actor_action_authorization_missing",
+    "control_name": "Independently authorize downstream action for the actor",
+    "context_annotations": {
+      "private_ingress_present": true,
+      "evidence_kind": "synthetic",
+      "cloud_execution": false
+    }
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "AWS-IAM",
+    "requested_url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html",
+    "resolved_url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T09:52:56.254999+00:00",
+    "raw_html_sha256": "abf1329e1ba34703cdef3831c7c9fe48f3432ebc3efa259eda1efc731d6727d5"
+  },
+  {
+    "id": "AWS-TRAIN",
+    "requested_url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html",
+    "resolved_url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrainingJob.html",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T09:52:56.420806+00:00",
+    "raw_html_sha256": "7fe844fe4764e8830e9617470cb173d2dc940c0fa102a4f3ed02d58dd83e12e9"
+  },
+  {
+    "id": "AZ-IDENTITY",
+    "requested_url": "https://learn.microsoft.com/en-us/azure/machine-learning/how-to-identity-based-service-authentication?view=azureml-api-2",
+    "resolved_url": "https://learn.microsoft.com/en-us/azure/machine-learning/how-to-identity-based-service-authentication?view=azureml-api-2",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T09:52:56.421602+00:00",
+    "raw_html_sha256": "93b8bc0f00aea848aeef33282515a1bb8da420fd84d06ee24f6598959206b802"
+  },
+  {
+    "id": "GCP-IDENTITY",
+    "requested_url": "https://docs.cloud.google.com/vertex-ai/docs/general/custom-service-account",
+    "resolved_url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/machine-learning/general/custom-service-account",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T09:52:58.524242+00:00",
+    "raw_html_sha256": "5a29fe4782f253bd9d70a0e6bde78020f4903f0b3cb42cb4453d658766f74b06"
+  },
+  {
+    "id": "K8S-SA",
+    "requested_url": "https://kubernetes.io/docs/concepts/security/service-accounts/",
+    "resolved_url": "https://kubernetes.io/docs/concepts/security/service-accounts/",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T09:52:56.745282+00:00",
+    "raw_html_sha256": "da96a796317f8355379376972561c522ff81df8d3e3084a96ad0f88bc60a03d9"
+  },
+  {
+    "id": "K8S-RBAC",
+    "requested_url": "https://kubernetes.io/docs/concepts/security/rbac-good-practices/",
+    "resolved_url": "https://kubernetes.io/docs/concepts/security/rbac-good-practices/",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T09:52:56.862586+00:00",
+    "raw_html_sha256": "11a8cc5674ef01c989aed14d1392cdf1e98b002e40431c5dcff9500473dcbdbf"
+  },
+  {
+    "id": "K8S-NET",
+    "requested_url": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+    "resolved_url": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T09:52:56.668058+00:00",
+    "raw_html_sha256": "202c7f63e7df07d5d8b10b74a307b4aada96e5a5ffdd76e1ceaba00c9b9c851d"
+  },
+  {
+    "id": "OWASP-AGENCY",
+    "requested_url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/2_0_vulns/LLM06_ExcessiveAgency.html",
+    "resolved_url": "https://owasp.github.io/www-project-top-10-for-large-language-model-applications/2_0_vulns/LLM06_ExcessiveAgency.html",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T09:52:57.218691+00:00",
+    "raw_html_sha256": "b345ba0c1fee6001aa5a32e94ce8a3cbd93210dbd60796c27237948b684b922f"
+  },
+  {
+    "id": "SLSA-VERIFY",
+    "requested_url": "https://slsa.dev/spec/v1.1/verifying-artifacts",
+    "resolved_url": "https://slsa.dev/spec/v1.1/verifying-artifacts",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-11-24T09:52:57.658255+00:00",
+    "raw_html_sha256": "c30135e0141961a8779157b1fdd862482c57e46f1d9801d11b74ce4a196eb1d3"
+  }
+]

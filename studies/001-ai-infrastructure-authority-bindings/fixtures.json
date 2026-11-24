@@ -1,0 +1,2390 @@
+[
+  {
+    "schema_version": 1,
+    "id": "aws-training--baseline",
+    "chain_id": "aws-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_pass_selected_role": true,
+      "same_account_passrole": true,
+      "service_trust_allows_role": true,
+      "actor_controls_job_code": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "reachable",
+    "reason": "All stated preconditions intentionally hold; the actor lacks business entitlement."
+  },
+  {
+    "schema_version": 1,
+    "id": "aws-training--control",
+    "chain_id": "aws-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_pass_selected_role": false,
+      "same_account_passrole": true,
+      "service_trust_allows_role": true,
+      "actor_controls_job_code": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "A single proposed control removes a necessary model condition."
+  },
+  {
+    "schema_version": 1,
+    "id": "aws-training--unknown-control",
+    "chain_id": "aws-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_pass_selected_role": null,
+      "same_account_passrole": true,
+      "service_trust_allows_role": true,
+      "actor_controls_job_code": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "No observation proves whether the control is enforced."
+  },
+  {
+    "schema_version": 1,
+    "id": "aws-training--legitimate-delegation",
+    "chain_id": "aws-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_pass_selected_role": true,
+      "same_account_passrole": true,
+      "service_trust_allows_role": true,
+      "actor_controls_job_code": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": false
+    },
+    "expected_outcome": "blocked",
+    "reason": "Delegation is intended by the business policy; this target is not an unauthorized outcome."
+  },
+  {
+    "schema_version": 1,
+    "id": "aws-training--without-actor_can_submit_job",
+    "chain_id": "aws-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": false,
+      "actor_can_pass_selected_role": true,
+      "same_account_passrole": true,
+      "service_trust_allows_role": true,
+      "actor_controls_job_code": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: actor_can_submit_job"
+  },
+  {
+    "schema_version": 1,
+    "id": "aws-training--missing-actor_can_submit_job",
+    "chain_id": "aws-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": null,
+      "actor_can_pass_selected_role": true,
+      "same_account_passrole": true,
+      "service_trust_allows_role": true,
+      "actor_controls_job_code": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: actor_can_submit_job"
+  },
+  {
+    "schema_version": 1,
+    "id": "aws-training--without-actor_can_pass_selected_role",
+    "chain_id": "aws-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_pass_selected_role": false,
+      "same_account_passrole": true,
+      "service_trust_allows_role": true,
+      "actor_controls_job_code": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: actor_can_pass_selected_role"
+  },
+  {
+    "schema_version": 1,
+    "id": "aws-training--missing-actor_can_pass_selected_role",
+    "chain_id": "aws-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_pass_selected_role": null,
+      "same_account_passrole": true,
+      "service_trust_allows_role": true,
+      "actor_controls_job_code": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: actor_can_pass_selected_role"
+  },
+  {
+    "schema_version": 1,
+    "id": "aws-training--without-same_account_passrole",
+    "chain_id": "aws-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_pass_selected_role": true,
+      "same_account_passrole": false,
+      "service_trust_allows_role": true,
+      "actor_controls_job_code": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: same_account_passrole"
+  },
+  {
+    "schema_version": 1,
+    "id": "aws-training--missing-same_account_passrole",
+    "chain_id": "aws-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_pass_selected_role": true,
+      "same_account_passrole": null,
+      "service_trust_allows_role": true,
+      "actor_controls_job_code": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: same_account_passrole"
+  },
+  {
+    "schema_version": 1,
+    "id": "aws-training--without-service_trust_allows_role",
+    "chain_id": "aws-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_pass_selected_role": true,
+      "same_account_passrole": true,
+      "service_trust_allows_role": false,
+      "actor_controls_job_code": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: service_trust_allows_role"
+  },
+  {
+    "schema_version": 1,
+    "id": "aws-training--missing-service_trust_allows_role",
+    "chain_id": "aws-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_pass_selected_role": true,
+      "same_account_passrole": true,
+      "service_trust_allows_role": null,
+      "actor_controls_job_code": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: service_trust_allows_role"
+  },
+  {
+    "schema_version": 1,
+    "id": "aws-training--without-actor_controls_job_code",
+    "chain_id": "aws-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_pass_selected_role": true,
+      "same_account_passrole": true,
+      "service_trust_allows_role": true,
+      "actor_controls_job_code": false,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: actor_controls_job_code"
+  },
+  {
+    "schema_version": 1,
+    "id": "aws-training--missing-actor_controls_job_code",
+    "chain_id": "aws-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_pass_selected_role": true,
+      "same_account_passrole": true,
+      "service_trust_allows_role": true,
+      "actor_controls_job_code": null,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: actor_controls_job_code"
+  },
+  {
+    "schema_version": 1,
+    "id": "aws-training--without-runtime_data_read_effective_allow",
+    "chain_id": "aws-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_pass_selected_role": true,
+      "same_account_passrole": true,
+      "service_trust_allows_role": true,
+      "actor_controls_job_code": true,
+      "runtime_data_read_effective_allow": false,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: runtime_data_read_effective_allow"
+  },
+  {
+    "schema_version": 1,
+    "id": "aws-training--missing-runtime_data_read_effective_allow",
+    "chain_id": "aws-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_pass_selected_role": true,
+      "same_account_passrole": true,
+      "service_trust_allows_role": true,
+      "actor_controls_job_code": true,
+      "runtime_data_read_effective_allow": null,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: runtime_data_read_effective_allow"
+  },
+  {
+    "schema_version": 1,
+    "id": "aws-training--without-unapproved_disclosure_path_allowed",
+    "chain_id": "aws-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_pass_selected_role": true,
+      "same_account_passrole": true,
+      "service_trust_allows_role": true,
+      "actor_controls_job_code": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": false,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: unapproved_disclosure_path_allowed"
+  },
+  {
+    "schema_version": 1,
+    "id": "aws-training--missing-unapproved_disclosure_path_allowed",
+    "chain_id": "aws-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_pass_selected_role": true,
+      "same_account_passrole": true,
+      "service_trust_allows_role": true,
+      "actor_controls_job_code": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": null,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: unapproved_disclosure_path_allowed"
+  },
+  {
+    "schema_version": 1,
+    "id": "aws-training--without-caller_outside_business_entitlement",
+    "chain_id": "aws-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_pass_selected_role": true,
+      "same_account_passrole": true,
+      "service_trust_allows_role": true,
+      "actor_controls_job_code": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": false
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: caller_outside_business_entitlement"
+  },
+  {
+    "schema_version": 1,
+    "id": "aws-training--missing-caller_outside_business_entitlement",
+    "chain_id": "aws-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_pass_selected_role": true,
+      "same_account_passrole": true,
+      "service_trust_allows_role": true,
+      "actor_controls_job_code": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": null
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: caller_outside_business_entitlement"
+  },
+  {
+    "schema_version": 1,
+    "id": "aws-training--deny-with-other-unknown",
+    "chain_id": "aws-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": null,
+      "actor_can_pass_selected_role": false,
+      "same_account_passrole": true,
+      "service_trust_allows_role": true,
+      "actor_controls_job_code": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "A known necessary-condition denial blocks this model even when another fact is unknown."
+  },
+  {
+    "schema_version": 1,
+    "id": "azure-training--baseline",
+    "chain_id": "azure-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_use_selected_compute": true,
+      "actor_controls_job_code": true,
+      "compute_identity_available": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "reachable",
+    "reason": "All stated preconditions intentionally hold; the actor lacks business entitlement."
+  },
+  {
+    "schema_version": 1,
+    "id": "azure-training--control",
+    "chain_id": "azure-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_use_selected_compute": false,
+      "actor_controls_job_code": true,
+      "compute_identity_available": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "A single proposed control removes a necessary model condition."
+  },
+  {
+    "schema_version": 1,
+    "id": "azure-training--unknown-control",
+    "chain_id": "azure-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_use_selected_compute": null,
+      "actor_controls_job_code": true,
+      "compute_identity_available": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "No observation proves whether the control is enforced."
+  },
+  {
+    "schema_version": 1,
+    "id": "azure-training--legitimate-delegation",
+    "chain_id": "azure-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_use_selected_compute": true,
+      "actor_controls_job_code": true,
+      "compute_identity_available": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": false
+    },
+    "expected_outcome": "blocked",
+    "reason": "Delegation is intended by the business policy; this target is not an unauthorized outcome."
+  },
+  {
+    "schema_version": 1,
+    "id": "azure-training--without-actor_can_submit_job",
+    "chain_id": "azure-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": false,
+      "actor_can_use_selected_compute": true,
+      "actor_controls_job_code": true,
+      "compute_identity_available": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: actor_can_submit_job"
+  },
+  {
+    "schema_version": 1,
+    "id": "azure-training--missing-actor_can_submit_job",
+    "chain_id": "azure-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": null,
+      "actor_can_use_selected_compute": true,
+      "actor_controls_job_code": true,
+      "compute_identity_available": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: actor_can_submit_job"
+  },
+  {
+    "schema_version": 1,
+    "id": "azure-training--without-actor_can_use_selected_compute",
+    "chain_id": "azure-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_use_selected_compute": false,
+      "actor_controls_job_code": true,
+      "compute_identity_available": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: actor_can_use_selected_compute"
+  },
+  {
+    "schema_version": 1,
+    "id": "azure-training--missing-actor_can_use_selected_compute",
+    "chain_id": "azure-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_use_selected_compute": null,
+      "actor_controls_job_code": true,
+      "compute_identity_available": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: actor_can_use_selected_compute"
+  },
+  {
+    "schema_version": 1,
+    "id": "azure-training--without-actor_controls_job_code",
+    "chain_id": "azure-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_use_selected_compute": true,
+      "actor_controls_job_code": false,
+      "compute_identity_available": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: actor_controls_job_code"
+  },
+  {
+    "schema_version": 1,
+    "id": "azure-training--missing-actor_controls_job_code",
+    "chain_id": "azure-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_use_selected_compute": true,
+      "actor_controls_job_code": null,
+      "compute_identity_available": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: actor_controls_job_code"
+  },
+  {
+    "schema_version": 1,
+    "id": "azure-training--without-compute_identity_available",
+    "chain_id": "azure-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_use_selected_compute": true,
+      "actor_controls_job_code": true,
+      "compute_identity_available": false,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: compute_identity_available"
+  },
+  {
+    "schema_version": 1,
+    "id": "azure-training--missing-compute_identity_available",
+    "chain_id": "azure-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_use_selected_compute": true,
+      "actor_controls_job_code": true,
+      "compute_identity_available": null,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: compute_identity_available"
+  },
+  {
+    "schema_version": 1,
+    "id": "azure-training--without-runtime_data_read_effective_allow",
+    "chain_id": "azure-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_use_selected_compute": true,
+      "actor_controls_job_code": true,
+      "compute_identity_available": true,
+      "runtime_data_read_effective_allow": false,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: runtime_data_read_effective_allow"
+  },
+  {
+    "schema_version": 1,
+    "id": "azure-training--missing-runtime_data_read_effective_allow",
+    "chain_id": "azure-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_use_selected_compute": true,
+      "actor_controls_job_code": true,
+      "compute_identity_available": true,
+      "runtime_data_read_effective_allow": null,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: runtime_data_read_effective_allow"
+  },
+  {
+    "schema_version": 1,
+    "id": "azure-training--without-unapproved_disclosure_path_allowed",
+    "chain_id": "azure-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_use_selected_compute": true,
+      "actor_controls_job_code": true,
+      "compute_identity_available": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": false,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: unapproved_disclosure_path_allowed"
+  },
+  {
+    "schema_version": 1,
+    "id": "azure-training--missing-unapproved_disclosure_path_allowed",
+    "chain_id": "azure-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_use_selected_compute": true,
+      "actor_controls_job_code": true,
+      "compute_identity_available": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": null,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: unapproved_disclosure_path_allowed"
+  },
+  {
+    "schema_version": 1,
+    "id": "azure-training--without-caller_outside_business_entitlement",
+    "chain_id": "azure-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_use_selected_compute": true,
+      "actor_controls_job_code": true,
+      "compute_identity_available": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": false
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: caller_outside_business_entitlement"
+  },
+  {
+    "schema_version": 1,
+    "id": "azure-training--missing-caller_outside_business_entitlement",
+    "chain_id": "azure-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_use_selected_compute": true,
+      "actor_controls_job_code": true,
+      "compute_identity_available": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": null
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: caller_outside_business_entitlement"
+  },
+  {
+    "schema_version": 1,
+    "id": "azure-training--deny-with-other-unknown",
+    "chain_id": "azure-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": null,
+      "actor_can_use_selected_compute": false,
+      "actor_controls_job_code": true,
+      "compute_identity_available": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "A known necessary-condition denial blocks this model even when another fact is unknown."
+  },
+  {
+    "schema_version": 1,
+    "id": "gcp-training--baseline",
+    "chain_id": "gcp-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_act_as_selected_account": true,
+      "actor_controls_job_code": true,
+      "platform_service_agent_setup_allows_runtime": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "reachable",
+    "reason": "All stated preconditions intentionally hold; the actor lacks business entitlement."
+  },
+  {
+    "schema_version": 1,
+    "id": "gcp-training--control",
+    "chain_id": "gcp-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_act_as_selected_account": false,
+      "actor_controls_job_code": true,
+      "platform_service_agent_setup_allows_runtime": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "A single proposed control removes a necessary model condition."
+  },
+  {
+    "schema_version": 1,
+    "id": "gcp-training--unknown-control",
+    "chain_id": "gcp-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_act_as_selected_account": null,
+      "actor_controls_job_code": true,
+      "platform_service_agent_setup_allows_runtime": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "No observation proves whether the control is enforced."
+  },
+  {
+    "schema_version": 1,
+    "id": "gcp-training--legitimate-delegation",
+    "chain_id": "gcp-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_act_as_selected_account": true,
+      "actor_controls_job_code": true,
+      "platform_service_agent_setup_allows_runtime": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": false
+    },
+    "expected_outcome": "blocked",
+    "reason": "Delegation is intended by the business policy; this target is not an unauthorized outcome."
+  },
+  {
+    "schema_version": 1,
+    "id": "gcp-training--without-actor_can_submit_job",
+    "chain_id": "gcp-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": false,
+      "actor_can_act_as_selected_account": true,
+      "actor_controls_job_code": true,
+      "platform_service_agent_setup_allows_runtime": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: actor_can_submit_job"
+  },
+  {
+    "schema_version": 1,
+    "id": "gcp-training--missing-actor_can_submit_job",
+    "chain_id": "gcp-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": null,
+      "actor_can_act_as_selected_account": true,
+      "actor_controls_job_code": true,
+      "platform_service_agent_setup_allows_runtime": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: actor_can_submit_job"
+  },
+  {
+    "schema_version": 1,
+    "id": "gcp-training--without-actor_can_act_as_selected_account",
+    "chain_id": "gcp-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_act_as_selected_account": false,
+      "actor_controls_job_code": true,
+      "platform_service_agent_setup_allows_runtime": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: actor_can_act_as_selected_account"
+  },
+  {
+    "schema_version": 1,
+    "id": "gcp-training--missing-actor_can_act_as_selected_account",
+    "chain_id": "gcp-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_act_as_selected_account": null,
+      "actor_controls_job_code": true,
+      "platform_service_agent_setup_allows_runtime": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: actor_can_act_as_selected_account"
+  },
+  {
+    "schema_version": 1,
+    "id": "gcp-training--without-actor_controls_job_code",
+    "chain_id": "gcp-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_act_as_selected_account": true,
+      "actor_controls_job_code": false,
+      "platform_service_agent_setup_allows_runtime": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: actor_controls_job_code"
+  },
+  {
+    "schema_version": 1,
+    "id": "gcp-training--missing-actor_controls_job_code",
+    "chain_id": "gcp-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_act_as_selected_account": true,
+      "actor_controls_job_code": null,
+      "platform_service_agent_setup_allows_runtime": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: actor_controls_job_code"
+  },
+  {
+    "schema_version": 1,
+    "id": "gcp-training--without-platform_service_agent_setup_allows_runtime",
+    "chain_id": "gcp-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_act_as_selected_account": true,
+      "actor_controls_job_code": true,
+      "platform_service_agent_setup_allows_runtime": false,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: platform_service_agent_setup_allows_runtime"
+  },
+  {
+    "schema_version": 1,
+    "id": "gcp-training--missing-platform_service_agent_setup_allows_runtime",
+    "chain_id": "gcp-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_act_as_selected_account": true,
+      "actor_controls_job_code": true,
+      "platform_service_agent_setup_allows_runtime": null,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: platform_service_agent_setup_allows_runtime"
+  },
+  {
+    "schema_version": 1,
+    "id": "gcp-training--without-runtime_data_read_effective_allow",
+    "chain_id": "gcp-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_act_as_selected_account": true,
+      "actor_controls_job_code": true,
+      "platform_service_agent_setup_allows_runtime": true,
+      "runtime_data_read_effective_allow": false,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: runtime_data_read_effective_allow"
+  },
+  {
+    "schema_version": 1,
+    "id": "gcp-training--missing-runtime_data_read_effective_allow",
+    "chain_id": "gcp-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_act_as_selected_account": true,
+      "actor_controls_job_code": true,
+      "platform_service_agent_setup_allows_runtime": true,
+      "runtime_data_read_effective_allow": null,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: runtime_data_read_effective_allow"
+  },
+  {
+    "schema_version": 1,
+    "id": "gcp-training--without-unapproved_disclosure_path_allowed",
+    "chain_id": "gcp-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_act_as_selected_account": true,
+      "actor_controls_job_code": true,
+      "platform_service_agent_setup_allows_runtime": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": false,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: unapproved_disclosure_path_allowed"
+  },
+  {
+    "schema_version": 1,
+    "id": "gcp-training--missing-unapproved_disclosure_path_allowed",
+    "chain_id": "gcp-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_act_as_selected_account": true,
+      "actor_controls_job_code": true,
+      "platform_service_agent_setup_allows_runtime": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": null,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: unapproved_disclosure_path_allowed"
+  },
+  {
+    "schema_version": 1,
+    "id": "gcp-training--without-caller_outside_business_entitlement",
+    "chain_id": "gcp-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_act_as_selected_account": true,
+      "actor_controls_job_code": true,
+      "platform_service_agent_setup_allows_runtime": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": false
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: caller_outside_business_entitlement"
+  },
+  {
+    "schema_version": 1,
+    "id": "gcp-training--missing-caller_outside_business_entitlement",
+    "chain_id": "gcp-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": true,
+      "actor_can_act_as_selected_account": true,
+      "actor_controls_job_code": true,
+      "platform_service_agent_setup_allows_runtime": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": null
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: caller_outside_business_entitlement"
+  },
+  {
+    "schema_version": 1,
+    "id": "gcp-training--deny-with-other-unknown",
+    "chain_id": "gcp-training",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_submit_job": null,
+      "actor_can_act_as_selected_account": false,
+      "actor_controls_job_code": true,
+      "platform_service_agent_setup_allows_runtime": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "A known necessary-condition denial blocks this model even when another fact is unknown."
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-workload--baseline",
+    "chain_id": "k8s-workload",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_create_workload": true,
+      "admission_allows_selected_service_account": true,
+      "actor_controls_job_code": true,
+      "service_account_token_available_and_valid": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "reachable",
+    "reason": "All stated preconditions intentionally hold; the actor lacks business entitlement."
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-workload--control",
+    "chain_id": "k8s-workload",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_create_workload": true,
+      "admission_allows_selected_service_account": false,
+      "actor_controls_job_code": true,
+      "service_account_token_available_and_valid": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "A single proposed control removes a necessary model condition."
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-workload--unknown-control",
+    "chain_id": "k8s-workload",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_create_workload": true,
+      "admission_allows_selected_service_account": null,
+      "actor_controls_job_code": true,
+      "service_account_token_available_and_valid": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "No observation proves whether the control is enforced."
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-workload--legitimate-delegation",
+    "chain_id": "k8s-workload",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_create_workload": true,
+      "admission_allows_selected_service_account": true,
+      "actor_controls_job_code": true,
+      "service_account_token_available_and_valid": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": false
+    },
+    "expected_outcome": "blocked",
+    "reason": "Delegation is intended by the business policy; this target is not an unauthorized outcome."
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-workload--without-actor_can_create_workload",
+    "chain_id": "k8s-workload",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_create_workload": false,
+      "admission_allows_selected_service_account": true,
+      "actor_controls_job_code": true,
+      "service_account_token_available_and_valid": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: actor_can_create_workload"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-workload--missing-actor_can_create_workload",
+    "chain_id": "k8s-workload",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_create_workload": null,
+      "admission_allows_selected_service_account": true,
+      "actor_controls_job_code": true,
+      "service_account_token_available_and_valid": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: actor_can_create_workload"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-workload--without-admission_allows_selected_service_account",
+    "chain_id": "k8s-workload",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_create_workload": true,
+      "admission_allows_selected_service_account": false,
+      "actor_controls_job_code": true,
+      "service_account_token_available_and_valid": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: admission_allows_selected_service_account"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-workload--missing-admission_allows_selected_service_account",
+    "chain_id": "k8s-workload",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_create_workload": true,
+      "admission_allows_selected_service_account": null,
+      "actor_controls_job_code": true,
+      "service_account_token_available_and_valid": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: admission_allows_selected_service_account"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-workload--without-actor_controls_job_code",
+    "chain_id": "k8s-workload",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_create_workload": true,
+      "admission_allows_selected_service_account": true,
+      "actor_controls_job_code": false,
+      "service_account_token_available_and_valid": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: actor_controls_job_code"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-workload--missing-actor_controls_job_code",
+    "chain_id": "k8s-workload",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_create_workload": true,
+      "admission_allows_selected_service_account": true,
+      "actor_controls_job_code": null,
+      "service_account_token_available_and_valid": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: actor_controls_job_code"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-workload--without-service_account_token_available_and_valid",
+    "chain_id": "k8s-workload",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_create_workload": true,
+      "admission_allows_selected_service_account": true,
+      "actor_controls_job_code": true,
+      "service_account_token_available_and_valid": false,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: service_account_token_available_and_valid"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-workload--missing-service_account_token_available_and_valid",
+    "chain_id": "k8s-workload",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_create_workload": true,
+      "admission_allows_selected_service_account": true,
+      "actor_controls_job_code": true,
+      "service_account_token_available_and_valid": null,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: service_account_token_available_and_valid"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-workload--without-runtime_data_read_effective_allow",
+    "chain_id": "k8s-workload",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_create_workload": true,
+      "admission_allows_selected_service_account": true,
+      "actor_controls_job_code": true,
+      "service_account_token_available_and_valid": true,
+      "runtime_data_read_effective_allow": false,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: runtime_data_read_effective_allow"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-workload--missing-runtime_data_read_effective_allow",
+    "chain_id": "k8s-workload",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_create_workload": true,
+      "admission_allows_selected_service_account": true,
+      "actor_controls_job_code": true,
+      "service_account_token_available_and_valid": true,
+      "runtime_data_read_effective_allow": null,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: runtime_data_read_effective_allow"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-workload--without-unapproved_disclosure_path_allowed",
+    "chain_id": "k8s-workload",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_create_workload": true,
+      "admission_allows_selected_service_account": true,
+      "actor_controls_job_code": true,
+      "service_account_token_available_and_valid": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": false,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: unapproved_disclosure_path_allowed"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-workload--missing-unapproved_disclosure_path_allowed",
+    "chain_id": "k8s-workload",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_create_workload": true,
+      "admission_allows_selected_service_account": true,
+      "actor_controls_job_code": true,
+      "service_account_token_available_and_valid": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": null,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: unapproved_disclosure_path_allowed"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-workload--without-caller_outside_business_entitlement",
+    "chain_id": "k8s-workload",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_create_workload": true,
+      "admission_allows_selected_service_account": true,
+      "actor_controls_job_code": true,
+      "service_account_token_available_and_valid": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": false
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: caller_outside_business_entitlement"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-workload--missing-caller_outside_business_entitlement",
+    "chain_id": "k8s-workload",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_create_workload": true,
+      "admission_allows_selected_service_account": true,
+      "actor_controls_job_code": true,
+      "service_account_token_available_and_valid": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": null
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: caller_outside_business_entitlement"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-workload--deny-with-other-unknown",
+    "chain_id": "k8s-workload",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_create_workload": null,
+      "admission_allows_selected_service_account": false,
+      "actor_controls_job_code": true,
+      "service_account_token_available_and_valid": true,
+      "runtime_data_read_effective_allow": true,
+      "unapproved_disclosure_path_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "A known necessary-condition denial blocks this model even when another fact is unknown."
+  },
+  {
+    "schema_version": 1,
+    "id": "artifact-promotion--baseline",
+    "chain_id": "artifact-promotion",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_change_consumed_artifact": true,
+      "consumer_uses_mutable_reference": true,
+      "admission_does_not_bind_digest": true,
+      "artifact_executes_with_privileged_identity": true,
+      "runtime_sensitive_action_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "reachable",
+    "reason": "All stated preconditions intentionally hold; the actor lacks business entitlement."
+  },
+  {
+    "schema_version": 1,
+    "id": "artifact-promotion--control",
+    "chain_id": "artifact-promotion",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_change_consumed_artifact": true,
+      "consumer_uses_mutable_reference": true,
+      "admission_does_not_bind_digest": false,
+      "artifact_executes_with_privileged_identity": true,
+      "runtime_sensitive_action_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "A single proposed control removes a necessary model condition."
+  },
+  {
+    "schema_version": 1,
+    "id": "artifact-promotion--unknown-control",
+    "chain_id": "artifact-promotion",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_change_consumed_artifact": true,
+      "consumer_uses_mutable_reference": true,
+      "admission_does_not_bind_digest": null,
+      "artifact_executes_with_privileged_identity": true,
+      "runtime_sensitive_action_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "No observation proves whether the control is enforced."
+  },
+  {
+    "schema_version": 1,
+    "id": "artifact-promotion--legitimate-delegation",
+    "chain_id": "artifact-promotion",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_change_consumed_artifact": true,
+      "consumer_uses_mutable_reference": true,
+      "admission_does_not_bind_digest": true,
+      "artifact_executes_with_privileged_identity": true,
+      "runtime_sensitive_action_allowed": true,
+      "caller_outside_business_entitlement": false
+    },
+    "expected_outcome": "blocked",
+    "reason": "Delegation is intended by the business policy; this target is not an unauthorized outcome."
+  },
+  {
+    "schema_version": 1,
+    "id": "artifact-promotion--without-actor_can_change_consumed_artifact",
+    "chain_id": "artifact-promotion",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_change_consumed_artifact": false,
+      "consumer_uses_mutable_reference": true,
+      "admission_does_not_bind_digest": true,
+      "artifact_executes_with_privileged_identity": true,
+      "runtime_sensitive_action_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: actor_can_change_consumed_artifact"
+  },
+  {
+    "schema_version": 1,
+    "id": "artifact-promotion--missing-actor_can_change_consumed_artifact",
+    "chain_id": "artifact-promotion",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_change_consumed_artifact": null,
+      "consumer_uses_mutable_reference": true,
+      "admission_does_not_bind_digest": true,
+      "artifact_executes_with_privileged_identity": true,
+      "runtime_sensitive_action_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: actor_can_change_consumed_artifact"
+  },
+  {
+    "schema_version": 1,
+    "id": "artifact-promotion--without-consumer_uses_mutable_reference",
+    "chain_id": "artifact-promotion",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_change_consumed_artifact": true,
+      "consumer_uses_mutable_reference": false,
+      "admission_does_not_bind_digest": true,
+      "artifact_executes_with_privileged_identity": true,
+      "runtime_sensitive_action_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: consumer_uses_mutable_reference"
+  },
+  {
+    "schema_version": 1,
+    "id": "artifact-promotion--missing-consumer_uses_mutable_reference",
+    "chain_id": "artifact-promotion",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_change_consumed_artifact": true,
+      "consumer_uses_mutable_reference": null,
+      "admission_does_not_bind_digest": true,
+      "artifact_executes_with_privileged_identity": true,
+      "runtime_sensitive_action_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: consumer_uses_mutable_reference"
+  },
+  {
+    "schema_version": 1,
+    "id": "artifact-promotion--without-admission_does_not_bind_digest",
+    "chain_id": "artifact-promotion",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_change_consumed_artifact": true,
+      "consumer_uses_mutable_reference": true,
+      "admission_does_not_bind_digest": false,
+      "artifact_executes_with_privileged_identity": true,
+      "runtime_sensitive_action_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: admission_does_not_bind_digest"
+  },
+  {
+    "schema_version": 1,
+    "id": "artifact-promotion--missing-admission_does_not_bind_digest",
+    "chain_id": "artifact-promotion",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_change_consumed_artifact": true,
+      "consumer_uses_mutable_reference": true,
+      "admission_does_not_bind_digest": null,
+      "artifact_executes_with_privileged_identity": true,
+      "runtime_sensitive_action_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: admission_does_not_bind_digest"
+  },
+  {
+    "schema_version": 1,
+    "id": "artifact-promotion--without-artifact_executes_with_privileged_identity",
+    "chain_id": "artifact-promotion",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_change_consumed_artifact": true,
+      "consumer_uses_mutable_reference": true,
+      "admission_does_not_bind_digest": true,
+      "artifact_executes_with_privileged_identity": false,
+      "runtime_sensitive_action_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: artifact_executes_with_privileged_identity"
+  },
+  {
+    "schema_version": 1,
+    "id": "artifact-promotion--missing-artifact_executes_with_privileged_identity",
+    "chain_id": "artifact-promotion",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_change_consumed_artifact": true,
+      "consumer_uses_mutable_reference": true,
+      "admission_does_not_bind_digest": true,
+      "artifact_executes_with_privileged_identity": null,
+      "runtime_sensitive_action_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: artifact_executes_with_privileged_identity"
+  },
+  {
+    "schema_version": 1,
+    "id": "artifact-promotion--without-runtime_sensitive_action_allowed",
+    "chain_id": "artifact-promotion",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_change_consumed_artifact": true,
+      "consumer_uses_mutable_reference": true,
+      "admission_does_not_bind_digest": true,
+      "artifact_executes_with_privileged_identity": true,
+      "runtime_sensitive_action_allowed": false,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: runtime_sensitive_action_allowed"
+  },
+  {
+    "schema_version": 1,
+    "id": "artifact-promotion--missing-runtime_sensitive_action_allowed",
+    "chain_id": "artifact-promotion",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_change_consumed_artifact": true,
+      "consumer_uses_mutable_reference": true,
+      "admission_does_not_bind_digest": true,
+      "artifact_executes_with_privileged_identity": true,
+      "runtime_sensitive_action_allowed": null,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: runtime_sensitive_action_allowed"
+  },
+  {
+    "schema_version": 1,
+    "id": "artifact-promotion--without-caller_outside_business_entitlement",
+    "chain_id": "artifact-promotion",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_change_consumed_artifact": true,
+      "consumer_uses_mutable_reference": true,
+      "admission_does_not_bind_digest": true,
+      "artifact_executes_with_privileged_identity": true,
+      "runtime_sensitive_action_allowed": true,
+      "caller_outside_business_entitlement": false
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: caller_outside_business_entitlement"
+  },
+  {
+    "schema_version": 1,
+    "id": "artifact-promotion--missing-caller_outside_business_entitlement",
+    "chain_id": "artifact-promotion",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_change_consumed_artifact": true,
+      "consumer_uses_mutable_reference": true,
+      "admission_does_not_bind_digest": true,
+      "artifact_executes_with_privileged_identity": true,
+      "runtime_sensitive_action_allowed": true,
+      "caller_outside_business_entitlement": null
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: caller_outside_business_entitlement"
+  },
+  {
+    "schema_version": 1,
+    "id": "artifact-promotion--deny-with-other-unknown",
+    "chain_id": "artifact-promotion",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_change_consumed_artifact": null,
+      "consumer_uses_mutable_reference": true,
+      "admission_does_not_bind_digest": false,
+      "artifact_executes_with_privileged_identity": true,
+      "runtime_sensitive_action_allowed": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "A known necessary-condition denial blocks this model even when another fact is unknown."
+  },
+  {
+    "schema_version": 1,
+    "id": "shared-retrieval--baseline",
+    "chain_id": "shared-retrieval",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_query_retriever": true,
+      "retriever_has_target_document_access": true,
+      "downstream_entitlement_check_missing": true,
+      "retrieved_content_visible_to_answer_step": true,
+      "answer_returned_to_actor": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "reachable",
+    "reason": "All stated preconditions intentionally hold; the actor lacks business entitlement."
+  },
+  {
+    "schema_version": 1,
+    "id": "shared-retrieval--control",
+    "chain_id": "shared-retrieval",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_query_retriever": true,
+      "retriever_has_target_document_access": true,
+      "downstream_entitlement_check_missing": false,
+      "retrieved_content_visible_to_answer_step": true,
+      "answer_returned_to_actor": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "A single proposed control removes a necessary model condition."
+  },
+  {
+    "schema_version": 1,
+    "id": "shared-retrieval--unknown-control",
+    "chain_id": "shared-retrieval",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_query_retriever": true,
+      "retriever_has_target_document_access": true,
+      "downstream_entitlement_check_missing": null,
+      "retrieved_content_visible_to_answer_step": true,
+      "answer_returned_to_actor": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "No observation proves whether the control is enforced."
+  },
+  {
+    "schema_version": 1,
+    "id": "shared-retrieval--legitimate-delegation",
+    "chain_id": "shared-retrieval",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_query_retriever": true,
+      "retriever_has_target_document_access": true,
+      "downstream_entitlement_check_missing": true,
+      "retrieved_content_visible_to_answer_step": true,
+      "answer_returned_to_actor": true,
+      "caller_outside_business_entitlement": false
+    },
+    "expected_outcome": "blocked",
+    "reason": "Delegation is intended by the business policy; this target is not an unauthorized outcome."
+  },
+  {
+    "schema_version": 1,
+    "id": "shared-retrieval--without-actor_can_query_retriever",
+    "chain_id": "shared-retrieval",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_query_retriever": false,
+      "retriever_has_target_document_access": true,
+      "downstream_entitlement_check_missing": true,
+      "retrieved_content_visible_to_answer_step": true,
+      "answer_returned_to_actor": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: actor_can_query_retriever"
+  },
+  {
+    "schema_version": 1,
+    "id": "shared-retrieval--missing-actor_can_query_retriever",
+    "chain_id": "shared-retrieval",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_query_retriever": null,
+      "retriever_has_target_document_access": true,
+      "downstream_entitlement_check_missing": true,
+      "retrieved_content_visible_to_answer_step": true,
+      "answer_returned_to_actor": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: actor_can_query_retriever"
+  },
+  {
+    "schema_version": 1,
+    "id": "shared-retrieval--without-retriever_has_target_document_access",
+    "chain_id": "shared-retrieval",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_query_retriever": true,
+      "retriever_has_target_document_access": false,
+      "downstream_entitlement_check_missing": true,
+      "retrieved_content_visible_to_answer_step": true,
+      "answer_returned_to_actor": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: retriever_has_target_document_access"
+  },
+  {
+    "schema_version": 1,
+    "id": "shared-retrieval--missing-retriever_has_target_document_access",
+    "chain_id": "shared-retrieval",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_query_retriever": true,
+      "retriever_has_target_document_access": null,
+      "downstream_entitlement_check_missing": true,
+      "retrieved_content_visible_to_answer_step": true,
+      "answer_returned_to_actor": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: retriever_has_target_document_access"
+  },
+  {
+    "schema_version": 1,
+    "id": "shared-retrieval--without-downstream_entitlement_check_missing",
+    "chain_id": "shared-retrieval",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_query_retriever": true,
+      "retriever_has_target_document_access": true,
+      "downstream_entitlement_check_missing": false,
+      "retrieved_content_visible_to_answer_step": true,
+      "answer_returned_to_actor": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: downstream_entitlement_check_missing"
+  },
+  {
+    "schema_version": 1,
+    "id": "shared-retrieval--missing-downstream_entitlement_check_missing",
+    "chain_id": "shared-retrieval",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_query_retriever": true,
+      "retriever_has_target_document_access": true,
+      "downstream_entitlement_check_missing": null,
+      "retrieved_content_visible_to_answer_step": true,
+      "answer_returned_to_actor": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: downstream_entitlement_check_missing"
+  },
+  {
+    "schema_version": 1,
+    "id": "shared-retrieval--without-retrieved_content_visible_to_answer_step",
+    "chain_id": "shared-retrieval",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_query_retriever": true,
+      "retriever_has_target_document_access": true,
+      "downstream_entitlement_check_missing": true,
+      "retrieved_content_visible_to_answer_step": false,
+      "answer_returned_to_actor": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: retrieved_content_visible_to_answer_step"
+  },
+  {
+    "schema_version": 1,
+    "id": "shared-retrieval--missing-retrieved_content_visible_to_answer_step",
+    "chain_id": "shared-retrieval",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_query_retriever": true,
+      "retriever_has_target_document_access": true,
+      "downstream_entitlement_check_missing": true,
+      "retrieved_content_visible_to_answer_step": null,
+      "answer_returned_to_actor": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: retrieved_content_visible_to_answer_step"
+  },
+  {
+    "schema_version": 1,
+    "id": "shared-retrieval--without-answer_returned_to_actor",
+    "chain_id": "shared-retrieval",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_query_retriever": true,
+      "retriever_has_target_document_access": true,
+      "downstream_entitlement_check_missing": true,
+      "retrieved_content_visible_to_answer_step": true,
+      "answer_returned_to_actor": false,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: answer_returned_to_actor"
+  },
+  {
+    "schema_version": 1,
+    "id": "shared-retrieval--missing-answer_returned_to_actor",
+    "chain_id": "shared-retrieval",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_query_retriever": true,
+      "retriever_has_target_document_access": true,
+      "downstream_entitlement_check_missing": true,
+      "retrieved_content_visible_to_answer_step": true,
+      "answer_returned_to_actor": null,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: answer_returned_to_actor"
+  },
+  {
+    "schema_version": 1,
+    "id": "shared-retrieval--without-caller_outside_business_entitlement",
+    "chain_id": "shared-retrieval",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_query_retriever": true,
+      "retriever_has_target_document_access": true,
+      "downstream_entitlement_check_missing": true,
+      "retrieved_content_visible_to_answer_step": true,
+      "answer_returned_to_actor": true,
+      "caller_outside_business_entitlement": false
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: caller_outside_business_entitlement"
+  },
+  {
+    "schema_version": 1,
+    "id": "shared-retrieval--missing-caller_outside_business_entitlement",
+    "chain_id": "shared-retrieval",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_query_retriever": true,
+      "retriever_has_target_document_access": true,
+      "downstream_entitlement_check_missing": true,
+      "retrieved_content_visible_to_answer_step": true,
+      "answer_returned_to_actor": true,
+      "caller_outside_business_entitlement": null
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: caller_outside_business_entitlement"
+  },
+  {
+    "schema_version": 1,
+    "id": "shared-retrieval--deny-with-other-unknown",
+    "chain_id": "shared-retrieval",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "actor_can_query_retriever": null,
+      "retriever_has_target_document_access": true,
+      "downstream_entitlement_check_missing": false,
+      "retrieved_content_visible_to_answer_step": true,
+      "answer_returned_to_actor": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "A known necessary-condition denial blocks this model even when another fact is unknown."
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-egress--baseline",
+    "chain_id": "k8s-egress",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "workload_has_sensitive_record": true,
+      "workload_can_attempt_outbound_connection": true,
+      "effective_egress_to_unapproved_sink_allowed": true,
+      "payload_can_be_sent": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "reachable",
+    "reason": "All stated preconditions intentionally hold; the actor lacks business entitlement."
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-egress--control",
+    "chain_id": "k8s-egress",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "workload_has_sensitive_record": true,
+      "workload_can_attempt_outbound_connection": true,
+      "effective_egress_to_unapproved_sink_allowed": false,
+      "payload_can_be_sent": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "A single proposed control removes a necessary model condition."
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-egress--unknown-control",
+    "chain_id": "k8s-egress",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "workload_has_sensitive_record": true,
+      "workload_can_attempt_outbound_connection": true,
+      "effective_egress_to_unapproved_sink_allowed": null,
+      "payload_can_be_sent": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "No observation proves whether the control is enforced."
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-egress--legitimate-delegation",
+    "chain_id": "k8s-egress",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "workload_has_sensitive_record": true,
+      "workload_can_attempt_outbound_connection": true,
+      "effective_egress_to_unapproved_sink_allowed": true,
+      "payload_can_be_sent": true,
+      "caller_outside_business_entitlement": false
+    },
+    "expected_outcome": "blocked",
+    "reason": "Delegation is intended by the business policy; this target is not an unauthorized outcome."
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-egress--without-workload_has_sensitive_record",
+    "chain_id": "k8s-egress",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "workload_has_sensitive_record": false,
+      "workload_can_attempt_outbound_connection": true,
+      "effective_egress_to_unapproved_sink_allowed": true,
+      "payload_can_be_sent": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: workload_has_sensitive_record"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-egress--missing-workload_has_sensitive_record",
+    "chain_id": "k8s-egress",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "workload_has_sensitive_record": null,
+      "workload_can_attempt_outbound_connection": true,
+      "effective_egress_to_unapproved_sink_allowed": true,
+      "payload_can_be_sent": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: workload_has_sensitive_record"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-egress--without-workload_can_attempt_outbound_connection",
+    "chain_id": "k8s-egress",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "workload_has_sensitive_record": true,
+      "workload_can_attempt_outbound_connection": false,
+      "effective_egress_to_unapproved_sink_allowed": true,
+      "payload_can_be_sent": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: workload_can_attempt_outbound_connection"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-egress--missing-workload_can_attempt_outbound_connection",
+    "chain_id": "k8s-egress",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "workload_has_sensitive_record": true,
+      "workload_can_attempt_outbound_connection": null,
+      "effective_egress_to_unapproved_sink_allowed": true,
+      "payload_can_be_sent": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: workload_can_attempt_outbound_connection"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-egress--without-effective_egress_to_unapproved_sink_allowed",
+    "chain_id": "k8s-egress",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "workload_has_sensitive_record": true,
+      "workload_can_attempt_outbound_connection": true,
+      "effective_egress_to_unapproved_sink_allowed": false,
+      "payload_can_be_sent": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: effective_egress_to_unapproved_sink_allowed"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-egress--missing-effective_egress_to_unapproved_sink_allowed",
+    "chain_id": "k8s-egress",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "workload_has_sensitive_record": true,
+      "workload_can_attempt_outbound_connection": true,
+      "effective_egress_to_unapproved_sink_allowed": null,
+      "payload_can_be_sent": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: effective_egress_to_unapproved_sink_allowed"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-egress--without-payload_can_be_sent",
+    "chain_id": "k8s-egress",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "workload_has_sensitive_record": true,
+      "workload_can_attempt_outbound_connection": true,
+      "effective_egress_to_unapproved_sink_allowed": true,
+      "payload_can_be_sent": false,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: payload_can_be_sent"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-egress--missing-payload_can_be_sent",
+    "chain_id": "k8s-egress",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "workload_has_sensitive_record": true,
+      "workload_can_attempt_outbound_connection": true,
+      "effective_egress_to_unapproved_sink_allowed": true,
+      "payload_can_be_sent": null,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: payload_can_be_sent"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-egress--without-caller_outside_business_entitlement",
+    "chain_id": "k8s-egress",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "workload_has_sensitive_record": true,
+      "workload_can_attempt_outbound_connection": true,
+      "effective_egress_to_unapproved_sink_allowed": true,
+      "payload_can_be_sent": true,
+      "caller_outside_business_entitlement": false
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: caller_outside_business_entitlement"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-egress--missing-caller_outside_business_entitlement",
+    "chain_id": "k8s-egress",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "workload_has_sensitive_record": true,
+      "workload_can_attempt_outbound_connection": true,
+      "effective_egress_to_unapproved_sink_allowed": true,
+      "payload_can_be_sent": true,
+      "caller_outside_business_entitlement": null
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: caller_outside_business_entitlement"
+  },
+  {
+    "schema_version": 1,
+    "id": "k8s-egress--deny-with-other-unknown",
+    "chain_id": "k8s-egress",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "workload_has_sensitive_record": null,
+      "workload_can_attempt_outbound_connection": true,
+      "effective_egress_to_unapproved_sink_allowed": false,
+      "payload_can_be_sent": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "A known necessary-condition denial blocks this model even when another fact is unknown."
+  },
+  {
+    "schema_version": 1,
+    "id": "agent-tool--baseline",
+    "chain_id": "agent-tool",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "untrusted_input_can_request_tool_action": true,
+      "tool_accepts_requested_action": true,
+      "actor_action_authorization_missing": true,
+      "tool_identity_has_effective_action_permission": true,
+      "tool_executes_requested_action": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "reachable",
+    "reason": "All stated preconditions intentionally hold; the actor lacks business entitlement."
+  },
+  {
+    "schema_version": 1,
+    "id": "agent-tool--control",
+    "chain_id": "agent-tool",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "untrusted_input_can_request_tool_action": true,
+      "tool_accepts_requested_action": true,
+      "actor_action_authorization_missing": false,
+      "tool_identity_has_effective_action_permission": true,
+      "tool_executes_requested_action": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "A single proposed control removes a necessary model condition."
+  },
+  {
+    "schema_version": 1,
+    "id": "agent-tool--unknown-control",
+    "chain_id": "agent-tool",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "untrusted_input_can_request_tool_action": true,
+      "tool_accepts_requested_action": true,
+      "actor_action_authorization_missing": null,
+      "tool_identity_has_effective_action_permission": true,
+      "tool_executes_requested_action": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "No observation proves whether the control is enforced."
+  },
+  {
+    "schema_version": 1,
+    "id": "agent-tool--legitimate-delegation",
+    "chain_id": "agent-tool",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "untrusted_input_can_request_tool_action": true,
+      "tool_accepts_requested_action": true,
+      "actor_action_authorization_missing": true,
+      "tool_identity_has_effective_action_permission": true,
+      "tool_executes_requested_action": true,
+      "caller_outside_business_entitlement": false
+    },
+    "expected_outcome": "blocked",
+    "reason": "Delegation is intended by the business policy; this target is not an unauthorized outcome."
+  },
+  {
+    "schema_version": 1,
+    "id": "agent-tool--without-untrusted_input_can_request_tool_action",
+    "chain_id": "agent-tool",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "untrusted_input_can_request_tool_action": false,
+      "tool_accepts_requested_action": true,
+      "actor_action_authorization_missing": true,
+      "tool_identity_has_effective_action_permission": true,
+      "tool_executes_requested_action": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: untrusted_input_can_request_tool_action"
+  },
+  {
+    "schema_version": 1,
+    "id": "agent-tool--missing-untrusted_input_can_request_tool_action",
+    "chain_id": "agent-tool",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "untrusted_input_can_request_tool_action": null,
+      "tool_accepts_requested_action": true,
+      "actor_action_authorization_missing": true,
+      "tool_identity_has_effective_action_permission": true,
+      "tool_executes_requested_action": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: untrusted_input_can_request_tool_action"
+  },
+  {
+    "schema_version": 1,
+    "id": "agent-tool--without-tool_accepts_requested_action",
+    "chain_id": "agent-tool",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "untrusted_input_can_request_tool_action": true,
+      "tool_accepts_requested_action": false,
+      "actor_action_authorization_missing": true,
+      "tool_identity_has_effective_action_permission": true,
+      "tool_executes_requested_action": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: tool_accepts_requested_action"
+  },
+  {
+    "schema_version": 1,
+    "id": "agent-tool--missing-tool_accepts_requested_action",
+    "chain_id": "agent-tool",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "untrusted_input_can_request_tool_action": true,
+      "tool_accepts_requested_action": null,
+      "actor_action_authorization_missing": true,
+      "tool_identity_has_effective_action_permission": true,
+      "tool_executes_requested_action": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: tool_accepts_requested_action"
+  },
+  {
+    "schema_version": 1,
+    "id": "agent-tool--without-actor_action_authorization_missing",
+    "chain_id": "agent-tool",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "untrusted_input_can_request_tool_action": true,
+      "tool_accepts_requested_action": true,
+      "actor_action_authorization_missing": false,
+      "tool_identity_has_effective_action_permission": true,
+      "tool_executes_requested_action": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: actor_action_authorization_missing"
+  },
+  {
+    "schema_version": 1,
+    "id": "agent-tool--missing-actor_action_authorization_missing",
+    "chain_id": "agent-tool",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "untrusted_input_can_request_tool_action": true,
+      "tool_accepts_requested_action": true,
+      "actor_action_authorization_missing": null,
+      "tool_identity_has_effective_action_permission": true,
+      "tool_executes_requested_action": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: actor_action_authorization_missing"
+  },
+  {
+    "schema_version": 1,
+    "id": "agent-tool--without-tool_identity_has_effective_action_permission",
+    "chain_id": "agent-tool",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "untrusted_input_can_request_tool_action": true,
+      "tool_accepts_requested_action": true,
+      "actor_action_authorization_missing": true,
+      "tool_identity_has_effective_action_permission": false,
+      "tool_executes_requested_action": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: tool_identity_has_effective_action_permission"
+  },
+  {
+    "schema_version": 1,
+    "id": "agent-tool--missing-tool_identity_has_effective_action_permission",
+    "chain_id": "agent-tool",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "untrusted_input_can_request_tool_action": true,
+      "tool_accepts_requested_action": true,
+      "actor_action_authorization_missing": true,
+      "tool_identity_has_effective_action_permission": null,
+      "tool_executes_requested_action": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: tool_identity_has_effective_action_permission"
+  },
+  {
+    "schema_version": 1,
+    "id": "agent-tool--without-tool_executes_requested_action",
+    "chain_id": "agent-tool",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "untrusted_input_can_request_tool_action": true,
+      "tool_accepts_requested_action": true,
+      "actor_action_authorization_missing": true,
+      "tool_identity_has_effective_action_permission": true,
+      "tool_executes_requested_action": false,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: tool_executes_requested_action"
+  },
+  {
+    "schema_version": 1,
+    "id": "agent-tool--missing-tool_executes_requested_action",
+    "chain_id": "agent-tool",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "untrusted_input_can_request_tool_action": true,
+      "tool_accepts_requested_action": true,
+      "actor_action_authorization_missing": true,
+      "tool_identity_has_effective_action_permission": true,
+      "tool_executes_requested_action": null,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: tool_executes_requested_action"
+  },
+  {
+    "schema_version": 1,
+    "id": "agent-tool--without-caller_outside_business_entitlement",
+    "chain_id": "agent-tool",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "untrusted_input_can_request_tool_action": true,
+      "tool_accepts_requested_action": true,
+      "actor_action_authorization_missing": true,
+      "tool_identity_has_effective_action_permission": true,
+      "tool_executes_requested_action": true,
+      "caller_outside_business_entitlement": false
+    },
+    "expected_outcome": "blocked",
+    "reason": "Remove one necessary precondition: caller_outside_business_entitlement"
+  },
+  {
+    "schema_version": 1,
+    "id": "agent-tool--missing-caller_outside_business_entitlement",
+    "chain_id": "agent-tool",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "untrusted_input_can_request_tool_action": true,
+      "tool_accepts_requested_action": true,
+      "actor_action_authorization_missing": true,
+      "tool_identity_has_effective_action_permission": true,
+      "tool_executes_requested_action": true,
+      "caller_outside_business_entitlement": null
+    },
+    "expected_outcome": "unknown",
+    "reason": "Evidence is missing for one necessary precondition: caller_outside_business_entitlement"
+  },
+  {
+    "schema_version": 1,
+    "id": "agent-tool--deny-with-other-unknown",
+    "chain_id": "agent-tool",
+    "evidence_kind": "synthetic",
+    "facts": {
+      "untrusted_input_can_request_tool_action": null,
+      "tool_accepts_requested_action": true,
+      "actor_action_authorization_missing": false,
+      "tool_identity_has_effective_action_permission": true,
+      "tool_executes_requested_action": true,
+      "caller_outside_business_entitlement": true
+    },
+    "expected_outcome": "blocked",
+    "reason": "A known necessary-condition denial blocks this model even when another fact is unknown."
+  }
+]

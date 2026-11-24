@@ -1,0 +1,566 @@
+[
+  {
+    "profile_label": "AWS",
+    "condition": "baseline",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": true,
+    "expected_output_returned": true,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "runtime_read",
+        "allowed": true,
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "return_output",
+        "allowed": true
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "AWS",
+    "condition": "actor_binding",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": false,
+    "expected_output_returned": false,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "admit_job",
+        "allowed": false,
+        "reason": "actor entitlement"
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "AWS",
+    "condition": "runtime_scope",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": false,
+    "expected_output_returned": false,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "runtime_read",
+        "allowed": false,
+        "reason": "effective data scope"
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "AWS",
+    "condition": "disclosure_boundary",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": false,
+    "expected_output_returned": false,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "runtime_read",
+        "allowed": true,
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "return_output",
+        "allowed": false,
+        "reason": "disclosure boundary"
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "AWS",
+    "condition": "effective_data_deny",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": false,
+    "expected_output_returned": false,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "runtime_read",
+        "allowed": false,
+        "reason": "effective data scope"
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "AWS",
+    "condition": "digest_binding",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": false,
+    "expected_output_returned": false,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "admit_artifact",
+        "allowed": false,
+        "reason": "digest mismatch"
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "Azure",
+    "condition": "baseline",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": true,
+    "expected_output_returned": true,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "runtime_read",
+        "allowed": true,
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "return_output",
+        "allowed": true
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "Azure",
+    "condition": "actor_binding",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": false,
+    "expected_output_returned": false,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "admit_job",
+        "allowed": false,
+        "reason": "actor entitlement"
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "Azure",
+    "condition": "runtime_scope",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": false,
+    "expected_output_returned": false,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "runtime_read",
+        "allowed": false,
+        "reason": "effective data scope"
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "Azure",
+    "condition": "disclosure_boundary",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": false,
+    "expected_output_returned": false,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "runtime_read",
+        "allowed": true,
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "return_output",
+        "allowed": false,
+        "reason": "disclosure boundary"
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "Azure",
+    "condition": "effective_data_deny",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": false,
+    "expected_output_returned": false,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "runtime_read",
+        "allowed": false,
+        "reason": "effective data scope"
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "Azure",
+    "condition": "digest_binding",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": false,
+    "expected_output_returned": false,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "admit_artifact",
+        "allowed": false,
+        "reason": "digest mismatch"
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "Google Cloud",
+    "condition": "baseline",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": true,
+    "expected_output_returned": true,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "runtime_read",
+        "allowed": true,
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "return_output",
+        "allowed": true
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "Google Cloud",
+    "condition": "actor_binding",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": false,
+    "expected_output_returned": false,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "admit_job",
+        "allowed": false,
+        "reason": "actor entitlement"
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "Google Cloud",
+    "condition": "runtime_scope",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": false,
+    "expected_output_returned": false,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "runtime_read",
+        "allowed": false,
+        "reason": "effective data scope"
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "Google Cloud",
+    "condition": "disclosure_boundary",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": false,
+    "expected_output_returned": false,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "runtime_read",
+        "allowed": true,
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "return_output",
+        "allowed": false,
+        "reason": "disclosure boundary"
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "Google Cloud",
+    "condition": "effective_data_deny",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": false,
+    "expected_output_returned": false,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "runtime_read",
+        "allowed": false,
+        "reason": "effective data scope"
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "Google Cloud",
+    "condition": "digest_binding",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": false,
+    "expected_output_returned": false,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "admit_artifact",
+        "allowed": false,
+        "reason": "digest mismatch"
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "Kubernetes",
+    "condition": "baseline",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": true,
+    "expected_output_returned": true,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "runtime_read",
+        "allowed": true,
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "return_output",
+        "allowed": true
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "Kubernetes",
+    "condition": "actor_binding",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": false,
+    "expected_output_returned": false,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "admit_job",
+        "allowed": false,
+        "reason": "actor entitlement"
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "Kubernetes",
+    "condition": "runtime_scope",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": false,
+    "expected_output_returned": false,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "runtime_read",
+        "allowed": false,
+        "reason": "effective data scope"
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "Kubernetes",
+    "condition": "disclosure_boundary",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": false,
+    "expected_output_returned": false,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "runtime_read",
+        "allowed": true,
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "return_output",
+        "allowed": false,
+        "reason": "disclosure boundary"
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "Kubernetes",
+    "condition": "effective_data_deny",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": false,
+    "expected_output_returned": false,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "runtime_read",
+        "allowed": false,
+        "reason": "effective data scope"
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  },
+  {
+    "profile_label": "Kubernetes",
+    "condition": "digest_binding",
+    "direct_access_denied": true,
+    "unauthorized_output_returned": false,
+    "expected_output_returned": false,
+    "matches_expected": true,
+    "audit": [
+      {
+        "operation": "direct_read",
+        "allowed": false,
+        "actor": "tenant-a",
+        "tenant": "tenant-b"
+      },
+      {
+        "operation": "admit_artifact",
+        "allowed": false,
+        "reason": "digest mismatch"
+      }
+    ],
+    "scope": "one shared mock backend; profiles are not independent provider experiments"
+  }
+]

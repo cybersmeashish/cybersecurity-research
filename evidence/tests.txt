@@ -1,0 +1,18 @@
+test_dataset_expected_outcomes (test_security_boundaries.BoundaryTests.test_dataset_expected_outcomes) ... ok
+test_each_necessary_condition_can_block (test_security_boundaries.BoundaryTests.test_each_necessary_condition_can_block) ... ok
+test_explicit_data_denial_blocks_other_unknowns (test_security_boundaries.BoundaryTests.test_explicit_data_denial_blocks_other_unknowns) ... ok
+test_legitimate_job_survives_actor_and_digest_controls (test_security_boundaries.BoundaryTests.test_legitimate_job_survives_actor_and_digest_controls) ... ok
+test_live_evidence_cannot_be_labelled_as_lab_results (test_security_boundaries.BoundaryTests.test_live_evidence_cannot_be_labelled_as_lab_results) ... ok
+test_local_authority_bindings_and_controls (test_security_boundaries.BoundaryTests.test_local_authority_bindings_and_controls) ... ok
+test_missing_evidence_cannot_confirm_path (test_security_boundaries.BoundaryTests.test_missing_evidence_cannot_confirm_path) ... ok
+test_output_block_does_not_erase_internal_read (test_security_boundaries.BoundaryTests.test_output_block_does_not_erase_internal_read) ... ok
+test_private_ingress_annotation_does_not_block_egress (test_security_boundaries.BoundaryTests.test_private_ingress_annotation_does_not_block_egress) ... ok
+test_reject_cycle_and_unknown_dependency (test_security_boundaries.BoundaryTests.test_reject_cycle_and_unknown_dependency) ... ok
+test_reject_derived_node_override (test_security_boundaries.BoundaryTests.test_reject_derived_node_override) ... ok
+test_reject_duplicate_or_empty_preconditions (test_security_boundaries.BoundaryTests.test_reject_duplicate_or_empty_preconditions) ... ok
+test_reject_truthy_non_boolean_evidence (test_security_boundaries.BoundaryTests.test_reject_truthy_non_boolean_evidence) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.003s
+
+OK
