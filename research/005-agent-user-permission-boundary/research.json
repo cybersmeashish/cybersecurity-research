@@ -1,0 +1,26 @@
+{
+  "id": "CAI-005",
+  "title": "User-bound authorization for cloud actions executed by AI agents",
+  "version": "0.1",
+  "status": "proposed",
+  "prepared_on": "2026-11-24",
+  "area": "Cloud + AI",
+  "priority": 4,
+  "hypothesis": "An agent using a shared cloud role without enforcing its initiating user's rights can execute an action denied to that user even when the workload role is correctly authorized.",
+  "null_hypothesis": "Every action is authorized by both the user policy and agent workload policy.",
+  "path": "research/005-agent-user-permission-boundary/README.md",
+  "experiments_executed": 0,
+  "provider_vulnerabilities_confirmed": 0,
+  "novelty_review": "pending",
+  "independent_review": "pending",
+  "tool": {
+    "name": "Agent user-permission gateway",
+    "status": "design only"
+  },
+  "sources": [
+    {
+      "id": "aws-agent-identity",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/agentic-ai-lens/agentsec03.html"
+    }
+  ]
+}

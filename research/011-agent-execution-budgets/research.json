@@ -1,0 +1,26 @@
+{
+  "id": "CAI-011",
+  "title": "End-to-end budget enforcement across agent execution graphs",
+  "version": "0.1",
+  "status": "proposed",
+  "prepared_on": "2026-11-24",
+  "area": "Cloud + AI",
+  "priority": 10,
+  "hypothesis": "Per-request limits fail to bound aggregate task consumption when reasoning, retries, fan-out, and delegation are charged independently without a shared task budget.",
+  "null_hypothesis": "All task-linked work stays within one budget plus a pre-specified maximum in-flight allowance.",
+  "path": "research/011-agent-execution-budgets/README.md",
+  "experiments_executed": 0,
+  "provider_vulnerabilities_confirmed": 0,
+  "novelty_review": "pending",
+  "independent_review": "pending",
+  "tool": {
+    "name": "Agent execution-budget controller",
+    "status": "design only"
+  },
+  "sources": [
+    {
+      "id": "overthink",
+      "url": "https://arxiv.org/abs/2502.02542"
+    }
+  ]
+}

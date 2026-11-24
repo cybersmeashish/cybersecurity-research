@@ -1,0 +1,26 @@
+{
+  "id": "CAI-008",
+  "title": "Trust provenance through agent-memory summarization",
+  "version": "0.1",
+  "status": "proposed",
+  "prepared_on": "2026-11-24",
+  "area": "AI",
+  "priority": 7,
+  "hypothesis": "A summarizer dropping source trust labels can promote low-trust instructions into authoritative recalled guidance, causing a forbidden later-session action without the original adversarial input being present.",
+  "null_hypothesis": "Source trust boundaries remain effective after summarization and recall.",
+  "path": "research/008-agent-memory-provenance/README.md",
+  "experiments_executed": 0,
+  "provider_vulnerabilities_confirmed": 0,
+  "novelty_review": "pending",
+  "independent_review": "pending",
+  "tool": {
+    "name": "Agent memory provenance validator",
+    "status": "design only"
+  },
+  "sources": [
+    {
+      "id": "agentpoison",
+      "url": "https://arxiv.org/abs/2407.12784"
+    }
+  ]
+}

@@ -4,6 +4,76 @@
       "id": "AIA-001",
       "folder": "research/001-cloud-ai-infrastructure",
       "stage": "Comparative research and synthetic local experiments"
+    },
+    {
+      "id": "CAI-002",
+      "folder": "research/002-rag-access-control",
+      "title": "Authorization lineage in RAG-derived artifacts",
+      "stage": "Proposed research; experiments not executed",
+      "status": "proposed"
+    },
+    {
+      "id": "CAI-003",
+      "folder": "research/003-mcp-authorization-confusion",
+      "title": "Principal binding across multi-user MCP authorization flows",
+      "stage": "Proposed research; experiments not executed",
+      "status": "proposed"
+    },
+    {
+      "id": "CAI-004",
+      "folder": "research/004-workload-identity-federation",
+      "title": "Identity lifecycle hazards in workload federation policies",
+      "stage": "Proposed research; experiments not executed",
+      "status": "proposed"
+    },
+    {
+      "id": "CAI-005",
+      "folder": "research/005-agent-user-permission-boundary",
+      "title": "User-bound authorization for cloud actions executed by AI agents",
+      "stage": "Proposed research; experiments not executed",
+      "status": "proposed"
+    },
+    {
+      "id": "CAI-006",
+      "folder": "research/006-ai-connector-ssrf",
+      "title": "Destination validation across AI connector fetch chains",
+      "stage": "Proposed research; experiments not executed",
+      "status": "proposed"
+    },
+    {
+      "id": "CAI-007",
+      "folder": "research/007-soc-log-prompt-injection",
+      "title": "Action-level impact of adversarial logs on SOC agents",
+      "stage": "Proposed research; experiments not executed",
+      "status": "proposed"
+    },
+    {
+      "id": "CAI-008",
+      "folder": "research/008-agent-memory-provenance",
+      "title": "Trust provenance through agent-memory summarization",
+      "stage": "Proposed research; experiments not executed",
+      "status": "proposed"
+    },
+    {
+      "id": "CAI-009",
+      "folder": "research/009-serverless-tenant-event-flows",
+      "title": "Tenant authorization through serverless event chains",
+      "stage": "Proposed research; experiments not executed",
+      "status": "proposed"
+    },
+    {
+      "id": "CAI-010",
+      "folder": "research/010-inference-cache-isolation",
+      "title": "Tenant enforcement of inference prefix-cache isolation",
+      "stage": "Proposed research; experiments not executed",
+      "status": "proposed"
+    },
+    {
+      "id": "CAI-011",
+      "folder": "research/011-agent-execution-budgets",
+      "title": "End-to-end budget enforcement across agent execution graphs",
+      "stage": "Proposed research; experiments not executed",
+      "status": "proposed"
     }
   ],
   "frameworks": [

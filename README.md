@@ -18,3 +18,9 @@ Research observations, candidate investigation leads and confirmed operational i
 Use the [OrbStack workflow](AGENTS.md), [research reproduction](research/001-cloud-ai-infrastructure/lab/README.md) and [hunt laboratory](frameworks/proactive-threat-hunting/lab/README.md). Final verification runs both workspaces with external networking disabled and the source mounted read-only.
 
 [Contribution protocol](CONTRIBUTING.md) · [Security reporting](SECURITY.md) · [Portfolio index](portfolio-index.json).
+
+## Cloud and AI security research hypotheses
+
+Ten separate proposals for vulnerability discovery and security tools: RAG authorization, MCP principal binding, workload federation, agent permissions, connector SSRF, SOC log injection, memory provenance, serverless tenant flows, inference-cache isolation, and execution budgets.
+
+[Browse all ten research folders](research/CLOUD-AI-SECURITY-HYPOTHESES.md). Each includes a hypothesis, experiment plan, proposed tool, and primary sources. Experiments and vulnerability confirmation are pending.

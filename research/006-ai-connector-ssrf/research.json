@@ -1,0 +1,26 @@
+{
+  "id": "CAI-006",
+  "title": "Destination validation across AI connector fetch chains",
+  "version": "0.1",
+  "status": "proposed",
+  "prepared_on": "2026-11-24",
+  "area": "Cloud + AI",
+  "priority": 5,
+  "hypothesis": "A connector validating only an initial URL or DNS answer can contact a forbidden internal destination after a redirect or changed resolution alters the actual connection target.",
+  "null_hypothesis": "Each connection and redirect hop remains within the declared destination policy.",
+  "path": "research/006-ai-connector-ssrf/README.md",
+  "experiments_executed": 0,
+  "provider_vulnerabilities_confirmed": 0,
+  "novelty_review": "pending",
+  "independent_review": "pending",
+  "tool": {
+    "name": "AI connector egress test suite",
+    "status": "design only"
+  },
+  "sources": [
+    {
+      "id": "mcp-security",
+      "url": "https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices"
+    }
+  ]
+}

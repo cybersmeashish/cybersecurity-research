@@ -1,0 +1,26 @@
+{
+  "id": "CAI-002",
+  "title": "Authorization lineage in RAG-derived artifacts",
+  "version": "0.1",
+  "status": "proposed",
+  "prepared_on": "2026-11-24",
+  "area": "Cloud + AI",
+  "priority": 1,
+  "hypothesis": "A RAG application enforcing access only at initial retrieval, without equivalent checks on cached answers or derived summaries, can return a protected synthetic marker to a denied principal after the documented authorization synchronization window.",
+  "null_hypothesis": "Cached and derived responses remain scoped to the requesting principal and current source permissions in every tested case.",
+  "path": "research/002-rag-access-control/README.md",
+  "experiments_executed": 0,
+  "provider_vulnerabilities_confirmed": 0,
+  "novelty_review": "pending",
+  "independent_review": "pending",
+  "tool": {
+    "name": "RAG authorization lineage tester",
+    "status": "design only"
+  },
+  "sources": [
+    {
+      "id": "azure-access",
+      "url": "https://learn.microsoft.com/en-us/azure/search/search-document-level-access-overview"
+    }
+  ]
+}

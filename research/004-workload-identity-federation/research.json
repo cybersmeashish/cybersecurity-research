@@ -1,0 +1,26 @@
+{
+  "id": "CAI-004",
+  "title": "Identity lifecycle hazards in workload federation policies",
+  "version": "0.1",
+  "status": "proposed",
+  "prepared_on": "2026-11-24",
+  "area": "Cloud",
+  "priority": 3,
+  "hypothesis": "A trust policy authorizing mutable or reusable identity names without equivalent stable-ID restrictions can map a distinct post-lifecycle workload to the previously trusted cloud principal.",
+  "null_hypothesis": "Only the intended stable workload maps to the principal before and after the tested lifecycle events.",
+  "path": "research/004-workload-identity-federation/README.md",
+  "experiments_executed": 0,
+  "provider_vulnerabilities_confirmed": 0,
+  "novelty_review": "pending",
+  "independent_review": "pending",
+  "tool": {
+    "name": "OIDC trust-policy lifecycle auditor",
+    "status": "design only"
+  },
+  "sources": [
+    {
+      "id": "google-wif",
+      "url": "https://docs.cloud.google.com/iam/docs/best-practices-for-using-workload-identity-federation"
+    }
+  ]
+}

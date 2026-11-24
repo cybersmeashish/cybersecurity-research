@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "repository": "cybersmeashish/cybersecurity-research",
+  "prepared_on": "2026-11-24",
+  "collection_status": "proposed",
+  "research": [
+    {
+      "id": "CAI-002",
+      "priority": 1,
+      "title": "Authorization lineage in RAG-derived artifacts",
+      "path": "research/002-rag-access-control/README.md",
+      "metadata_path": "research/002-rag-access-control/research.json",
+      "status": "proposed"
+    },
+    {
+      "id": "CAI-003",
+      "priority": 2,
+      "title": "Principal binding across multi-user MCP authorization flows",
+      "path": "research/003-mcp-authorization-confusion/README.md",
+      "metadata_path": "research/003-mcp-authorization-confusion/research.json",
+      "status": "proposed"
+    },
+    {
+      "id": "CAI-004",
+      "priority": 3,
+      "title": "Identity lifecycle hazards in workload federation policies",
+      "path": "research/004-workload-identity-federation/README.md",
+      "metadata_path": "research/004-workload-identity-federation/research.json",
+      "status": "proposed"
+    },
+    {
+      "id": "CAI-005",
+      "priority": 4,
+      "title": "User-bound authorization for cloud actions executed by AI agents",
+      "path": "research/005-agent-user-permission-boundary/README.md",
+      "metadata_path": "research/005-agent-user-permission-boundary/research.json",
+      "status": "proposed"
+    },
+    {
+      "id": "CAI-006",
+      "priority": 5,
+      "title": "Destination validation across AI connector fetch chains",
+      "path": "research/006-ai-connector-ssrf/README.md",
+      "metadata_path": "research/006-ai-connector-ssrf/research.json",
+      "status": "proposed"
+    },
+    {
+      "id": "CAI-007",
+      "priority": 6,
+      "title": "Action-level impact of adversarial logs on SOC agents",
+      "path": "research/007-soc-log-prompt-injection/README.md",
+      "metadata_path": "research/007-soc-log-prompt-injection/research.json",
+      "status": "proposed"
+    },
+    {
+      "id": "CAI-008",
+      "priority": 7,
+      "title": "Trust provenance through agent-memory summarization",
+      "path": "research/008-agent-memory-provenance/README.md",
+      "metadata_path": "research/008-agent-memory-provenance/research.json",
+      "status": "proposed"
+    },
+    {
+      "id": "CAI-009",
+      "priority": 8,
+      "title": "Tenant authorization through serverless event chains",
+      "path": "research/009-serverless-tenant-event-flows/README.md",
+      "metadata_path": "research/009-serverless-tenant-event-flows/research.json",
+      "status": "proposed"
+    },
+    {
+      "id": "CAI-010",
+      "priority": 9,
+      "title": "Tenant enforcement of inference prefix-cache isolation",
+      "path": "research/010-inference-cache-isolation/README.md",
+      "metadata_path": "research/010-inference-cache-isolation/research.json",
+      "status": "proposed"
+    },
+    {
+      "id": "CAI-011",
+      "priority": 10,
+      "title": "End-to-end budget enforcement across agent execution graphs",
+      "path": "research/011-agent-execution-budgets/README.md",
+      "metadata_path": "research/011-agent-execution-budgets/research.json",
+      "status": "proposed"
+    }
+  ]
+}

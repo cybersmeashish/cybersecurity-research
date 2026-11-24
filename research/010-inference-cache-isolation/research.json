@@ -1,0 +1,26 @@
+{
+  "id": "CAI-010",
+  "title": "Tenant enforcement of inference prefix-cache isolation",
+  "version": "0.1",
+  "status": "proposed",
+  "prepared_on": "2026-11-24",
+  "area": "Cloud + AI",
+  "priority": 9,
+  "hypothesis": "A gateway omitting tenant cache partitioning or allowing another tenant's cache salt enables above-chance inference of whether a chosen prompt prefix was processed by that tenant.",
+  "null_hypothesis": "Cross-tenant prefix membership cannot be distinguished above the pre-registered chance baseline under tested load and noise.",
+  "path": "research/010-inference-cache-isolation/README.md",
+  "experiments_executed": 0,
+  "provider_vulnerabilities_confirmed": 0,
+  "novelty_review": "pending",
+  "independent_review": "pending",
+  "tool": {
+    "name": "Inference-cache isolation auditor",
+    "status": "design only"
+  },
+  "sources": [
+    {
+      "id": "vllm-cache",
+      "url": "https://docs.vllm.ai/en/latest/design/prefix_caching/"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "CAI-007",
+  "title": "Action-level impact of adversarial logs on SOC agents",
+  "version": "0.1",
+  "status": "proposed",
+  "prepared_on": "2026-11-24",
+  "area": "Cloud + AI",
+  "priority": 6,
+  "hypothesis": "Attacker-controlled log text can cause a SOC agent to suppress a seeded incident or execute forbidden mock remediation even when its output conforms to a required schema.",
+  "null_hypothesis": "Adversarial log fields do not alter protected handling beyond factual event content and pre-registered baseline variability.",
+  "path": "research/007-soc-log-prompt-injection/README.md",
+  "experiments_executed": 0,
+  "provider_vulnerabilities_confirmed": 0,
+  "novelty_review": "pending",
+  "independent_review": "pending",
+  "tool": {
+    "name": "SOC-agent adversarial regression suite",
+    "status": "design only"
+  },
+  "sources": [
+    {
+      "id": "soc-logs",
+      "url": "https://arxiv.org/abs/2605.24421"
+    }
+  ]
+}

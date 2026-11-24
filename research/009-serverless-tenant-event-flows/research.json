@@ -1,0 +1,26 @@
+{
+  "id": "CAI-009",
+  "title": "Tenant authorization through serverless event chains",
+  "version": "0.1",
+  "status": "proposed",
+  "prepared_on": "2026-11-24",
+  "area": "Cloud",
+  "priority": 8,
+  "hypothesis": "A privileged consumer trusting an unbound tenant identifier in an event payload can access another tenant's synthetic resource despite correct direct-access restrictions on the producer.",
+  "null_hypothesis": "Downstream resource actions remain bound to authenticated tenant provenance and permitted producer scope.",
+  "path": "research/009-serverless-tenant-event-flows/README.md",
+  "experiments_executed": 0,
+  "provider_vulnerabilities_confirmed": 0,
+  "novelty_review": "pending",
+  "independent_review": "pending",
+  "tool": {
+    "name": "Serverless tenant-flow scanner",
+    "status": "design only"
+  },
+  "sources": [
+    {
+      "id": "cloudflow",
+      "url": "https://www.usenix.org/conference/usenixsecurity25/presentation/raffa"
+    }
+  ]
+}

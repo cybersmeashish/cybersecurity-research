@@ -1,0 +1,26 @@
+{
+  "id": "CAI-003",
+  "title": "Principal binding across multi-user MCP authorization flows",
+  "version": "0.1",
+  "status": "proposed",
+  "prepared_on": "2026-11-24",
+  "area": "AI",
+  "priority": 2,
+  "hypothesis": "A multi-user MCP proxy with incomplete binding among user, client, session, consent, and token audience can accept an authorization artifact created for a different principal or client.",
+  "null_hypothesis": "Authorization artifacts remain bound to their intended principal, client, resource, and lifecycle state.",
+  "path": "research/003-mcp-authorization-confusion/README.md",
+  "experiments_executed": 0,
+  "provider_vulnerabilities_confirmed": 0,
+  "novelty_review": "pending",
+  "independent_review": "pending",
+  "tool": {
+    "name": "MCP authorization conformance suite",
+    "status": "design only"
+  },
+  "sources": [
+    {
+      "id": "mcp-security",
+      "url": "https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices"
+    }
+  ]
+}
