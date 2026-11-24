@@ -1,0 +1,30 @@
+{
+  "study_id": "CAI-006",
+  "retrieved_on": "2026-11-24",
+  "sources": [
+    {
+      "id": "mcp-security",
+      "title": "Security Best Practices \u2014 Model Context Protocol",
+      "url": "https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices",
+      "kind": "official protocol documentation",
+      "scope": "Confused-deputy risks, token audience validation, token passthrough, and SSRF defenses.",
+      "sha256": "398a22d4791dfefc7ced9554c2c410754bffbc04f62d4a825c8480f6120220df",
+      "bytes": 289245,
+      "page_title": "Security Best Practices - Model Context Protocol",
+      "retrieved_on": "2026-11-24",
+      "paper_date": null
+    },
+    {
+      "id": "owasp-mcp",
+      "title": "MCP Security Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/MCP_Security_Cheat_Sheet.html",
+      "kind": "OWASP guidance",
+      "scope": "Implementation security controls; vulnerable deployment prevalence is not established.",
+      "sha256": "83d50bd8e60782c241cd7f4eb37fa3c32f10624a4329de4b31c8d620601a8626",
+      "bytes": 90580,
+      "page_title": "MCP Security - OWASP Cheat Sheet Series",
+      "retrieved_on": "2026-11-24",
+      "paper_date": null
+    }
+  ]
+}

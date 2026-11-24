@@ -1,0 +1,41 @@
+{
+  "study_id": "CAI-003",
+  "claims": [
+    {
+      "id": "CAI-003-E1",
+      "claim": "The seeded permissive profile produced 24 forbidden effects in 24 authored adversarial cases.",
+      "stage": "direct local synthetic observation",
+      "evidence": [
+        "evidence/results.csv",
+        "evidence/traces.json"
+      ],
+      "not_established": "Prevalence, novel vulnerability class, or a defect in any named product."
+    },
+    {
+      "id": "CAI-003-E2",
+      "claim": "The guarded profile matched all 36 declared policy labels and preserved 6 positive effects.",
+      "stage": "bounded local control result",
+      "evidence": [
+        "evidence/summary.json",
+        "evidence/tests.txt"
+      ],
+      "not_established": "Universal correctness, production utility, or performance."
+    },
+    {
+      "id": "CAI-003-E3",
+      "claim": "The partial profile retained 18 forbidden effects.",
+      "stage": "local control comparison",
+      "evidence": [
+        "evidence/results.csv"
+      ],
+      "not_established": "Performance of an untested vendor mitigation."
+    },
+    {
+      "id": "CAI-003-H1",
+      "claim": "A multi-user MCP proxy with incomplete binding among user, client, session, consent, and token audience can accept an authorization artifact created for a different principal or client.",
+      "stage": "original research hypothesis; only stated local subclaim evaluated",
+      "evidence": [],
+      "not_established": "The artifact is a two-part HMAC-signed JSON fixture, not an interoperable JWT. There is no browser OAuth flow, complete MCP server, consent UI, token endpoint, PKCE test, or third-party proxy assessment. Intended delegation requires a distinct documented contract."
+    }
+  ]
+}

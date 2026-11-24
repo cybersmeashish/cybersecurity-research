@@ -1,26 +1,37 @@
 {
   "id": "CAI-002",
   "title": "Authorization lineage in RAG-derived artifacts",
-  "version": "0.1",
-  "status": "proposed",
+  "version": "0.2",
+  "status": "controlled local synthetic study",
   "prepared_on": "2026-11-24",
   "area": "Cloud + AI",
   "priority": 1,
   "hypothesis": "A RAG application enforcing access only at initial retrieval, without equivalent checks on cached answers or derived summaries, can return a protected synthetic marker to a denied principal after the documented authorization synchronization window.",
   "null_hypothesis": "Cached and derived responses remain scoped to the requesting principal and current source permissions in every tested case.",
   "path": "research/002-rag-access-control/README.md",
-  "experiments_executed": 0,
+  "experiments_executed": 108,
   "provider_vulnerabilities_confirmed": 0,
-  "novelty_review": "pending",
+  "novelty_review": "known-class local mechanism study; exhaustive survey pending",
   "independent_review": "pending",
   "tool": {
     "name": "RAG authorization lineage tester",
-    "status": "design only"
+    "status": "local prototype implemented; production adapter pending"
   },
   "sources": [
     {
       "id": "azure-access",
       "url": "https://learn.microsoft.com/en-us/azure/search/search-document-level-access-overview"
+    },
+    {
+      "id": "owasp-agents",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html"
     }
-  ]
+  ],
+  "fixture_cases": 36,
+  "regression_methods": 6,
+  "local_hypothesis": "A derived artifact must be authorized at serving time against its current source permissions, not only against the permissions used when creating it.",
+  "hypothesis_evaluation": "Constructed local mechanism supported; implementation-level and population claims not established.",
+  "paper_path": "research/002-rag-access-control/PAPER.md",
+  "evidence_path": "research/002-rag-access-control/evidence/summary.json",
+  "model_calls": 0
 }

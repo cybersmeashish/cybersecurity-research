@@ -1,26 +1,41 @@
 {
   "id": "CAI-008",
   "title": "Trust provenance through agent-memory summarization",
-  "version": "0.1",
-  "status": "proposed",
+  "version": "0.2",
+  "status": "controlled local synthetic study",
   "prepared_on": "2026-11-24",
   "area": "AI",
   "priority": 7,
   "hypothesis": "A summarizer dropping source trust labels can promote low-trust instructions into authoritative recalled guidance, causing a forbidden later-session action without the original adversarial input being present.",
   "null_hypothesis": "Source trust boundaries remain effective after summarization and recall.",
   "path": "research/008-agent-memory-provenance/README.md",
-  "experiments_executed": 0,
+  "experiments_executed": 108,
   "provider_vulnerabilities_confirmed": 0,
-  "novelty_review": "pending",
+  "novelty_review": "known-class local mechanism study; exhaustive survey pending",
   "independent_review": "pending",
   "tool": {
     "name": "Agent memory provenance validator",
-    "status": "design only"
+    "status": "local prototype implemented; production adapter pending"
   },
   "sources": [
     {
       "id": "agentpoison",
       "url": "https://arxiv.org/abs/2407.12784"
+    },
+    {
+      "id": "owasp-agents",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html"
+    },
+    {
+      "id": "owasp-prompt",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html"
     }
-  ]
+  ],
+  "fixture_cases": 36,
+  "regression_methods": 6,
+  "local_hypothesis": "Dropping trust or derivation metadata can authorize a structured recalled instruction that lacked authority at ingestion; checking an intact authorized root prevents the effect.",
+  "hypothesis_evaluation": "Structured provenance mechanism supported; semantic/LLM memory poisoning not evaluated.",
+  "paper_path": "research/008-agent-memory-provenance/PAPER.md",
+  "evidence_path": "research/008-agent-memory-provenance/evidence/summary.json",
+  "model_calls": 0
 }

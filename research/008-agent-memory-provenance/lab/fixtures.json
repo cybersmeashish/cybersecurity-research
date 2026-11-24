@@ -1,0 +1,330 @@
+{
+  "study_id": "CAI-008",
+  "fixture_scope": "Constructed boundary cases, not a random sample of deployments",
+  "cases": [
+    {
+      "case_id": "memory-0-trusted_instruction",
+      "type": "trusted_instruction",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "memory-0-raw_lowtrust",
+      "type": "raw_lowtrust",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-0-summary_lost_label",
+      "type": "summary_lost_label",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-0-double_compaction",
+      "type": "double_compaction",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-0-unbound_derivation",
+      "type": "unbound_derivation",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-0-evicted_source",
+      "type": "evicted_source",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-1-trusted_instruction",
+      "type": "trusted_instruction",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "memory-1-raw_lowtrust",
+      "type": "raw_lowtrust",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-1-summary_lost_label",
+      "type": "summary_lost_label",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-1-double_compaction",
+      "type": "double_compaction",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-1-unbound_derivation",
+      "type": "unbound_derivation",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-1-evicted_source",
+      "type": "evicted_source",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-2-trusted_instruction",
+      "type": "trusted_instruction",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "memory-2-raw_lowtrust",
+      "type": "raw_lowtrust",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-2-summary_lost_label",
+      "type": "summary_lost_label",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-2-double_compaction",
+      "type": "double_compaction",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-2-unbound_derivation",
+      "type": "unbound_derivation",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-2-evicted_source",
+      "type": "evicted_source",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-3-trusted_instruction",
+      "type": "trusted_instruction",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "memory-3-raw_lowtrust",
+      "type": "raw_lowtrust",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-3-summary_lost_label",
+      "type": "summary_lost_label",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-3-double_compaction",
+      "type": "double_compaction",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-3-unbound_derivation",
+      "type": "unbound_derivation",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-3-evicted_source",
+      "type": "evicted_source",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-4-trusted_instruction",
+      "type": "trusted_instruction",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "memory-4-raw_lowtrust",
+      "type": "raw_lowtrust",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-4-summary_lost_label",
+      "type": "summary_lost_label",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-4-double_compaction",
+      "type": "double_compaction",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-4-unbound_derivation",
+      "type": "unbound_derivation",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-4-evicted_source",
+      "type": "evicted_source",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-5-trusted_instruction",
+      "type": "trusted_instruction",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "memory-5-raw_lowtrust",
+      "type": "raw_lowtrust",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-5-summary_lost_label",
+      "type": "summary_lost_label",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-5-double_compaction",
+      "type": "double_compaction",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-5-unbound_derivation",
+      "type": "unbound_derivation",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "memory-5-evicted_source",
+      "type": "evicted_source",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "adversarial",
+      "expected_effect": false
+    }
+  ]
+}

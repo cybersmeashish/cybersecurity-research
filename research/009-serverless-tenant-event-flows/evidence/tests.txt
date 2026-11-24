@@ -1,0 +1,11 @@
+test_fixture_ids_and_ground_truth_are_complete (test_study.BoundaryRegression.test_fixture_ids_and_ground_truth_are_complete) ... ok
+test_guarded_blocks_all_adversarial_effects (test_study.BoundaryRegression.test_guarded_blocks_all_adversarial_effects) ... ok
+test_guarded_handles_negative_controls (test_study.BoundaryRegression.test_guarded_handles_negative_controls) ... ok
+test_guarded_preserves_all_positive_effects (test_study.BoundaryRegression.test_guarded_preserves_all_positive_effects) ... ok
+test_protected_effect_has_a_trace (test_study.BoundaryRegression.test_protected_effect_has_a_trace) ... ok
+test_seeded_vulnerable_boundary_is_observable (test_study.BoundaryRegression.test_seeded_vulnerable_boundary_is_observable) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.006s
+
+OK

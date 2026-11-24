@@ -1,31 +1,25 @@
-# Proposed tool — SOC-agent adversarial regression suite
+# Tool design and implemented local prototype — CAI-007
 
-**Implementation status:** design only. No runnable scanner, installation command, or validated detection coverage is provided.
+## Implemented artifact
 
-## Inputs
+[src/study.py](src/study.py) exposes `evaluate(case, mode)` and returns an observed effect, trace, and backend-specific observation. [The runner](tools/run_study.py) evaluates the published fixtures, exports evidence, and runs behavioral tests. This is an executable research prototype, not a production scanner.
 
-Labeled incidents, permitted attacker fields, handling rules, mock tools, and model/version configuration.
+## Production tool still proposed
 
-## Minimum analysis workflow
+**SOC-agent adversarial regression suite** needs an authorized implementation adapter, a policy-intent contract, versioned identity/resource schemas, and an independent labeled workload. No installable production adapter or detection-coverage claim is provided.
 
-1. Build paired cases with factual evidence held constant.
-2. Record ticket state and actual tool calls.
-3. Compare schema-only and action-policy controls.
+## Boundary to enforce
 
-Reject missing context explicitly. A permissive configuration alone does not prove exploitability.
+`Execute(plan) implies SchemaValid(plan) AND IncidentPolicyAllows(caller, target, action, state).`
 
-## Findings and outputs
+## Proposed input and output contract
 
-Paired outcomes, recall metrics, and minimal failing fixtures.
+Require authenticated principal/tenant context, target version, expected policy, relevant state revision, and sanitized observations. Reject missing context as inconclusive. Findings should report verified preconditions, actual effect, configuration/source hashes, confidence, and remediation. A broad role, absent label, or model sentence alone is not proof of exploitability.
 
-Include target/tool version, declared policy, verified preconditions, provenance, confidence, and remediation. Distinguish static possibilities, synthetic observations, and actual implementation behavior.
+## Detection and remediation workflow
 
-## Evaluation and milestones
+Trace the untrusted input to the endpoint, identify the missing binding, reproduce it with a negative and positive control, and compare a corrected gate. Measure false positives and legitimate workflow loss before deployment. Freeze a model/version, paired event corpus, and prompting policy; measure actual model-produced actions before replaying them through these gates.
 
-Use the [experiment plan](EXPERIMENT-PLAN.md) with flawed and corrected fixtures. Measure false positives, labeled false negatives, and legitimate-workflow success. Publish unsupported cases as limitations.
+## Coverage limits
 
-1. Define adapter contracts and evidence schema.
-2. Implement one synthetic fixture and corrected control.
-3. Extend to all planned cases and missing-context handling.
-4. Add an implementation adapter after separate scope authorization.
-5. Obtain independent reproduction before a vulnerability claim.
+No LLM ran and no attack-success rate for prompt injection was measured. Adversarial log wording and compromised plans are authored stimuli, not observed model outputs. This experiment validates downstream action control conditional on a bad plan; it does not establish the log-to-model causal step.

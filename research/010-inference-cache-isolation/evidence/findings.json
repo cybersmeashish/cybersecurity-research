@@ -1,0 +1,40 @@
+{
+  "study_id": "CAI-010",
+  "evidence_stage": "constructed local mechanism",
+  "local_status": "Synthetic namespace and timing mechanism supported; production LLM-serving leakage not evaluated.",
+  "profiles": {
+    "vulnerable": {
+      "trials": 36,
+      "positive_cases": 6,
+      "positive_effects": 6,
+      "adversarial_cases": 18,
+      "unauthorized_effects": 18,
+      "negative_control_cases": 12,
+      "negative_control_failures": 0,
+      "expectation_matches": 18
+    },
+    "partial": {
+      "trials": 36,
+      "positive_cases": 6,
+      "positive_effects": 6,
+      "adversarial_cases": 18,
+      "unauthorized_effects": 6,
+      "negative_control_cases": 12,
+      "negative_control_failures": 0,
+      "expectation_matches": 30
+    },
+    "guarded": {
+      "trials": 36,
+      "positive_cases": 6,
+      "positive_effects": 6,
+      "adversarial_cases": 18,
+      "unauthorized_effects": 0,
+      "negative_control_cases": 12,
+      "negative_control_failures": 0,
+      "expectation_matches": 36
+    }
+  },
+  "live_provider_findings": [],
+  "confirmed_new_vulnerabilities": 0,
+  "llm_calls": 0
+}

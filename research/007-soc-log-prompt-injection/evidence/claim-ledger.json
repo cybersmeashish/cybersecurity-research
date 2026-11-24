@@ -1,0 +1,41 @@
+{
+  "study_id": "CAI-007",
+  "claims": [
+    {
+      "id": "CAI-007-E1",
+      "claim": "The seeded permissive profile produced 18 forbidden effects in 18 authored adversarial cases.",
+      "stage": "direct local synthetic observation",
+      "evidence": [
+        "evidence/results.csv",
+        "evidence/traces.json"
+      ],
+      "not_established": "Prevalence, novel vulnerability class, or a defect in any named product."
+    },
+    {
+      "id": "CAI-007-E2",
+      "claim": "The guarded profile matched all 36 declared policy labels and preserved 12 positive effects.",
+      "stage": "bounded local control result",
+      "evidence": [
+        "evidence/summary.json",
+        "evidence/tests.txt"
+      ],
+      "not_established": "Universal correctness, production utility, or performance."
+    },
+    {
+      "id": "CAI-007-E3",
+      "claim": "The partial profile retained 12 forbidden effects.",
+      "stage": "local control comparison",
+      "evidence": [
+        "evidence/results.csv"
+      ],
+      "not_established": "Performance of an untested vendor mitigation."
+    },
+    {
+      "id": "CAI-007-H1",
+      "claim": "Attacker-controlled log text can cause a SOC agent to suppress a seeded incident or execute forbidden mock remediation even when its output conforms to a required schema.",
+      "stage": "original research hypothesis; only stated local subclaim evaluated",
+      "evidence": [],
+      "not_established": "No LLM ran and no attack-success rate for prompt injection was measured. Adversarial log wording and compromised plans are authored stimuli, not observed model outputs. This experiment validates downstream action control conditional on a bad plan; it does not establish the log-to-model causal step."
+    }
+  ]
+}

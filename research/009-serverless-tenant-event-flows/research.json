@@ -1,26 +1,37 @@
 {
   "id": "CAI-009",
   "title": "Tenant authorization through serverless event chains",
-  "version": "0.1",
-  "status": "proposed",
+  "version": "0.2",
+  "status": "controlled local synthetic study",
   "prepared_on": "2026-11-24",
   "area": "Cloud",
   "priority": 8,
   "hypothesis": "A privileged consumer trusting an unbound tenant identifier in an event payload can access another tenant's synthetic resource despite correct direct-access restrictions on the producer.",
   "null_hypothesis": "Downstream resource actions remain bound to authenticated tenant provenance and permitted producer scope.",
   "path": "research/009-serverless-tenant-event-flows/README.md",
-  "experiments_executed": 0,
+  "experiments_executed": 108,
   "provider_vulnerabilities_confirmed": 0,
-  "novelty_review": "pending",
+  "novelty_review": "known-class local mechanism study; exhaustive survey pending",
   "independent_review": "pending",
   "tool": {
     "name": "Serverless tenant-flow scanner",
-    "status": "design only"
+    "status": "local prototype implemented; production adapter pending"
   },
   "sources": [
     {
       "id": "cloudflow",
       "url": "https://www.usenix.org/conference/usenixsecurity25/presentation/raffa"
+    },
+    {
+      "id": "rfc8725",
+      "url": "https://www.rfc-editor.org/rfc/rfc8725.html"
     }
-  ]
+  ],
+  "fixture_cases": 36,
+  "regression_methods": 6,
+  "local_hypothesis": "Signature and producer authenticity do not authorize a tenant value inside the producer-controlled payload; downstream access must bind to trusted tenant provenance.",
+  "hypothesis_evaluation": "Constructed local mechanism supported; implementation-level and population claims not established.",
+  "paper_path": "research/009-serverless-tenant-event-flows/PAPER.md",
+  "evidence_path": "research/009-serverless-tenant-event-flows/evidence/summary.json",
+  "model_calls": 0
 }

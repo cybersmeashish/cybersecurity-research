@@ -1,0 +1,40 @@
+{
+  "study_id": "CAI-009",
+  "evidence_stage": "constructed local mechanism",
+  "local_status": "Constructed local mechanism supported; implementation-level and population claims not established.",
+  "profiles": {
+    "vulnerable": {
+      "trials": 36,
+      "positive_cases": 12,
+      "positive_effects": 12,
+      "adversarial_cases": 12,
+      "unauthorized_effects": 12,
+      "negative_control_cases": 12,
+      "negative_control_failures": 0,
+      "expectation_matches": 24
+    },
+    "partial": {
+      "trials": 36,
+      "positive_cases": 12,
+      "positive_effects": 12,
+      "adversarial_cases": 12,
+      "unauthorized_effects": 12,
+      "negative_control_cases": 12,
+      "negative_control_failures": 0,
+      "expectation_matches": 24
+    },
+    "guarded": {
+      "trials": 36,
+      "positive_cases": 12,
+      "positive_effects": 12,
+      "adversarial_cases": 12,
+      "unauthorized_effects": 0,
+      "negative_control_cases": 12,
+      "negative_control_failures": 0,
+      "expectation_matches": 36
+    }
+  },
+  "live_provider_findings": [],
+  "confirmed_new_vulnerabilities": 0,
+  "llm_calls": 0
+}

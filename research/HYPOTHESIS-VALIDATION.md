@@ -1,6 +1,6 @@
 # Shared hypothesis validation and evidence protocol
 
-Applies to the ten proposals in [the research portfolio](CLOUD-AI-SECURITY-HYPOTHESES.md). This is a future experiment protocol, not a completed-research record.
+Applies to the ten proposals in [the research portfolio](CLOUD-AI-SECURITY-HYPOTHESES.md). The controlled local phase is now recorded in each package; this protocol also governs future implementation validation.
 
 ## Define a bounded claim
 
@@ -29,3 +29,7 @@ Obtain explicit ownership or program authorization for named targets and test me
 ## Verify publication
 
 Run final checks with source mounted read-only in a separate container. Hash reviewed files and compare before publication. Preserve unrelated remote content, reject a moving main branch, and verify published bytes. Documentation verification is not an experiment or tool implementation.
+
+## Executed local phase
+
+Each package records its evaluated local proposition, fixture matrix, three profiles, effect traces, source hashes, runtime isolation, and claim exclusions. External model/provider validation remains pending; local measurements must not be relabeled as those results.

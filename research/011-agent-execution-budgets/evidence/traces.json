@@ -1,0 +1,6500 @@
+[
+  {
+    "case_id": "budget-0-normal_graph",
+    "type": "normal_graph",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 8,
+      "overshoot_units": 0,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-0-fanout",
+    "type": "fanout",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "node-2",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "node-3",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "node-4",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "node-5",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "node-6",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "node-7",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 32,
+      "overshoot_units": 16,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-0-retries",
+    "type": "retries",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 1,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "node-2",
+            "attempt": 2,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "node-3",
+            "attempt": 3,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "node-4",
+            "attempt": 4,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "node-5",
+            "attempt": 5,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "node-6",
+            "attempt": 6,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "node-7",
+            "attempt": 7,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 32,
+      "overshoot_units": 16,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-0-concurrent",
+    "type": "concurrent",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "node-2",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "node-3",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "node-4",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "node-5",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "node-6",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "node-7",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 32,
+      "overshoot_units": 16,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-0-oversized_call",
+    "type": "oversized_call",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-0-cancelled_task",
+    "type": "cancelled_task",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": true
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-1-normal_graph",
+    "type": "normal_graph",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 8,
+      "overshoot_units": 0,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-1-fanout",
+    "type": "fanout",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "node-2",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "node-3",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "node-4",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "node-5",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "node-6",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "node-7",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "node-8",
+            "attempt": 0,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 36,
+      "overshoot_units": 20,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-1-retries",
+    "type": "retries",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 1,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "node-2",
+            "attempt": 2,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "node-3",
+            "attempt": 3,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "node-4",
+            "attempt": 4,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "node-5",
+            "attempt": 5,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "node-6",
+            "attempt": 6,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "node-7",
+            "attempt": 7,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "node-8",
+            "attempt": 8,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 36,
+      "overshoot_units": 20,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-1-concurrent",
+    "type": "concurrent",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "node-2",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "node-3",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "node-4",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "node-5",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "node-6",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "node-7",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "node-8",
+            "attempt": 0,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 36,
+      "overshoot_units": 20,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-1-oversized_call",
+    "type": "oversized_call",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-1-cancelled_task",
+    "type": "cancelled_task",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": true
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-2-normal_graph",
+    "type": "normal_graph",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 8,
+      "overshoot_units": 0,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-2-fanout",
+    "type": "fanout",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "node-2",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "node-3",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "node-4",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "node-5",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "node-6",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "node-7",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "node-8",
+            "attempt": 0,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "node-9",
+            "attempt": 0,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 40,
+      "overshoot_units": 24,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-2-retries",
+    "type": "retries",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 1,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "node-2",
+            "attempt": 2,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "node-3",
+            "attempt": 3,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "node-4",
+            "attempt": 4,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "node-5",
+            "attempt": 5,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "node-6",
+            "attempt": 6,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "node-7",
+            "attempt": 7,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "node-8",
+            "attempt": 8,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "node-9",
+            "attempt": 9,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 40,
+      "overshoot_units": 24,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-2-concurrent",
+    "type": "concurrent",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "node-2",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "node-3",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "node-4",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "node-5",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "node-6",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "node-7",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "node-8",
+            "attempt": 0,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "node-9",
+            "attempt": 0,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 40,
+      "overshoot_units": 24,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-2-oversized_call",
+    "type": "oversized_call",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-2-cancelled_task",
+    "type": "cancelled_task",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": true
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-3-normal_graph",
+    "type": "normal_graph",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 8,
+      "overshoot_units": 0,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-3-fanout",
+    "type": "fanout",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "node-2",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "node-3",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "node-4",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "node-5",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "node-6",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "node-7",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "node-8",
+            "attempt": 0,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "node-9",
+            "attempt": 0,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          },
+          {
+            "node": 10,
+            "charged_units": 4,
+            "task": "node-10",
+            "attempt": 0,
+            "work_digest": "a0286e466a2d1931616f85aad0598b01741a15765d3c9beebf9abe11615ac01b"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 44,
+      "overshoot_units": 28,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-3-retries",
+    "type": "retries",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 1,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "node-2",
+            "attempt": 2,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "node-3",
+            "attempt": 3,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "node-4",
+            "attempt": 4,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "node-5",
+            "attempt": 5,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "node-6",
+            "attempt": 6,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "node-7",
+            "attempt": 7,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "node-8",
+            "attempt": 8,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "node-9",
+            "attempt": 9,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          },
+          {
+            "node": 10,
+            "charged_units": 4,
+            "task": "node-10",
+            "attempt": 10,
+            "work_digest": "a0286e466a2d1931616f85aad0598b01741a15765d3c9beebf9abe11615ac01b"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 44,
+      "overshoot_units": 28,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-3-concurrent",
+    "type": "concurrent",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "node-2",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "node-3",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "node-4",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "node-5",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "node-6",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "node-7",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "node-8",
+            "attempt": 0,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "node-9",
+            "attempt": 0,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          },
+          {
+            "node": 10,
+            "charged_units": 4,
+            "task": "node-10",
+            "attempt": 0,
+            "work_digest": "a0286e466a2d1931616f85aad0598b01741a15765d3c9beebf9abe11615ac01b"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 44,
+      "overshoot_units": 28,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-3-oversized_call",
+    "type": "oversized_call",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-3-cancelled_task",
+    "type": "cancelled_task",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": true
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-4-normal_graph",
+    "type": "normal_graph",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 8,
+      "overshoot_units": 0,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-4-fanout",
+    "type": "fanout",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "node-2",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "node-3",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "node-4",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "node-5",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "node-6",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "node-7",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "node-8",
+            "attempt": 0,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "node-9",
+            "attempt": 0,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          },
+          {
+            "node": 10,
+            "charged_units": 4,
+            "task": "node-10",
+            "attempt": 0,
+            "work_digest": "a0286e466a2d1931616f85aad0598b01741a15765d3c9beebf9abe11615ac01b"
+          },
+          {
+            "node": 11,
+            "charged_units": 4,
+            "task": "node-11",
+            "attempt": 0,
+            "work_digest": "78734c9be3cf28b337b9e87d1ca5251678aa8ada095f1b51ce5cae999c87ab8a"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 48,
+      "overshoot_units": 32,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-4-retries",
+    "type": "retries",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 1,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "node-2",
+            "attempt": 2,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "node-3",
+            "attempt": 3,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "node-4",
+            "attempt": 4,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "node-5",
+            "attempt": 5,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "node-6",
+            "attempt": 6,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "node-7",
+            "attempt": 7,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "node-8",
+            "attempt": 8,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "node-9",
+            "attempt": 9,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          },
+          {
+            "node": 10,
+            "charged_units": 4,
+            "task": "node-10",
+            "attempt": 10,
+            "work_digest": "a0286e466a2d1931616f85aad0598b01741a15765d3c9beebf9abe11615ac01b"
+          },
+          {
+            "node": 11,
+            "charged_units": 4,
+            "task": "node-11",
+            "attempt": 11,
+            "work_digest": "78734c9be3cf28b337b9e87d1ca5251678aa8ada095f1b51ce5cae999c87ab8a"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 48,
+      "overshoot_units": 32,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-4-concurrent",
+    "type": "concurrent",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "node-2",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "node-3",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "node-4",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "node-5",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "node-6",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "node-7",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "node-8",
+            "attempt": 0,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "node-9",
+            "attempt": 0,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          },
+          {
+            "node": 10,
+            "charged_units": 4,
+            "task": "node-10",
+            "attempt": 0,
+            "work_digest": "a0286e466a2d1931616f85aad0598b01741a15765d3c9beebf9abe11615ac01b"
+          },
+          {
+            "node": 11,
+            "charged_units": 4,
+            "task": "node-11",
+            "attempt": 0,
+            "work_digest": "78734c9be3cf28b337b9e87d1ca5251678aa8ada095f1b51ce5cae999c87ab8a"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 48,
+      "overshoot_units": 32,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-4-oversized_call",
+    "type": "oversized_call",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-4-cancelled_task",
+    "type": "cancelled_task",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": true
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-5-normal_graph",
+    "type": "normal_graph",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 8,
+      "overshoot_units": 0,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-5-fanout",
+    "type": "fanout",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "node-2",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "node-3",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "node-4",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "node-5",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "node-6",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "node-7",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "node-8",
+            "attempt": 0,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "node-9",
+            "attempt": 0,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          },
+          {
+            "node": 10,
+            "charged_units": 4,
+            "task": "node-10",
+            "attempt": 0,
+            "work_digest": "a0286e466a2d1931616f85aad0598b01741a15765d3c9beebf9abe11615ac01b"
+          },
+          {
+            "node": 11,
+            "charged_units": 4,
+            "task": "node-11",
+            "attempt": 0,
+            "work_digest": "78734c9be3cf28b337b9e87d1ca5251678aa8ada095f1b51ce5cae999c87ab8a"
+          },
+          {
+            "node": 12,
+            "charged_units": 4,
+            "task": "node-12",
+            "attempt": 0,
+            "work_digest": "9e71b90aa4c1f1902dfe3cc7bf096138d5d9ce14640ae30cf9c0290210fde339"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 52,
+      "overshoot_units": 36,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-5-retries",
+    "type": "retries",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 1,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "node-2",
+            "attempt": 2,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "node-3",
+            "attempt": 3,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "node-4",
+            "attempt": 4,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "node-5",
+            "attempt": 5,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "node-6",
+            "attempt": 6,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "node-7",
+            "attempt": 7,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "node-8",
+            "attempt": 8,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "node-9",
+            "attempt": 9,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          },
+          {
+            "node": 10,
+            "charged_units": 4,
+            "task": "node-10",
+            "attempt": 10,
+            "work_digest": "a0286e466a2d1931616f85aad0598b01741a15765d3c9beebf9abe11615ac01b"
+          },
+          {
+            "node": 11,
+            "charged_units": 4,
+            "task": "node-11",
+            "attempt": 11,
+            "work_digest": "78734c9be3cf28b337b9e87d1ca5251678aa8ada095f1b51ce5cae999c87ab8a"
+          },
+          {
+            "node": 12,
+            "charged_units": 4,
+            "task": "node-12",
+            "attempt": 12,
+            "work_digest": "9e71b90aa4c1f1902dfe3cc7bf096138d5d9ce14640ae30cf9c0290210fde339"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 52,
+      "overshoot_units": 36,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-5-concurrent",
+    "type": "concurrent",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "node-0",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "node-1",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "node-2",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "node-3",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "node-4",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "node-5",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "node-6",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "node-7",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "node-8",
+            "attempt": 0,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "node-9",
+            "attempt": 0,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          },
+          {
+            "node": 10,
+            "charged_units": 4,
+            "task": "node-10",
+            "attempt": 0,
+            "work_digest": "a0286e466a2d1931616f85aad0598b01741a15765d3c9beebf9abe11615ac01b"
+          },
+          {
+            "node": 11,
+            "charged_units": 4,
+            "task": "node-11",
+            "attempt": 0,
+            "work_digest": "78734c9be3cf28b337b9e87d1ca5251678aa8ada095f1b51ce5cae999c87ab8a"
+          },
+          {
+            "node": 12,
+            "charged_units": 4,
+            "task": "node-12",
+            "attempt": 0,
+            "work_digest": "9e71b90aa4c1f1902dfe3cc7bf096138d5d9ce14640ae30cf9c0290210fde339"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 52,
+      "overshoot_units": 36,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-5-oversized_call",
+    "type": "oversized_call",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-5-cancelled_task",
+    "type": "cancelled_task",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": true
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-0-normal_graph",
+    "type": "normal_graph",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 8,
+      "overshoot_units": 0,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-0-fanout",
+    "type": "fanout",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 32,
+      "overshoot_units": 16,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-0-retries",
+    "type": "retries",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 1,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 2,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 3,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 4,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 5,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 6,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 7,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 32,
+      "overshoot_units": 16,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-0-concurrent",
+    "type": "concurrent",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 32,
+      "overshoot_units": 16,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-0-oversized_call",
+    "type": "oversized_call",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-0-cancelled_task",
+    "type": "cancelled_task",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": true
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-1-normal_graph",
+    "type": "normal_graph",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 8,
+      "overshoot_units": 0,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-1-fanout",
+    "type": "fanout",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 36,
+      "overshoot_units": 20,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-1-retries",
+    "type": "retries",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 1,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 2,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 3,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 4,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 5,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 6,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 7,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 8,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 36,
+      "overshoot_units": 20,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-1-concurrent",
+    "type": "concurrent",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 36,
+      "overshoot_units": 20,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-1-oversized_call",
+    "type": "oversized_call",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-1-cancelled_task",
+    "type": "cancelled_task",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": true
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-2-normal_graph",
+    "type": "normal_graph",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 8,
+      "overshoot_units": 0,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-2-fanout",
+    "type": "fanout",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 40,
+      "overshoot_units": 24,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-2-retries",
+    "type": "retries",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 1,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 2,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 3,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 4,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 5,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 6,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 7,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 8,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 9,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 40,
+      "overshoot_units": 24,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-2-concurrent",
+    "type": "concurrent",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 40,
+      "overshoot_units": 24,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-2-oversized_call",
+    "type": "oversized_call",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-2-cancelled_task",
+    "type": "cancelled_task",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": true
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-3-normal_graph",
+    "type": "normal_graph",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 8,
+      "overshoot_units": 0,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-3-fanout",
+    "type": "fanout",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          },
+          {
+            "node": 10,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "a0286e466a2d1931616f85aad0598b01741a15765d3c9beebf9abe11615ac01b"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 44,
+      "overshoot_units": 28,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-3-retries",
+    "type": "retries",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 1,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 2,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 3,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 4,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 5,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 6,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 7,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 8,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 9,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          },
+          {
+            "node": 10,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 10,
+            "work_digest": "a0286e466a2d1931616f85aad0598b01741a15765d3c9beebf9abe11615ac01b"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 44,
+      "overshoot_units": 28,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-3-concurrent",
+    "type": "concurrent",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          },
+          {
+            "node": 10,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "a0286e466a2d1931616f85aad0598b01741a15765d3c9beebf9abe11615ac01b"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 44,
+      "overshoot_units": 28,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-3-oversized_call",
+    "type": "oversized_call",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-3-cancelled_task",
+    "type": "cancelled_task",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": true
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-4-normal_graph",
+    "type": "normal_graph",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 8,
+      "overshoot_units": 0,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-4-fanout",
+    "type": "fanout",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          },
+          {
+            "node": 10,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "a0286e466a2d1931616f85aad0598b01741a15765d3c9beebf9abe11615ac01b"
+          },
+          {
+            "node": 11,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "78734c9be3cf28b337b9e87d1ca5251678aa8ada095f1b51ce5cae999c87ab8a"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 48,
+      "overshoot_units": 32,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-4-retries",
+    "type": "retries",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 1,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 2,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 3,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 4,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 5,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 6,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 7,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 8,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 9,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          },
+          {
+            "node": 10,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 10,
+            "work_digest": "a0286e466a2d1931616f85aad0598b01741a15765d3c9beebf9abe11615ac01b"
+          },
+          {
+            "node": 11,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 11,
+            "work_digest": "78734c9be3cf28b337b9e87d1ca5251678aa8ada095f1b51ce5cae999c87ab8a"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 48,
+      "overshoot_units": 32,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-4-concurrent",
+    "type": "concurrent",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          },
+          {
+            "node": 10,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "a0286e466a2d1931616f85aad0598b01741a15765d3c9beebf9abe11615ac01b"
+          },
+          {
+            "node": 11,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "78734c9be3cf28b337b9e87d1ca5251678aa8ada095f1b51ce5cae999c87ab8a"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 48,
+      "overshoot_units": 32,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-4-oversized_call",
+    "type": "oversized_call",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-4-cancelled_task",
+    "type": "cancelled_task",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": true
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-5-normal_graph",
+    "type": "normal_graph",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 8,
+      "overshoot_units": 0,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-5-fanout",
+    "type": "fanout",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          },
+          {
+            "node": 10,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "a0286e466a2d1931616f85aad0598b01741a15765d3c9beebf9abe11615ac01b"
+          },
+          {
+            "node": 11,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "78734c9be3cf28b337b9e87d1ca5251678aa8ada095f1b51ce5cae999c87ab8a"
+          },
+          {
+            "node": 12,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9e71b90aa4c1f1902dfe3cc7bf096138d5d9ce14640ae30cf9c0290210fde339"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 52,
+      "overshoot_units": 36,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-5-retries",
+    "type": "retries",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 1,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 2,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 3,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 4,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 5,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 6,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 7,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 8,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 9,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          },
+          {
+            "node": 10,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 10,
+            "work_digest": "a0286e466a2d1931616f85aad0598b01741a15765d3c9beebf9abe11615ac01b"
+          },
+          {
+            "node": 11,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 11,
+            "work_digest": "78734c9be3cf28b337b9e87d1ca5251678aa8ada095f1b51ce5cae999c87ab8a"
+          },
+          {
+            "node": 12,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 12,
+            "work_digest": "9e71b90aa4c1f1902dfe3cc7bf096138d5d9ce14640ae30cf9c0290210fde339"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 52,
+      "overshoot_units": 36,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-5-concurrent",
+    "type": "concurrent",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          },
+          {
+            "node": 4,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "b5637cf7f977450e15844bd74cdec3ac1eefb13f1e4bfc796b6543f655e633d4"
+          },
+          {
+            "node": 5,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4382c9e3c03414dc700e914c7b15eb1b2a83c310cb3e45bee9d5e3ec34c0def8"
+          },
+          {
+            "node": 6,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "92a6eb3f3dc6ad301a77cbfd0c7e509d3d26f3f5418a4c9c036f9fdbd031ebb3"
+          },
+          {
+            "node": 7,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d499462636d0295377eb8d79865bf93626f8a13f5362fd09ce5e62fa3d34178"
+          },
+          {
+            "node": 8,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9d1873e38cfa0343ea286c65b225427886829809de259d1071b0795d794fde0d"
+          },
+          {
+            "node": 9,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "f74de2194d91306ce540ccba98ce52cc243ae56b734ecd6013b85492f55414a3"
+          },
+          {
+            "node": 10,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "a0286e466a2d1931616f85aad0598b01741a15765d3c9beebf9abe11615ac01b"
+          },
+          {
+            "node": 11,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "78734c9be3cf28b337b9e87d1ca5251678aa8ada095f1b51ce5cae999c87ab8a"
+          },
+          {
+            "node": 12,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9e71b90aa4c1f1902dfe3cc7bf096138d5d9ce14640ae30cf9c0290210fde339"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 52,
+      "overshoot_units": 36,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-5-oversized_call",
+    "type": "oversized_call",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-5-cancelled_task",
+    "type": "cancelled_task",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": false,
+        "cancelled": true
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-0-normal_graph",
+    "type": "normal_graph",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 8,
+      "overshoot_units": 0,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-0-fanout",
+    "type": "fanout",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 16,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-0-retries",
+    "type": "retries",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 1,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 2,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 3,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 16,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-0-concurrent",
+    "type": "concurrent",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 16,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-0-oversized_call",
+    "type": "oversized_call",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-0-cancelled_task",
+    "type": "cancelled_task",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": true
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-1-normal_graph",
+    "type": "normal_graph",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 8,
+      "overshoot_units": 0,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-1-fanout",
+    "type": "fanout",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 16,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-1-retries",
+    "type": "retries",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 1,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 2,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 3,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 16,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-1-concurrent",
+    "type": "concurrent",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 16,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-1-oversized_call",
+    "type": "oversized_call",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-1-cancelled_task",
+    "type": "cancelled_task",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": true
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-2-normal_graph",
+    "type": "normal_graph",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 8,
+      "overshoot_units": 0,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-2-fanout",
+    "type": "fanout",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 16,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-2-retries",
+    "type": "retries",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 1,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 2,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 3,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 16,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-2-concurrent",
+    "type": "concurrent",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 16,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-2-oversized_call",
+    "type": "oversized_call",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-2-cancelled_task",
+    "type": "cancelled_task",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": true
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-3-normal_graph",
+    "type": "normal_graph",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 8,
+      "overshoot_units": 0,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-3-fanout",
+    "type": "fanout",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 16,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-3-retries",
+    "type": "retries",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 1,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 2,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 3,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 16,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-3-concurrent",
+    "type": "concurrent",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 16,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-3-oversized_call",
+    "type": "oversized_call",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-3-cancelled_task",
+    "type": "cancelled_task",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": true
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-4-normal_graph",
+    "type": "normal_graph",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 8,
+      "overshoot_units": 0,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-4-fanout",
+    "type": "fanout",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 16,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-4-retries",
+    "type": "retries",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 1,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 2,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 3,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 16,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-4-concurrent",
+    "type": "concurrent",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 16,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-4-oversized_call",
+    "type": "oversized_call",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-4-cancelled_task",
+    "type": "cancelled_task",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": true
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-5-normal_graph",
+    "type": "normal_graph",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 8,
+      "overshoot_units": 0,
+      "task_completed": true,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-5-fanout",
+    "type": "fanout",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 16,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-5-retries",
+    "type": "retries",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 1,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 2,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 3,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 16,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-5-concurrent",
+    "type": "concurrent",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": [
+          {
+            "node": 0,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "4ba00b200e1c7e176254f894861bad8fb17a1518c3c04256f4c3c4ae39e52dd5"
+          },
+          {
+            "node": 1,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "26f618aaed8765752c4d68337442865aa750a28df8c63b9caed4b14fffd2c7d2"
+          },
+          {
+            "node": 2,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "9ba6e6f3f70852426788f04c281d6ab6fbab58de831ac2949b676e8adea647d5"
+          },
+          {
+            "node": 3,
+            "charged_units": 4,
+            "task": "parent-task",
+            "attempt": 0,
+            "work_digest": "e274ea1fd51623f65bc7b3419523912095fed089808be768c83402f168dcf181"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "charged_units": 16,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-5-oversized_call",
+    "type": "oversized_call",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": false
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  },
+  {
+    "case_id": "budget-5-cancelled_task",
+    "type": "cancelled_task",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "budget_policy",
+        "task_budget_units": 16,
+        "per_call_cap_units": 8,
+        "atomic_reservation": true,
+        "cancelled": true
+      },
+      {
+        "step": "executed_work",
+        "receipts": []
+      }
+    ],
+    "observation": {
+      "charged_units": 0,
+      "overshoot_units": 0,
+      "task_completed": false,
+      "backend": "actual local scheduled work with abstract cost units; no token billing or autonomous reasoning"
+    }
+  }
+]

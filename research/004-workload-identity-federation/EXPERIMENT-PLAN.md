@@ -1,53 +1,30 @@
-# Experiment plan — CAI-004
+# Experiment execution record — CAI-004
 
-**Execution status:** not started. All cases below are planned. Follow the [shared validation protocol](../HYPOTHESIS-VALIDATION.md).
+The initial proposal has been expanded into an executed controlled local study. The measured phase is defined in [METHOD.md](METHOD.md); broader implementation-level validation remains future work.
 
-## Required harness and variables
+- Executed fixtures: 36.
+- Executed profiles: vulnerable, partial, guarded.
+- Fixture-condition trials: 108.
+- Regression methods: 6.
+- Live-provider experiments: 0.
+- Model calls: 0.
 
-A synthetic OIDC issuer, policy evaluator, sample infrastructure definitions, and fixtures with stable IDs and mutable names.
+- **vulnerable:** Issuer, audience, and mutable repository name.
+- **partial:** The same rule plus a stable owner restriction.
+- **guarded:** Issuer, audience, stable repository ID, and stable owner ID.
 
-**Independent variables:** Issuer, subject mapping, stable IDs, ownership conditions, lifecycle event, and audience.
+## Measured scope
 
-Start with owned synthetic data and mock actions. Later live validation requires explicit target/method authorization and cost limits. This proposal grants no authorization to attack a service.
+A valid issuer and audience combined with a reusable repository name can map a replacement identity to the intended cloud principal; stable repository and owner IDs avoid that mapping in the declared fixture model.
 
-Record versions, configuration, fixtures, seeds, expected policy, and verified preconditions before trials.
+## Ground truth and evidence
 
-## Planned case matrix
+[Fixtures](lab/fixtures.json) contain expected labels before execution. [Raw results](evidence/results.csv) contain observations. [Traces](evidence/traces.json) identify the endpoint reached. [Source manifest](evidence/source-manifest.json) pins inputs.
 
-| Case | Condition | Procedure |
-|---|---|---|
-| 1 | Positive baseline | Accept the intended issuer and stable workload identifiers. |
-| 2 | Name recreation | Evaluate a valid synthetic fixture with the same name and a different stable ID. |
-| 3 | Ownership change | Compare repository-only and organization-bound policies after a simulated transfer. |
-| 4 | Negative control | Reject unrelated issuer or audience fixtures. |
-| 5 | Mitigation | Require stable identifiers and scoped ownership conditions. |
+## Original hypothesis status
 
-## Measurements
+Constructed local mechanism supported; implementation-level and population claims not established.
 
-- Unexpected principal mappings per policy pattern
-- Legitimate-workload acceptance
-- False positives for intentionally reusable identities
-- Infrastructure-format coverage
+## Deferred experiments
 
-Deterministic evaluators must cover the declared fixture matrix. Model-driven experiments require independent inputs and repeated trials with pre-registered sample size, success margin, and stopping rules. Do not count repeated measurements of one input as independent cases.
-
-## Decision criteria
-
-**Supports the hypothesis:** A local evaluator maps a distinct lifecycle fixture to a principal intended for the original identity.
-
-**Evidence against it:** All distinct-identity fixtures are rejected while legitimate identities succeed.
-
-Negative results apply only to tested versions and conditions. Synthetic behavior does not establish provider behavior.
-
-## Confounders
-
-Provider claim semantics, issuer guarantees, ownership constraints, and deliberately broad policies.
-
-## Evidence and current results
-
-Record case ID, expected/observed decisions, actual resource effect, controls, configuration/fixture hashes, seed, and sanitized traces. Model wording alone is insufficient evidence of a protected action.
-
-- Executed trials: **0**.
-- Observed vulnerabilities: **none established**.
-- Mitigation effectiveness: **not measured**.
-- Independent reproduction: **pending**.
+Select one issuer/cloud pairing, document its immutable claim guarantees, and validate allowed lifecycle events in owned repositories. Any live target needs explicit ownership/program scope. A larger legitimate workload, implementation survey, adversarial holdout corpus, and independent reproduction are pending.

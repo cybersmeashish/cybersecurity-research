@@ -1,0 +1,41 @@
+{
+  "study_id": "CAI-002",
+  "claims": [
+    {
+      "id": "CAI-002-E1",
+      "claim": "The seeded permissive profile produced 18 forbidden effects in 18 authored adversarial cases.",
+      "stage": "direct local synthetic observation",
+      "evidence": [
+        "evidence/results.csv",
+        "evidence/traces.json"
+      ],
+      "not_established": "Prevalence, novel vulnerability class, or a defect in any named product."
+    },
+    {
+      "id": "CAI-002-E2",
+      "claim": "The guarded profile matched all 36 declared policy labels and preserved 12 positive effects.",
+      "stage": "bounded local control result",
+      "evidence": [
+        "evidence/summary.json",
+        "evidence/tests.txt"
+      ],
+      "not_established": "Universal correctness, production utility, or performance."
+    },
+    {
+      "id": "CAI-002-E3",
+      "claim": "The partial profile retained 12 forbidden effects.",
+      "stage": "local control comparison",
+      "evidence": [
+        "evidence/results.csv"
+      ],
+      "not_established": "Performance of an untested vendor mitigation."
+    },
+    {
+      "id": "CAI-002-H1",
+      "claim": "A RAG application enforcing access only at initial retrieval, without equivalent checks on cached answers or derived summaries, can return a protected synthetic marker to a denied principal after the documented authorization synchronization window.",
+      "stage": "original research hypothesis; only stated local subclaim evaluated",
+      "evidence": [],
+      "not_established": "No vector database, Azure search service, model-generated summary, asynchronous index propagation, conversation erasure, or customer corpus was tested. Revocation is an immediate SQLite transaction, so no claim about a provider synchronization deadline is supported."
+    }
+  ]
+}

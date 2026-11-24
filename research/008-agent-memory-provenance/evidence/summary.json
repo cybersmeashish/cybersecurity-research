@@ -1,0 +1,54 @@
+{
+  "study_id": "CAI-008",
+  "evidence_stage": "controlled local synthetic experiment",
+  "experimental_conditions": {
+    "vulnerable": {
+      "trials": 36,
+      "positive_cases": 6,
+      "positive_effects": 6,
+      "adversarial_cases": 24,
+      "unauthorized_effects": 24,
+      "negative_control_cases": 6,
+      "negative_control_failures": 0,
+      "expectation_matches": 12
+    },
+    "partial": {
+      "trials": 36,
+      "positive_cases": 6,
+      "positive_effects": 6,
+      "adversarial_cases": 24,
+      "unauthorized_effects": 12,
+      "negative_control_cases": 6,
+      "negative_control_failures": 0,
+      "expectation_matches": 24
+    },
+    "guarded": {
+      "trials": 36,
+      "positive_cases": 6,
+      "positive_effects": 6,
+      "adversarial_cases": 24,
+      "unauthorized_effects": 0,
+      "negative_control_cases": 6,
+      "negative_control_failures": 0,
+      "expectation_matches": 36
+    }
+  },
+  "fixture_cases": 36,
+  "condition_trials": 108,
+  "regression_methods": 6,
+  "runtime": {
+    "python": "3.12.16",
+    "os": "Linux",
+    "architecture": "aarch64"
+  },
+  "generated_at_utc": "2026-11-24T10:53:24Z",
+  "live_provider_experiments": 0,
+  "model_calls": 0,
+  "confirmed_provider_vulnerabilities": 0,
+  "global_novelty_established": false,
+  "isolation": {
+    "workspace_read_only": true,
+    "root_read_only": true,
+    "external_network_unreachable": true
+  }
+}

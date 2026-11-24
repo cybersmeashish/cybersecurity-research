@@ -1,0 +1,330 @@
+{
+  "study_id": "CAI-003",
+  "fixture_scope": "Constructed boundary cases, not a random sample of deployments",
+  "cases": [
+    {
+      "case_id": "mcp-0-allowed",
+      "type": "allowed",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "mcp-0-expired",
+      "type": "expired",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-0-foreign_subject",
+      "type": "foreign_subject",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-0-foreign_client",
+      "type": "foreign_client",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-0-wrong_audience",
+      "type": "wrong_audience",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-0-foreign_handle",
+      "type": "foreign_handle",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-1-allowed",
+      "type": "allowed",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "mcp-1-expired",
+      "type": "expired",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-1-foreign_subject",
+      "type": "foreign_subject",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-1-foreign_client",
+      "type": "foreign_client",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-1-wrong_audience",
+      "type": "wrong_audience",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-1-foreign_handle",
+      "type": "foreign_handle",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-2-allowed",
+      "type": "allowed",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "mcp-2-expired",
+      "type": "expired",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-2-foreign_subject",
+      "type": "foreign_subject",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-2-foreign_client",
+      "type": "foreign_client",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-2-wrong_audience",
+      "type": "wrong_audience",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-2-foreign_handle",
+      "type": "foreign_handle",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-3-allowed",
+      "type": "allowed",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "mcp-3-expired",
+      "type": "expired",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-3-foreign_subject",
+      "type": "foreign_subject",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-3-foreign_client",
+      "type": "foreign_client",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-3-wrong_audience",
+      "type": "wrong_audience",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-3-foreign_handle",
+      "type": "foreign_handle",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-4-allowed",
+      "type": "allowed",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "mcp-4-expired",
+      "type": "expired",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-4-foreign_subject",
+      "type": "foreign_subject",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-4-foreign_client",
+      "type": "foreign_client",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-4-wrong_audience",
+      "type": "wrong_audience",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-4-foreign_handle",
+      "type": "foreign_handle",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-5-allowed",
+      "type": "allowed",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "mcp-5-expired",
+      "type": "expired",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-5-foreign_subject",
+      "type": "foreign_subject",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-5-foreign_client",
+      "type": "foreign_client",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-5-wrong_audience",
+      "type": "wrong_audience",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "mcp-5-foreign_handle",
+      "type": "foreign_handle",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "adversarial",
+      "expected_effect": false
+    }
+  ]
+}

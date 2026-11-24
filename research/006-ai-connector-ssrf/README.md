@@ -1,38 +1,30 @@
 # CAI-006 — Destination validation across AI connector fetch chains
 
-**Status:** proposed research, version 0.1. **Area:** Cloud + AI. **Priority:** 5/10. **Prepared:** 2026-11-24.
+**Actual loopback HTTP redirects with a controlled resolution adapter**
 
-No experiments have been run for this proposal and no tool is implemented. No new vulnerability, provider defect, global novelty, or independent validation is claimed.
+Version 0.2 · Author: Ashish Srivastava · Prepared 2026-11-24 · Evidence: controlled local synthetic study.
 
-## Testable hypothesis
+Constructed local mechanism supported; implementation-level and population claims not established. This package contains executed code and measured local evidence. It does not claim a new provider vulnerability, peer review, or a production scanner.
 
-A connector validating only an initial URL or DNS answer can contact a forbidden internal destination after a redirect or changed resolution alters the actual connection target.
+## Main result
 
-**Null hypothesis:** Each connection and redirect hop remains within the declared destination policy.
+The intentionally permissive profile produced **12/12** forbidden effects. The guarded profile produced **0/12**, retained **12/12** legitimate effects, and matched all 36 fixture policy labels. These are authored boundary cases, not deployment prevalence estimates.
 
-## Threat model
+## Research components
 
-- **Protected assets:** Internal services, metadata-like endpoints, and connector response data.
-- **Attacker capability:** A user controlling a supplied fetch or discovery URL, without internal-network privileges.
-- **Security boundary:** Selecting an external URL does not grant internal-network access.
+| Component | Read or run |
+|---|---|
+| Full research paper | [PAPER.md](PAPER.md) |
+| Executive decision brief | [EXECUTIVE-BRIEF.md](EXECUTIVE-BRIEF.md) |
+| Threat model and formal boundary | [THREAT-MODEL.md](THREAT-MODEL.md) |
+| Methods and experiment plan | [METHOD.md](METHOD.md) · [EXPERIMENT-PLAN.md](EXPERIMENT-PLAN.md) |
+| Measured results and interpretation | [RESULTS.md](RESULTS.md) · [DISCUSSION.md](DISCUSSION.md) |
+| Claim-to-evidence register | [CLAIM-EVIDENCE.md](CLAIM-EVIDENCE.md) · [Raw evidence](evidence/README.md) |
+| Runnable local prototype | [Source](src/study.py) · [Runner](tools/run_study.py) · [Fixtures](lab/fixtures.json) · [Tests](tests/test_study.py) |
+| Reproduction | [REPRODUCIBILITY.md](REPRODUCIBILITY.md) · [Lab instructions](lab/README.md) |
+| Related work and novelty | [RELATED-WORK.md](RELATED-WORK.md) · [SOURCES.md](SOURCES.md) · [NOVELTY.md](NOVELTY.md) |
+| Limits and future validation | [LIMITATIONS.md](LIMITATIONS.md) · [VALIDATION-PROTOCOL.md](VALIDATION-PROTOCOL.md) |
+| Tool engineering and roadmap | [TOOL-DESIGN.md](TOOL-DESIGN.md) · [RESEARCH-ROADMAP.md](RESEARCH-ROADMAP.md) |
+| Provenance and citation | [PROVENANCE.md](PROVENANCE.md) · [CITATION.cff](CITATION.cff) · [Metadata](research.json) |
 
-## Proposed contribution and prior art
-
-Evaluate consistent enforcement across AI fetch and discovery paths; SSRF is established prior art.
-
-[Primary prior work](SOURCES.md) motivates the threat model; it does not establish this hypothesis in a selected implementation. Prior-art survey and version selection remain pending.
-
-## Intended deliverables
-
-1. A reproducible controlled test harness and bounded evidence.
-2. A prototype **AI connector egress test suite**, evaluated for false positives and legitimate-workflow utility.
-3. A scoped finding or negative result identifying tested versions and limitations.
-
-## Research documents
-
-- [Experiment plan](EXPERIMENT-PLAN.md)
-- [Proposed tool design](TOOL-DESIGN.md)
-- [Sources](SOURCES.md)
-- [Machine-readable record](research.json)
-- [Shared validation protocol](../HYPOTHESIS-VALIDATION.md)
-- [Research portfolio](../CLOUD-AI-SECURITY-HYPOTHESES.md)
+[Portfolio index](../CLOUD-AI-SECURITY-HYPOTHESES.md). Runtime source and fixtures are self-contained in this folder. Shared references are navigation only.

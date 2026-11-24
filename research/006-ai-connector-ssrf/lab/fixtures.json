@@ -1,0 +1,330 @@
+{
+  "study_id": "CAI-006",
+  "fixture_scope": "Constructed boundary cases, not a random sample of deployments",
+  "cases": [
+    {
+      "case_id": "ssrf-0-allowed",
+      "type": "allowed",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "ssrf-0-redirect_internal",
+      "type": "redirect_internal",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-0-redirect_allowed",
+      "type": "redirect_allowed",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "ssrf-0-dns_change",
+      "type": "dns_change",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-0-forbidden_initial",
+      "type": "forbidden_initial",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-0-plain_internal",
+      "type": "plain_internal",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-1-allowed",
+      "type": "allowed",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "ssrf-1-redirect_internal",
+      "type": "redirect_internal",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-1-redirect_allowed",
+      "type": "redirect_allowed",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "ssrf-1-dns_change",
+      "type": "dns_change",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-1-forbidden_initial",
+      "type": "forbidden_initial",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-1-plain_internal",
+      "type": "plain_internal",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-2-allowed",
+      "type": "allowed",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "ssrf-2-redirect_internal",
+      "type": "redirect_internal",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-2-redirect_allowed",
+      "type": "redirect_allowed",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "ssrf-2-dns_change",
+      "type": "dns_change",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-2-forbidden_initial",
+      "type": "forbidden_initial",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-2-plain_internal",
+      "type": "plain_internal",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-3-allowed",
+      "type": "allowed",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "ssrf-3-redirect_internal",
+      "type": "redirect_internal",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-3-redirect_allowed",
+      "type": "redirect_allowed",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "ssrf-3-dns_change",
+      "type": "dns_change",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-3-forbidden_initial",
+      "type": "forbidden_initial",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-3-plain_internal",
+      "type": "plain_internal",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-4-allowed",
+      "type": "allowed",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "ssrf-4-redirect_internal",
+      "type": "redirect_internal",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-4-redirect_allowed",
+      "type": "redirect_allowed",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "ssrf-4-dns_change",
+      "type": "dns_change",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-4-forbidden_initial",
+      "type": "forbidden_initial",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-4-plain_internal",
+      "type": "plain_internal",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-5-allowed",
+      "type": "allowed",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "ssrf-5-redirect_internal",
+      "type": "redirect_internal",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-5-redirect_allowed",
+      "type": "redirect_allowed",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "ssrf-5-dns_change",
+      "type": "dns_change",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-5-forbidden_initial",
+      "type": "forbidden_initial",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "ssrf-5-plain_internal",
+      "type": "plain_internal",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "negative_control",
+      "expected_effect": false
+    }
+  ]
+}

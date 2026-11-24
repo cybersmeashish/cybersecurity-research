@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "Cite this version as a controlled local research artifact."
+type: software
+title: "Principal binding across multi-user MCP authorization flows"
+version: "0.2"
+date-released: "2026-11-24"
+authors:
+  - family-names: "Srivastava"
+    given-names: "Ashish"
+repository-code: "https://github.com/cybersmeashish/cybersecurity-research"
+license: MIT
+abstract: "Controlled local mechanism study with reproducible code, authored fixtures, and bounded evidence; no provider vulnerability or model-level validation claimed."

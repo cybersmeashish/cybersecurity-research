@@ -1,0 +1,3500 @@
+[
+  {
+    "case_id": "events-0-own_event",
+    "type": "own_event",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-0",
+        "payload_tenant": "tenant-0"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-0",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-0-foreign_payload",
+    "type": "foreign_payload",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-0",
+        "payload_tenant": "foreign-0"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-0",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-0-valid_retry",
+    "type": "valid_retry",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-0",
+        "payload_tenant": "tenant-0"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-0",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-0",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED",
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-0-cross_tenant_retry",
+    "type": "cross_tenant_retry",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-0",
+        "payload_tenant": "foreign-0"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-0",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "foreign-0",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER",
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-0-invalid_signature",
+    "type": "invalid_signature",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-0",
+        "payload_tenant": "tenant-0"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-0-expired_event",
+    "type": "expired_event",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-0",
+        "payload_tenant": "tenant-0"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-1-own_event",
+    "type": "own_event",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-1",
+        "payload_tenant": "tenant-1"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-1",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-1-foreign_payload",
+    "type": "foreign_payload",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-1",
+        "payload_tenant": "foreign-1"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-1",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-1-valid_retry",
+    "type": "valid_retry",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-1",
+        "payload_tenant": "tenant-1"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-1",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-1",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED",
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-1-cross_tenant_retry",
+    "type": "cross_tenant_retry",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-1",
+        "payload_tenant": "foreign-1"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-1",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "foreign-1",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER",
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-1-invalid_signature",
+    "type": "invalid_signature",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-1",
+        "payload_tenant": "tenant-1"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-1-expired_event",
+    "type": "expired_event",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-1",
+        "payload_tenant": "tenant-1"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-2-own_event",
+    "type": "own_event",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-2",
+        "payload_tenant": "tenant-2"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-2",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-2-foreign_payload",
+    "type": "foreign_payload",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-2",
+        "payload_tenant": "foreign-2"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-2",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-2-valid_retry",
+    "type": "valid_retry",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-2",
+        "payload_tenant": "tenant-2"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-2",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-2",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED",
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-2-cross_tenant_retry",
+    "type": "cross_tenant_retry",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-2",
+        "payload_tenant": "foreign-2"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-2",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "foreign-2",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER",
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-2-invalid_signature",
+    "type": "invalid_signature",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-2",
+        "payload_tenant": "tenant-2"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-2-expired_event",
+    "type": "expired_event",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-2",
+        "payload_tenant": "tenant-2"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-3-own_event",
+    "type": "own_event",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-3",
+        "payload_tenant": "tenant-3"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-3",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-3-foreign_payload",
+    "type": "foreign_payload",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-3",
+        "payload_tenant": "foreign-3"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-3",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-3-valid_retry",
+    "type": "valid_retry",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-3",
+        "payload_tenant": "tenant-3"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-3",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-3",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED",
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-3-cross_tenant_retry",
+    "type": "cross_tenant_retry",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-3",
+        "payload_tenant": "foreign-3"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-3",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "foreign-3",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER",
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-3-invalid_signature",
+    "type": "invalid_signature",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-3",
+        "payload_tenant": "tenant-3"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-3-expired_event",
+    "type": "expired_event",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-3",
+        "payload_tenant": "tenant-3"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-4-own_event",
+    "type": "own_event",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-4",
+        "payload_tenant": "tenant-4"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-4",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-4-foreign_payload",
+    "type": "foreign_payload",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-4",
+        "payload_tenant": "foreign-4"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-4",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-4-valid_retry",
+    "type": "valid_retry",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-4",
+        "payload_tenant": "tenant-4"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-4",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-4",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED",
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-4-cross_tenant_retry",
+    "type": "cross_tenant_retry",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-4",
+        "payload_tenant": "foreign-4"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-4",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "foreign-4",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER",
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-4-invalid_signature",
+    "type": "invalid_signature",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-4",
+        "payload_tenant": "tenant-4"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-4-expired_event",
+    "type": "expired_event",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-4",
+        "payload_tenant": "tenant-4"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-5-own_event",
+    "type": "own_event",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-5",
+        "payload_tenant": "tenant-5"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-5",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-5-foreign_payload",
+    "type": "foreign_payload",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-5",
+        "payload_tenant": "foreign-5"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-5",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-5-valid_retry",
+    "type": "valid_retry",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-5",
+        "payload_tenant": "tenant-5"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-5",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-5",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED",
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-5-cross_tenant_retry",
+    "type": "cross_tenant_retry",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-5",
+        "payload_tenant": "foreign-5"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-5",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "foreign-5",
+        "propagated_tenant_context": null,
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER",
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-5-invalid_signature",
+    "type": "invalid_signature",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-5",
+        "payload_tenant": "tenant-5"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-5-expired_event",
+    "type": "expired_event",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-5",
+        "payload_tenant": "tenant-5"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-0-own_event",
+    "type": "own_event",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-0",
+        "payload_tenant": "tenant-0"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-0",
+        "propagated_tenant_context": "tenant-0",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-0-foreign_payload",
+    "type": "foreign_payload",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-0",
+        "payload_tenant": "foreign-0"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-0",
+        "propagated_tenant_context": "tenant-0",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-0-valid_retry",
+    "type": "valid_retry",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-0",
+        "payload_tenant": "tenant-0"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-0",
+        "propagated_tenant_context": "tenant-0",
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-0",
+        "propagated_tenant_context": "tenant-0",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED",
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-0-cross_tenant_retry",
+    "type": "cross_tenant_retry",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-0",
+        "payload_tenant": "foreign-0"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-0",
+        "propagated_tenant_context": "tenant-0",
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "foreign-0",
+        "propagated_tenant_context": "tenant-0",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER",
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-0-invalid_signature",
+    "type": "invalid_signature",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-0",
+        "payload_tenant": "tenant-0"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-0-expired_event",
+    "type": "expired_event",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-0",
+        "payload_tenant": "tenant-0"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-1-own_event",
+    "type": "own_event",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-1",
+        "payload_tenant": "tenant-1"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-1",
+        "propagated_tenant_context": "tenant-1",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-1-foreign_payload",
+    "type": "foreign_payload",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-1",
+        "payload_tenant": "foreign-1"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-1",
+        "propagated_tenant_context": "tenant-1",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-1-valid_retry",
+    "type": "valid_retry",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-1",
+        "payload_tenant": "tenant-1"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-1",
+        "propagated_tenant_context": "tenant-1",
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-1",
+        "propagated_tenant_context": "tenant-1",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED",
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-1-cross_tenant_retry",
+    "type": "cross_tenant_retry",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-1",
+        "payload_tenant": "foreign-1"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-1",
+        "propagated_tenant_context": "tenant-1",
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "foreign-1",
+        "propagated_tenant_context": "tenant-1",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER",
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-1-invalid_signature",
+    "type": "invalid_signature",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-1",
+        "payload_tenant": "tenant-1"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-1-expired_event",
+    "type": "expired_event",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-1",
+        "payload_tenant": "tenant-1"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-2-own_event",
+    "type": "own_event",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-2",
+        "payload_tenant": "tenant-2"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-2",
+        "propagated_tenant_context": "tenant-2",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-2-foreign_payload",
+    "type": "foreign_payload",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-2",
+        "payload_tenant": "foreign-2"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-2",
+        "propagated_tenant_context": "tenant-2",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-2-valid_retry",
+    "type": "valid_retry",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-2",
+        "payload_tenant": "tenant-2"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-2",
+        "propagated_tenant_context": "tenant-2",
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-2",
+        "propagated_tenant_context": "tenant-2",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED",
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-2-cross_tenant_retry",
+    "type": "cross_tenant_retry",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-2",
+        "payload_tenant": "foreign-2"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-2",
+        "propagated_tenant_context": "tenant-2",
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "foreign-2",
+        "propagated_tenant_context": "tenant-2",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER",
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-2-invalid_signature",
+    "type": "invalid_signature",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-2",
+        "payload_tenant": "tenant-2"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-2-expired_event",
+    "type": "expired_event",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-2",
+        "payload_tenant": "tenant-2"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-3-own_event",
+    "type": "own_event",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-3",
+        "payload_tenant": "tenant-3"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-3",
+        "propagated_tenant_context": "tenant-3",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-3-foreign_payload",
+    "type": "foreign_payload",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-3",
+        "payload_tenant": "foreign-3"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-3",
+        "propagated_tenant_context": "tenant-3",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-3-valid_retry",
+    "type": "valid_retry",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-3",
+        "payload_tenant": "tenant-3"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-3",
+        "propagated_tenant_context": "tenant-3",
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-3",
+        "propagated_tenant_context": "tenant-3",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED",
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-3-cross_tenant_retry",
+    "type": "cross_tenant_retry",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-3",
+        "payload_tenant": "foreign-3"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-3",
+        "propagated_tenant_context": "tenant-3",
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "foreign-3",
+        "propagated_tenant_context": "tenant-3",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER",
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-3-invalid_signature",
+    "type": "invalid_signature",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-3",
+        "payload_tenant": "tenant-3"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-3-expired_event",
+    "type": "expired_event",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-3",
+        "payload_tenant": "tenant-3"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-4-own_event",
+    "type": "own_event",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-4",
+        "payload_tenant": "tenant-4"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-4",
+        "propagated_tenant_context": "tenant-4",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-4-foreign_payload",
+    "type": "foreign_payload",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-4",
+        "payload_tenant": "foreign-4"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-4",
+        "propagated_tenant_context": "tenant-4",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-4-valid_retry",
+    "type": "valid_retry",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-4",
+        "payload_tenant": "tenant-4"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-4",
+        "propagated_tenant_context": "tenant-4",
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-4",
+        "propagated_tenant_context": "tenant-4",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED",
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-4-cross_tenant_retry",
+    "type": "cross_tenant_retry",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-4",
+        "payload_tenant": "foreign-4"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-4",
+        "propagated_tenant_context": "tenant-4",
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "foreign-4",
+        "propagated_tenant_context": "tenant-4",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER",
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-4-invalid_signature",
+    "type": "invalid_signature",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-4",
+        "payload_tenant": "tenant-4"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-4-expired_event",
+    "type": "expired_event",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-4",
+        "payload_tenant": "tenant-4"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-5-own_event",
+    "type": "own_event",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-5",
+        "payload_tenant": "tenant-5"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-5",
+        "propagated_tenant_context": "tenant-5",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-5-foreign_payload",
+    "type": "foreign_payload",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-5",
+        "payload_tenant": "foreign-5"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-5",
+        "propagated_tenant_context": "tenant-5",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-5-valid_retry",
+    "type": "valid_retry",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-5",
+        "payload_tenant": "tenant-5"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-5",
+        "propagated_tenant_context": "tenant-5",
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-5",
+        "propagated_tenant_context": "tenant-5",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED",
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-5-cross_tenant_retry",
+    "type": "cross_tenant_retry",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-5",
+        "payload_tenant": "foreign-5"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "foreign-5",
+        "propagated_tenant_context": "tenant-5",
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "foreign-5",
+        "propagated_tenant_context": "tenant-5",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "FOREIGN-MARKER",
+          "FOREIGN-MARKER"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-5-invalid_signature",
+    "type": "invalid_signature",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-5",
+        "payload_tenant": "tenant-5"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-5-expired_event",
+    "type": "expired_event",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-5",
+        "payload_tenant": "tenant-5"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-0-own_event",
+    "type": "own_event",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-0",
+        "payload_tenant": "tenant-0"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-0",
+        "propagated_tenant_context": "tenant-0",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-0-foreign_payload",
+    "type": "foreign_payload",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-0",
+        "payload_tenant": "foreign-0"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-0",
+        "propagated_tenant_context": "tenant-0",
+        "allowed": false
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-0-valid_retry",
+    "type": "valid_retry",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-0",
+        "payload_tenant": "tenant-0"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-0",
+        "propagated_tenant_context": "tenant-0",
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-0",
+        "propagated_tenant_context": "tenant-0",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED",
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-0-cross_tenant_retry",
+    "type": "cross_tenant_retry",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-0",
+        "payload_tenant": "foreign-0"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-0",
+        "propagated_tenant_context": "tenant-0",
+        "allowed": false
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-0",
+        "propagated_tenant_context": "tenant-0",
+        "allowed": false
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-0-invalid_signature",
+    "type": "invalid_signature",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-0",
+        "payload_tenant": "tenant-0"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-0-expired_event",
+    "type": "expired_event",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-0",
+        "payload_tenant": "tenant-0"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-1-own_event",
+    "type": "own_event",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-1",
+        "payload_tenant": "tenant-1"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-1",
+        "propagated_tenant_context": "tenant-1",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-1-foreign_payload",
+    "type": "foreign_payload",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-1",
+        "payload_tenant": "foreign-1"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-1",
+        "propagated_tenant_context": "tenant-1",
+        "allowed": false
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-1-valid_retry",
+    "type": "valid_retry",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-1",
+        "payload_tenant": "tenant-1"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-1",
+        "propagated_tenant_context": "tenant-1",
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-1",
+        "propagated_tenant_context": "tenant-1",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED",
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-1-cross_tenant_retry",
+    "type": "cross_tenant_retry",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-1",
+        "payload_tenant": "foreign-1"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-1",
+        "propagated_tenant_context": "tenant-1",
+        "allowed": false
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-1",
+        "propagated_tenant_context": "tenant-1",
+        "allowed": false
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-1-invalid_signature",
+    "type": "invalid_signature",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-1",
+        "payload_tenant": "tenant-1"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-1-expired_event",
+    "type": "expired_event",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-1",
+        "payload_tenant": "tenant-1"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-2-own_event",
+    "type": "own_event",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-2",
+        "payload_tenant": "tenant-2"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-2",
+        "propagated_tenant_context": "tenant-2",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-2-foreign_payload",
+    "type": "foreign_payload",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-2",
+        "payload_tenant": "foreign-2"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-2",
+        "propagated_tenant_context": "tenant-2",
+        "allowed": false
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-2-valid_retry",
+    "type": "valid_retry",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-2",
+        "payload_tenant": "tenant-2"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-2",
+        "propagated_tenant_context": "tenant-2",
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-2",
+        "propagated_tenant_context": "tenant-2",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED",
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-2-cross_tenant_retry",
+    "type": "cross_tenant_retry",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-2",
+        "payload_tenant": "foreign-2"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-2",
+        "propagated_tenant_context": "tenant-2",
+        "allowed": false
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-2",
+        "propagated_tenant_context": "tenant-2",
+        "allowed": false
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-2-invalid_signature",
+    "type": "invalid_signature",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-2",
+        "payload_tenant": "tenant-2"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-2-expired_event",
+    "type": "expired_event",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-2",
+        "payload_tenant": "tenant-2"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-3-own_event",
+    "type": "own_event",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-3",
+        "payload_tenant": "tenant-3"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-3",
+        "propagated_tenant_context": "tenant-3",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-3-foreign_payload",
+    "type": "foreign_payload",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-3",
+        "payload_tenant": "foreign-3"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-3",
+        "propagated_tenant_context": "tenant-3",
+        "allowed": false
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-3-valid_retry",
+    "type": "valid_retry",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-3",
+        "payload_tenant": "tenant-3"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-3",
+        "propagated_tenant_context": "tenant-3",
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-3",
+        "propagated_tenant_context": "tenant-3",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED",
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-3-cross_tenant_retry",
+    "type": "cross_tenant_retry",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-3",
+        "payload_tenant": "foreign-3"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-3",
+        "propagated_tenant_context": "tenant-3",
+        "allowed": false
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-3",
+        "propagated_tenant_context": "tenant-3",
+        "allowed": false
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-3-invalid_signature",
+    "type": "invalid_signature",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-3",
+        "payload_tenant": "tenant-3"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-3-expired_event",
+    "type": "expired_event",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-3",
+        "payload_tenant": "tenant-3"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-4-own_event",
+    "type": "own_event",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-4",
+        "payload_tenant": "tenant-4"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-4",
+        "propagated_tenant_context": "tenant-4",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-4-foreign_payload",
+    "type": "foreign_payload",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-4",
+        "payload_tenant": "foreign-4"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-4",
+        "propagated_tenant_context": "tenant-4",
+        "allowed": false
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-4-valid_retry",
+    "type": "valid_retry",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-4",
+        "payload_tenant": "tenant-4"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-4",
+        "propagated_tenant_context": "tenant-4",
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-4",
+        "propagated_tenant_context": "tenant-4",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED",
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-4-cross_tenant_retry",
+    "type": "cross_tenant_retry",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-4",
+        "payload_tenant": "foreign-4"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-4",
+        "propagated_tenant_context": "tenant-4",
+        "allowed": false
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-4",
+        "propagated_tenant_context": "tenant-4",
+        "allowed": false
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-4-invalid_signature",
+    "type": "invalid_signature",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-4",
+        "payload_tenant": "tenant-4"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-4-expired_event",
+    "type": "expired_event",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-4",
+        "payload_tenant": "tenant-4"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-5-own_event",
+    "type": "own_event",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-5",
+        "payload_tenant": "tenant-5"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-5",
+        "propagated_tenant_context": "tenant-5",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-5-foreign_payload",
+    "type": "foreign_payload",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-5",
+        "payload_tenant": "foreign-5"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-5",
+        "propagated_tenant_context": "tenant-5",
+        "allowed": false
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-5-valid_retry",
+    "type": "valid_retry",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-5",
+        "payload_tenant": "tenant-5"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-5",
+        "propagated_tenant_context": "tenant-5",
+        "allowed": true
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-5",
+        "propagated_tenant_context": "tenant-5",
+        "allowed": true
+      },
+      {
+        "step": "storage_receipts",
+        "values": [
+          "OWNED",
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "storage_access_executed": true,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-5-cross_tenant_retry",
+    "type": "cross_tenant_retry",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-5",
+        "payload_tenant": "foreign-5"
+      },
+      {
+        "step": "consumer",
+        "attempt": 0,
+        "chosen_tenant": "tenant-5",
+        "propagated_tenant_context": "tenant-5",
+        "allowed": false
+      },
+      {
+        "step": "consumer",
+        "attempt": 1,
+        "chosen_tenant": "tenant-5",
+        "propagated_tenant_context": "tenant-5",
+        "allowed": false
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-5-invalid_signature",
+    "type": "invalid_signature",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-5",
+        "payload_tenant": "tenant-5"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  },
+  {
+    "case_id": "events-5-expired_event",
+    "type": "expired_event",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "ingress",
+        "authenticated_tenant": "tenant-5",
+        "payload_tenant": "tenant-5"
+      },
+      {
+        "step": "storage_receipts",
+        "values": []
+      }
+    ],
+    "observation": {
+      "storage_access_executed": false,
+      "backend": "signed local queue messages and SQLite storage; no cloud event service"
+    }
+  }
+]

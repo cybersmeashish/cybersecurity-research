@@ -1,0 +1,41 @@
+{
+  "study_id": "CAI-004",
+  "claims": [
+    {
+      "id": "CAI-004-E1",
+      "claim": "The seeded permissive profile produced 12 forbidden effects in 12 authored adversarial cases.",
+      "stage": "direct local synthetic observation",
+      "evidence": [
+        "evidence/results.csv",
+        "evidence/traces.json"
+      ],
+      "not_established": "Prevalence, novel vulnerability class, or a defect in any named product."
+    },
+    {
+      "id": "CAI-004-E2",
+      "claim": "The guarded profile matched all 36 declared policy labels and preserved 12 positive effects.",
+      "stage": "bounded local control result",
+      "evidence": [
+        "evidence/summary.json",
+        "evidence/tests.txt"
+      ],
+      "not_established": "Universal correctness, production utility, or performance."
+    },
+    {
+      "id": "CAI-004-E3",
+      "claim": "The partial profile retained 6 forbidden effects.",
+      "stage": "local control comparison",
+      "evidence": [
+        "evidence/results.csv"
+      ],
+      "not_established": "Performance of an untested vendor mitigation."
+    },
+    {
+      "id": "CAI-004-H1",
+      "claim": "A trust policy authorizing mutable or reusable identity names without equivalent stable-ID restrictions can map a distinct post-lifecycle workload to the previously trusted cloud principal.",
+      "stage": "original research hypothesis; only stated local subclaim evaluated",
+      "evidence": [],
+      "not_established": "No GitHub repository was deleted or transferred, and no external OIDC issuer or cloud STS was invoked. Claim lifecycles and ownership transitions are supplied fixtures; actual issuer guarantees must be established separately."
+    }
+  ]
+}

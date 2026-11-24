@@ -1,14 +1,23 @@
-# Primary sources — CAI-004
+# Annotated primary sources — CAI-004
 
-References selected on 2026-11-24. [Retrieval records and source hashes](../hypothesis-source-review.json) document the pages checked. Product documentation changes; tested implementation versions must be recorded separately.
+## S1
 
-## S1 — Best practices for using Workload Identity Federation
+**Best practices for using Workload Identity Federation**
 
-- Source: [Best practices for using Workload Identity Federation](https://docs.cloud.google.com/iam/docs/best-practices-for-using-workload-identity-federation)
+- Primary reference: [Best practices for using Workload Identity Federation](https://docs.cloud.google.com/iam/docs/best-practices-for-using-workload-identity-federation)
 - Type: official documentation.
 - Supports: Subject mappings, stable identifiers, issuer restrictions, and identity reuse.
-- Does not establish: this proposal's implementation-specific hypothesis, vulnerability prevalence, or novelty.
+- Retrieved: 2026-11-24; source SHA-256 `44dad58a4981944caa1ec9d0cf4644d9dfc311ff8e661c8f758eed48b9a27441`.
+- Limit: does not establish this package's local result, a real-product defect, or global novelty.
 
-## Prior-art and evidence limitations
+## S2
 
-Prior-art coverage is incomplete. Official guidance establishes intended design or known risks. A research paper does not independently validate the proposed extension. Hypothesis, harness, and tool design are proposals; no experimental findings are attributed to these references.
+**RFC 8725 — JSON Web Token Best Current Practices**
+
+- Primary reference: [RFC 8725 — JSON Web Token Best Current Practices](https://www.rfc-editor.org/rfc/rfc8725.html)
+- Type: IETF best current practice.
+- Supports: Validation and audience binding; the local prototype is not standards certification.
+- Retrieved: 2026-11-24; source SHA-256 `7f93df8a106c14e2c9394bd3fc12a488266477c89a1fe2f9182cf0bdb02d7ce0`.
+- Limit: does not establish this package's local result, a real-product defect, or global novelty.
+
+[Offline retrieval register](source-review.json) records page identity, dates where available, byte counts, and source hashes. External source bytes are cached in the controlled development workspace; copyrighted page bodies are not republished.

@@ -1,0 +1,41 @@
+{
+  "study_id": "CAI-010",
+  "claims": [
+    {
+      "id": "CAI-010-E1",
+      "claim": "The seeded permissive profile produced 18 forbidden effects in 18 authored adversarial cases.",
+      "stage": "direct local synthetic observation",
+      "evidence": [
+        "evidence/results.csv",
+        "evidence/traces.json"
+      ],
+      "not_established": "Prevalence, novel vulnerability class, or a defect in any named product."
+    },
+    {
+      "id": "CAI-010-E2",
+      "claim": "The guarded profile matched all 36 declared policy labels and preserved 6 positive effects.",
+      "stage": "bounded local control result",
+      "evidence": [
+        "evidence/summary.json",
+        "evidence/tests.txt"
+      ],
+      "not_established": "Universal correctness, production utility, or performance."
+    },
+    {
+      "id": "CAI-010-E3",
+      "claim": "The partial profile retained 6 forbidden effects.",
+      "stage": "local control comparison",
+      "evidence": [
+        "evidence/results.csv"
+      ],
+      "not_established": "Performance of an untested vendor mitigation."
+    },
+    {
+      "id": "CAI-010-H1",
+      "claim": "A gateway omitting tenant cache partitioning or allowing another tenant's cache salt enables above-chance inference of whether a chosen prompt prefix was processed by that tenant.",
+      "stage": "original research hypothesis; only stated local subclaim evaluated",
+      "evidence": [],
+      "not_established": "There are no KV tensors, GPU, vLLM server, network jitter, batching, or model inference. Cold work is 1,200 SHA-256 iterations, so the timing separation is artificial. The corrected timing AUC remains an exploratory observation; zero cross-tenant hits does not prove all side channels absent."
+    }
+  ]
+}

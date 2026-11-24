@@ -1,0 +1,330 @@
+{
+  "study_id": "CAI-009",
+  "fixture_scope": "Constructed boundary cases, not a random sample of deployments",
+  "cases": [
+    {
+      "case_id": "events-0-own_event",
+      "type": "own_event",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "events-0-foreign_payload",
+      "type": "foreign_payload",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-0-valid_retry",
+      "type": "valid_retry",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "events-0-cross_tenant_retry",
+      "type": "cross_tenant_retry",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-0-invalid_signature",
+      "type": "invalid_signature",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-0-expired_event",
+      "type": "expired_event",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-1-own_event",
+      "type": "own_event",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "events-1-foreign_payload",
+      "type": "foreign_payload",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-1-valid_retry",
+      "type": "valid_retry",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "events-1-cross_tenant_retry",
+      "type": "cross_tenant_retry",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-1-invalid_signature",
+      "type": "invalid_signature",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-1-expired_event",
+      "type": "expired_event",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-2-own_event",
+      "type": "own_event",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "events-2-foreign_payload",
+      "type": "foreign_payload",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-2-valid_retry",
+      "type": "valid_retry",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "events-2-cross_tenant_retry",
+      "type": "cross_tenant_retry",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-2-invalid_signature",
+      "type": "invalid_signature",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-2-expired_event",
+      "type": "expired_event",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-3-own_event",
+      "type": "own_event",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "events-3-foreign_payload",
+      "type": "foreign_payload",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-3-valid_retry",
+      "type": "valid_retry",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "events-3-cross_tenant_retry",
+      "type": "cross_tenant_retry",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-3-invalid_signature",
+      "type": "invalid_signature",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-3-expired_event",
+      "type": "expired_event",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-4-own_event",
+      "type": "own_event",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "events-4-foreign_payload",
+      "type": "foreign_payload",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-4-valid_retry",
+      "type": "valid_retry",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "events-4-cross_tenant_retry",
+      "type": "cross_tenant_retry",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-4-invalid_signature",
+      "type": "invalid_signature",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-4-expired_event",
+      "type": "expired_event",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-5-own_event",
+      "type": "own_event",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "events-5-foreign_payload",
+      "type": "foreign_payload",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-5-valid_retry",
+      "type": "valid_retry",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "events-5-cross_tenant_retry",
+      "type": "cross_tenant_retry",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-5-invalid_signature",
+      "type": "invalid_signature",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "events-5-expired_event",
+      "type": "expired_event",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "negative_control",
+      "expected_effect": false
+    }
+  ]
+}

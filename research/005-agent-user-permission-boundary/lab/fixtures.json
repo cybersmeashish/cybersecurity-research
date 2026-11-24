@@ -1,0 +1,330 @@
+{
+  "study_id": "CAI-005",
+  "fixture_scope": "Constructed boundary cases, not a random sample of deployments",
+  "cases": [
+    {
+      "case_id": "agent-0-allowed_read",
+      "type": "allowed_read",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "agent-0-denied_write",
+      "type": "denied_write",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-0-wrong_resource",
+      "type": "wrong_resource",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-0-indirect_write",
+      "type": "indirect_write",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-0-delegated_write",
+      "type": "delegated_write",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-0-denied_direct",
+      "type": "denied_direct",
+      "context": 0,
+      "actor": "user-0",
+      "owner": "owner-0",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-1-allowed_read",
+      "type": "allowed_read",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "agent-1-denied_write",
+      "type": "denied_write",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-1-wrong_resource",
+      "type": "wrong_resource",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-1-indirect_write",
+      "type": "indirect_write",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-1-delegated_write",
+      "type": "delegated_write",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-1-denied_direct",
+      "type": "denied_direct",
+      "context": 1,
+      "actor": "user-1",
+      "owner": "owner-1",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-2-allowed_read",
+      "type": "allowed_read",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "agent-2-denied_write",
+      "type": "denied_write",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-2-wrong_resource",
+      "type": "wrong_resource",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-2-indirect_write",
+      "type": "indirect_write",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-2-delegated_write",
+      "type": "delegated_write",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-2-denied_direct",
+      "type": "denied_direct",
+      "context": 2,
+      "actor": "user-2",
+      "owner": "owner-2",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-3-allowed_read",
+      "type": "allowed_read",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "agent-3-denied_write",
+      "type": "denied_write",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-3-wrong_resource",
+      "type": "wrong_resource",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-3-indirect_write",
+      "type": "indirect_write",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-3-delegated_write",
+      "type": "delegated_write",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-3-denied_direct",
+      "type": "denied_direct",
+      "context": 3,
+      "actor": "user-3",
+      "owner": "owner-3",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-4-allowed_read",
+      "type": "allowed_read",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "agent-4-denied_write",
+      "type": "denied_write",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-4-wrong_resource",
+      "type": "wrong_resource",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-4-indirect_write",
+      "type": "indirect_write",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-4-delegated_write",
+      "type": "delegated_write",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-4-denied_direct",
+      "type": "denied_direct",
+      "context": 4,
+      "actor": "user-4",
+      "owner": "owner-4",
+      "kind": "negative_control",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-5-allowed_read",
+      "type": "allowed_read",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "positive",
+      "expected_effect": true
+    },
+    {
+      "case_id": "agent-5-denied_write",
+      "type": "denied_write",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-5-wrong_resource",
+      "type": "wrong_resource",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-5-indirect_write",
+      "type": "indirect_write",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-5-delegated_write",
+      "type": "delegated_write",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "adversarial",
+      "expected_effect": false
+    },
+    {
+      "case_id": "agent-5-denied_direct",
+      "type": "denied_direct",
+      "context": 5,
+      "actor": "user-5",
+      "owner": "owner-5",
+      "kind": "negative_control",
+      "expected_effect": false
+    }
+  ]
+}

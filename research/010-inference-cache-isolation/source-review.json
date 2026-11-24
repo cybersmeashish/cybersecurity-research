@@ -1,0 +1,30 @@
+{
+  "study_id": "CAI-010",
+  "retrieved_on": "2026-11-24",
+  "sources": [
+    {
+      "id": "vllm-cache",
+      "title": "Automatic Prefix Caching \u2014 vLLM",
+      "url": "https://docs.vllm.ai/en/latest/design/prefix_caching/",
+      "kind": "official implementation documentation",
+      "scope": "Prefix cache keys and cache-salt support for isolating reuse.",
+      "sha256": "2fddeb6f8e42a57ca24f1304397dd741002da9ffee1aff9a7ece6bde9859a331",
+      "bytes": 222249,
+      "page_title": "Automatic Prefix Caching - vLLM",
+      "retrieved_on": "2026-11-24",
+      "paper_date": null
+    },
+    {
+      "id": "owasp-agents",
+      "title": "AI Agent Security Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html",
+      "kind": "OWASP guidance",
+      "scope": "Agent authorization, memory trust, delegation, and bounded autonomy.",
+      "sha256": "9e9f5253e8bbc5328c3bb00166e9df0d0a738b0a2615b254280fb2985af764d4",
+      "bytes": 150733,
+      "page_title": "AI Agent Security - OWASP Cheat Sheet Series",
+      "retrieved_on": "2026-11-24",
+      "paper_date": null
+    }
+  ]
+}

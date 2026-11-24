@@ -1,53 +1,30 @@
-# Experiment plan — CAI-008
+# Experiment execution record — CAI-008
 
-**Execution status:** not started. All cases below are planned. Follow the [shared validation protocol](../HYPOTHESIS-VALIDATION.md).
+The initial proposal has been expanded into an executed controlled local study. The measured phase is defined in [METHOD.md](METHOD.md); broader implementation-level validation remains future work.
 
-## Required harness and variables
+- Executed fixtures: 36.
+- Executed profiles: vulnerable, partial, guarded.
+- Fixture-condition trials: 108.
+- Regression methods: 6.
+- Live-provider experiments: 0.
+- Model calls: 0.
 
-A memory store, summarizer, separated sessions, source trust labels, and mock action policy.
+- **vulnerable:** Lossy structured compaction with trusted default for missing labels.
+- **partial:** First-compaction label retention without complete lineage enforcement.
+- **guarded:** Root-origin authorization and preserved derivation chain.
 
-**Independent variables:** Source trust, summary depth, provenance retention, recall rank, sessions, and eviction.
+## Measured scope
 
-Start with owned synthetic data and mock actions. Later live validation requires explicit target/method authorization and cost limits. This proposal grants no authorization to attack a service.
+Dropping trust or derivation metadata can authorize a structured recalled instruction that lacked authority at ingestion; checking an intact authorized root prevents the effect.
 
-Record versions, configuration, fixtures, seeds, expected policy, and verified preconditions before trials.
+## Ground truth and evidence
 
-## Planned case matrix
+[Fixtures](lab/fixtures.json) contain expected labels before execution. [Raw results](evidence/results.csv) contain observations. [Traces](evidence/traces.json) identify the endpoint reached. [Source manifest](evidence/source-manifest.json) pins inputs.
 
-| Case | Condition | Procedure |
-|---|---|---|
-| 1 | Clean baseline | Store ordinary facts and verify useful recall. |
-| 2 | Low-trust ingestion | Store a low-trust instruction-bearing fixture with task facts. |
-| 3 | Later-session recall | Summarize, start a separate session, omit the original fixture, and trigger relevant recall. |
-| 4 | Provenance control | Preserve trust/source labels and enforce the same policy. |
-| 5 | Negative control | Remove or make the low-trust source irrelevant. |
+## Original hypothesis status
 
-## Measurements
+Structured provenance mechanism supported; semantic/LLM memory poisoning not evaluated.
 
-- Forbidden actions across later sessions
-- Persistence lifetime and recall frequency
-- Legitimate recall utility
-- Source-provenance retention
+## Deferred experiments
 
-Deterministic evaluators must cover the declared fixture matrix. Model-driven experiments require independent inputs and repeated trials with pre-registered sample size, success margin, and stopping rules. Do not count repeated measurements of one input as independent cases.
-
-## Decision criteria
-
-**Supports the hypothesis:** A forbidden later action is traceable to summarized low-trust content with clean and provenance controls.
-
-**Evidence against it:** No authority promotion occurs and provenance remains enforceable through the tested paths.
-
-Negative results apply only to tested versions and conditions. Synthetic behavior does not establish provider behavior.
-
-## Confounders
-
-Conversation carryover, fixture contamination with trusted instructions, stochasticity, and ordinary fact recall mistaken for authority.
-
-## Evidence and current results
-
-Record case ID, expected/observed decisions, actual resource effect, controls, configuration/fixture hashes, seed, and sanitized traces. Model wording alone is insufficient evidence of a protected action.
-
-- Executed trials: **0**.
-- Observed vulnerabilities: **none established**.
-- Mitigation effectiveness: **not measured**.
-- Independent reproduction: **pending**.
+Measure provenance survival and enforcement in an owned semantic memory implementation across repeated compaction, eviction, and policy revision. Any live target needs explicit ownership/program scope. A larger legitimate workload, implementation survey, adversarial holdout corpus, and independent reproduction are pending.

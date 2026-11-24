@@ -1,26 +1,37 @@
 {
   "id": "CAI-010",
   "title": "Tenant enforcement of inference prefix-cache isolation",
-  "version": "0.1",
-  "status": "proposed",
+  "version": "0.2",
+  "status": "controlled local synthetic study",
   "prepared_on": "2026-11-24",
   "area": "Cloud + AI",
   "priority": 9,
   "hypothesis": "A gateway omitting tenant cache partitioning or allowing another tenant's cache salt enables above-chance inference of whether a chosen prompt prefix was processed by that tenant.",
   "null_hypothesis": "Cross-tenant prefix membership cannot be distinguished above the pre-registered chance baseline under tested load and noise.",
   "path": "research/010-inference-cache-isolation/README.md",
-  "experiments_executed": 0,
+  "experiments_executed": 108,
   "provider_vulnerabilities_confirmed": 0,
-  "novelty_review": "pending",
+  "novelty_review": "known-class local mechanism study; exhaustive survey pending",
   "independent_review": "pending",
   "tool": {
     "name": "Inference-cache isolation auditor",
-    "status": "design only"
+    "status": "local prototype implemented; production adapter pending"
   },
   "sources": [
     {
       "id": "vllm-cache",
       "url": "https://docs.vllm.ai/en/latest/design/prefix_caching/"
+    },
+    {
+      "id": "owasp-agents",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html"
     }
-  ]
+  ],
+  "fixture_cases": 36,
+  "regression_methods": 6,
+  "local_hypothesis": "A cache namespace derived only from a caller-controlled salt can share prefix state across tenants; a trusted tenant namespace prevents cross-tenant cache hits in this fixture model.",
+  "hypothesis_evaluation": "Synthetic namespace and timing mechanism supported; production LLM-serving leakage not evaluated.",
+  "paper_path": "research/010-inference-cache-isolation/PAPER.md",
+  "evidence_path": "research/010-inference-cache-isolation/evidence/summary.json",
+  "model_calls": 0
 }

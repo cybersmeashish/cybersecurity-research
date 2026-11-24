@@ -19,8 +19,8 @@ Use the [OrbStack workflow](AGENTS.md), [research reproduction](research/001-clo
 
 [Contribution protocol](CONTRIBUTING.md) · [Security reporting](SECURITY.md) · [Portfolio index](portfolio-index.json).
 
-## Cloud and AI security research hypotheses
+## Ten cloud and AI security research packages
 
-Ten separate proposals for vulnerability discovery and security tools: RAG authorization, MCP principal binding, workload federation, agent permissions, connector SSRF, SOC log injection, memory provenance, serverless tenant flows, inference-cache isolation, and execution budgets.
+[Browse the full research portfolio](research/CLOUD-AI-SECURITY-HYPOTHESES.md): ten separate papers with threat models, executable local labs, raw evidence, controls, tool designs, references, and reproduction instructions.
 
-[Browse all ten research folders](research/CLOUD-AI-SECURITY-HYPOTHESES.md). Each includes a hypothesis, experiment plan, proposed tool, and primary sources. Experiments and vulnerability confirmation are pending.
+The packages report 1,080 controlled fixture-condition trials and 60 regression methods. They are bounded synthetic studies; no live-provider vulnerability or model-level validation is claimed.

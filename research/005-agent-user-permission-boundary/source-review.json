@@ -1,0 +1,30 @@
+{
+  "study_id": "CAI-005",
+  "retrieved_on": "2026-11-24",
+  "sources": [
+    {
+      "id": "aws-agent-identity",
+      "title": "Agent identity and permission management",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/agentic-ai-lens/agentsec03.html",
+      "kind": "official documentation",
+      "scope": "Agent identities, least privilege, and actions performed on behalf of users.",
+      "sha256": "07b6eed9c4ade56d29d47b9eee2e48af4406577c4cff4735d8a71cf021e18616",
+      "bytes": 18747,
+      "page_title": "Agent identity and permission management - Agentic AI Lens Agent identity and permission management - Agentic AI Lens",
+      "retrieved_on": "2026-11-24",
+      "paper_date": null
+    },
+    {
+      "id": "owasp-agents",
+      "title": "AI Agent Security Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html",
+      "kind": "OWASP guidance",
+      "scope": "Agent authorization, memory trust, delegation, and bounded autonomy.",
+      "sha256": "9e9f5253e8bbc5328c3bb00166e9df0d0a738b0a2615b254280fb2985af764d4",
+      "bytes": 150733,
+      "page_title": "AI Agent Security - OWASP Cheat Sheet Series",
+      "retrieved_on": "2026-11-24",
+      "paper_date": null
+    }
+  ]
+}

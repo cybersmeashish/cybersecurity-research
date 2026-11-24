@@ -1,0 +1,3446 @@
+[
+  {
+    "case_id": "agent-0-allowed_read",
+    "type": "allowed_read",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-0",
+        "action": "read",
+        "resource": "record-0",
+        "allowed": true
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-0-denied_write",
+    "type": "denied_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-0",
+        "action": "write",
+        "resource": "record-0",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "row_updated"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-0-wrong_resource",
+    "type": "wrong_resource",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-0",
+        "action": "read",
+        "resource": "other-record",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "PROTECTED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-0-indirect_write",
+    "type": "indirect_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-0",
+        "action": "write",
+        "resource": "record-0",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "row_updated"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-0-delegated_write",
+    "type": "delegated_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-0",
+        "action": "write",
+        "resource": "record-0",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": false
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "row_updated"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-0-denied_direct",
+    "type": "denied_direct",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-0",
+        "action": "write",
+        "resource": "record-0",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-1-allowed_read",
+    "type": "allowed_read",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-1",
+        "action": "read",
+        "resource": "record-1",
+        "allowed": true
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-1-denied_write",
+    "type": "denied_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-1",
+        "action": "write",
+        "resource": "record-1",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "row_updated"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-1-wrong_resource",
+    "type": "wrong_resource",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-1",
+        "action": "read",
+        "resource": "other-record",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "PROTECTED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-1-indirect_write",
+    "type": "indirect_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-1",
+        "action": "write",
+        "resource": "record-1",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "row_updated"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-1-delegated_write",
+    "type": "delegated_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-1",
+        "action": "write",
+        "resource": "record-1",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": false
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "row_updated"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-1-denied_direct",
+    "type": "denied_direct",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-1",
+        "action": "write",
+        "resource": "record-1",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-2-allowed_read",
+    "type": "allowed_read",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-2",
+        "action": "read",
+        "resource": "record-2",
+        "allowed": true
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-2-denied_write",
+    "type": "denied_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-2",
+        "action": "write",
+        "resource": "record-2",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "row_updated"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-2-wrong_resource",
+    "type": "wrong_resource",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-2",
+        "action": "read",
+        "resource": "other-record",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "PROTECTED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-2-indirect_write",
+    "type": "indirect_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-2",
+        "action": "write",
+        "resource": "record-2",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "row_updated"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-2-delegated_write",
+    "type": "delegated_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-2",
+        "action": "write",
+        "resource": "record-2",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": false
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "row_updated"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-2-denied_direct",
+    "type": "denied_direct",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-2",
+        "action": "write",
+        "resource": "record-2",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-3-allowed_read",
+    "type": "allowed_read",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-3",
+        "action": "read",
+        "resource": "record-3",
+        "allowed": true
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-3-denied_write",
+    "type": "denied_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-3",
+        "action": "write",
+        "resource": "record-3",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "row_updated"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-3-wrong_resource",
+    "type": "wrong_resource",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-3",
+        "action": "read",
+        "resource": "other-record",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "PROTECTED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-3-indirect_write",
+    "type": "indirect_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-3",
+        "action": "write",
+        "resource": "record-3",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "row_updated"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-3-delegated_write",
+    "type": "delegated_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-3",
+        "action": "write",
+        "resource": "record-3",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": false
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "row_updated"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-3-denied_direct",
+    "type": "denied_direct",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-3",
+        "action": "write",
+        "resource": "record-3",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-4-allowed_read",
+    "type": "allowed_read",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-4",
+        "action": "read",
+        "resource": "record-4",
+        "allowed": true
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-4-denied_write",
+    "type": "denied_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-4",
+        "action": "write",
+        "resource": "record-4",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "row_updated"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-4-wrong_resource",
+    "type": "wrong_resource",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-4",
+        "action": "read",
+        "resource": "other-record",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "PROTECTED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-4-indirect_write",
+    "type": "indirect_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-4",
+        "action": "write",
+        "resource": "record-4",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "row_updated"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-4-delegated_write",
+    "type": "delegated_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-4",
+        "action": "write",
+        "resource": "record-4",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": false
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "row_updated"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-4-denied_direct",
+    "type": "denied_direct",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-4",
+        "action": "write",
+        "resource": "record-4",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-5-allowed_read",
+    "type": "allowed_read",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-5",
+        "action": "read",
+        "resource": "record-5",
+        "allowed": true
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-5-denied_write",
+    "type": "denied_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-5",
+        "action": "write",
+        "resource": "record-5",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "row_updated"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-5-wrong_resource",
+    "type": "wrong_resource",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-5",
+        "action": "read",
+        "resource": "other-record",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "PROTECTED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-5-indirect_write",
+    "type": "indirect_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-5",
+        "action": "write",
+        "resource": "record-5",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "row_updated"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-5-delegated_write",
+    "type": "delegated_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-5",
+        "action": "write",
+        "resource": "record-5",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": false
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "row_updated"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-5-denied_direct",
+    "type": "denied_direct",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-5",
+        "action": "write",
+        "resource": "record-5",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-0-allowed_read",
+    "type": "allowed_read",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-0",
+        "action": "read",
+        "resource": "record-0",
+        "allowed": true
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-0-denied_write",
+    "type": "denied_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-0",
+        "action": "write",
+        "resource": "record-0",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-0-wrong_resource",
+    "type": "wrong_resource",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-0",
+        "action": "read",
+        "resource": "other-record",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "PROTECTED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-0-indirect_write",
+    "type": "indirect_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-0",
+        "action": "write",
+        "resource": "record-0",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-0-delegated_write",
+    "type": "delegated_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-0",
+        "action": "write",
+        "resource": "record-0",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": false
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-0-denied_direct",
+    "type": "denied_direct",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-0",
+        "action": "write",
+        "resource": "record-0",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-1-allowed_read",
+    "type": "allowed_read",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-1",
+        "action": "read",
+        "resource": "record-1",
+        "allowed": true
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-1-denied_write",
+    "type": "denied_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-1",
+        "action": "write",
+        "resource": "record-1",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-1-wrong_resource",
+    "type": "wrong_resource",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-1",
+        "action": "read",
+        "resource": "other-record",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "PROTECTED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-1-indirect_write",
+    "type": "indirect_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-1",
+        "action": "write",
+        "resource": "record-1",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-1-delegated_write",
+    "type": "delegated_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-1",
+        "action": "write",
+        "resource": "record-1",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": false
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-1-denied_direct",
+    "type": "denied_direct",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-1",
+        "action": "write",
+        "resource": "record-1",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-2-allowed_read",
+    "type": "allowed_read",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-2",
+        "action": "read",
+        "resource": "record-2",
+        "allowed": true
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-2-denied_write",
+    "type": "denied_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-2",
+        "action": "write",
+        "resource": "record-2",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-2-wrong_resource",
+    "type": "wrong_resource",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-2",
+        "action": "read",
+        "resource": "other-record",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "PROTECTED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-2-indirect_write",
+    "type": "indirect_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-2",
+        "action": "write",
+        "resource": "record-2",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-2-delegated_write",
+    "type": "delegated_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-2",
+        "action": "write",
+        "resource": "record-2",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": false
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-2-denied_direct",
+    "type": "denied_direct",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-2",
+        "action": "write",
+        "resource": "record-2",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-3-allowed_read",
+    "type": "allowed_read",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-3",
+        "action": "read",
+        "resource": "record-3",
+        "allowed": true
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-3-denied_write",
+    "type": "denied_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-3",
+        "action": "write",
+        "resource": "record-3",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-3-wrong_resource",
+    "type": "wrong_resource",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-3",
+        "action": "read",
+        "resource": "other-record",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "PROTECTED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-3-indirect_write",
+    "type": "indirect_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-3",
+        "action": "write",
+        "resource": "record-3",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-3-delegated_write",
+    "type": "delegated_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-3",
+        "action": "write",
+        "resource": "record-3",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": false
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-3-denied_direct",
+    "type": "denied_direct",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-3",
+        "action": "write",
+        "resource": "record-3",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-4-allowed_read",
+    "type": "allowed_read",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-4",
+        "action": "read",
+        "resource": "record-4",
+        "allowed": true
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-4-denied_write",
+    "type": "denied_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-4",
+        "action": "write",
+        "resource": "record-4",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-4-wrong_resource",
+    "type": "wrong_resource",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-4",
+        "action": "read",
+        "resource": "other-record",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "PROTECTED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-4-indirect_write",
+    "type": "indirect_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-4",
+        "action": "write",
+        "resource": "record-4",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-4-delegated_write",
+    "type": "delegated_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-4",
+        "action": "write",
+        "resource": "record-4",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": false
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-4-denied_direct",
+    "type": "denied_direct",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-4",
+        "action": "write",
+        "resource": "record-4",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-5-allowed_read",
+    "type": "allowed_read",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-5",
+        "action": "read",
+        "resource": "record-5",
+        "allowed": true
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-5-denied_write",
+    "type": "denied_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-5",
+        "action": "write",
+        "resource": "record-5",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-5-wrong_resource",
+    "type": "wrong_resource",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-5",
+        "action": "read",
+        "resource": "other-record",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "PROTECTED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-5-indirect_write",
+    "type": "indirect_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-5",
+        "action": "write",
+        "resource": "record-5",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-5-delegated_write",
+    "type": "delegated_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-5",
+        "action": "write",
+        "resource": "record-5",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": false
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-5-denied_direct",
+    "type": "denied_direct",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-5",
+        "action": "write",
+        "resource": "record-5",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-0-allowed_read",
+    "type": "allowed_read",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-0",
+        "action": "read",
+        "resource": "record-0",
+        "allowed": true
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-0-denied_write",
+    "type": "denied_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-0",
+        "action": "write",
+        "resource": "record-0",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-0-wrong_resource",
+    "type": "wrong_resource",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-0",
+        "action": "read",
+        "resource": "other-record",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-0-indirect_write",
+    "type": "indirect_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-0",
+        "action": "write",
+        "resource": "record-0",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-0-delegated_write",
+    "type": "delegated_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-0",
+        "action": "write",
+        "resource": "record-0",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-0-denied_direct",
+    "type": "denied_direct",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-0",
+        "action": "write",
+        "resource": "record-0",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-1-allowed_read",
+    "type": "allowed_read",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-1",
+        "action": "read",
+        "resource": "record-1",
+        "allowed": true
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-1-denied_write",
+    "type": "denied_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-1",
+        "action": "write",
+        "resource": "record-1",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-1-wrong_resource",
+    "type": "wrong_resource",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-1",
+        "action": "read",
+        "resource": "other-record",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-1-indirect_write",
+    "type": "indirect_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-1",
+        "action": "write",
+        "resource": "record-1",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-1-delegated_write",
+    "type": "delegated_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-1",
+        "action": "write",
+        "resource": "record-1",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-1-denied_direct",
+    "type": "denied_direct",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-1",
+        "action": "write",
+        "resource": "record-1",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-2-allowed_read",
+    "type": "allowed_read",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-2",
+        "action": "read",
+        "resource": "record-2",
+        "allowed": true
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-2-denied_write",
+    "type": "denied_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-2",
+        "action": "write",
+        "resource": "record-2",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-2-wrong_resource",
+    "type": "wrong_resource",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-2",
+        "action": "read",
+        "resource": "other-record",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-2-indirect_write",
+    "type": "indirect_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-2",
+        "action": "write",
+        "resource": "record-2",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-2-delegated_write",
+    "type": "delegated_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-2",
+        "action": "write",
+        "resource": "record-2",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-2-denied_direct",
+    "type": "denied_direct",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-2",
+        "action": "write",
+        "resource": "record-2",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-3-allowed_read",
+    "type": "allowed_read",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-3",
+        "action": "read",
+        "resource": "record-3",
+        "allowed": true
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-3-denied_write",
+    "type": "denied_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-3",
+        "action": "write",
+        "resource": "record-3",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-3-wrong_resource",
+    "type": "wrong_resource",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-3",
+        "action": "read",
+        "resource": "other-record",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-3-indirect_write",
+    "type": "indirect_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-3",
+        "action": "write",
+        "resource": "record-3",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-3-delegated_write",
+    "type": "delegated_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-3",
+        "action": "write",
+        "resource": "record-3",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-3-denied_direct",
+    "type": "denied_direct",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-3",
+        "action": "write",
+        "resource": "record-3",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-4-allowed_read",
+    "type": "allowed_read",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-4",
+        "action": "read",
+        "resource": "record-4",
+        "allowed": true
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-4-denied_write",
+    "type": "denied_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-4",
+        "action": "write",
+        "resource": "record-4",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-4-wrong_resource",
+    "type": "wrong_resource",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-4",
+        "action": "read",
+        "resource": "other-record",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-4-indirect_write",
+    "type": "indirect_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-4",
+        "action": "write",
+        "resource": "record-4",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-4-delegated_write",
+    "type": "delegated_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-4",
+        "action": "write",
+        "resource": "record-4",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-4-denied_direct",
+    "type": "denied_direct",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-4",
+        "action": "write",
+        "resource": "record-4",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-5-allowed_read",
+    "type": "allowed_read",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-5",
+        "action": "read",
+        "resource": "record-5",
+        "allowed": true
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": true,
+        "effects": [
+          "OWNED"
+        ]
+      }
+    ],
+    "observation": {
+      "api_action_executed": true,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-5-denied_write",
+    "type": "denied_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-5",
+        "action": "write",
+        "resource": "record-5",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-5-wrong_resource",
+    "type": "wrong_resource",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-5",
+        "action": "read",
+        "resource": "other-record",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-5-indirect_write",
+    "type": "indirect_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-5",
+        "action": "write",
+        "resource": "record-5",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-5-delegated_write",
+    "type": "delegated_write",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-5",
+        "action": "write",
+        "resource": "record-5",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  },
+  {
+    "case_id": "agent-5-denied_direct",
+    "type": "denied_direct",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "user_policy",
+        "caller": "user-5",
+        "action": "write",
+        "resource": "record-5",
+        "allowed": false
+      },
+      {
+        "step": "delegation",
+        "caller_preserved": true
+      },
+      {
+        "step": "gateway",
+        "allowed": false,
+        "effects": []
+      }
+    ],
+    "observation": {
+      "api_action_executed": false,
+      "backend": "SQLite mock cloud API; no provider IAM or autonomous model"
+    }
+  }
+]

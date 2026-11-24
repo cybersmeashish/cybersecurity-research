@@ -1,0 +1,4310 @@
+[
+  {
+    "case_id": "ssrf-0-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-0-redirect_internal",
+    "type": "redirect_internal",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 3
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.2",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_internal"
+          },
+          {
+            "role": "internal",
+            "path": "/canary"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": true,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-0-redirect_allowed",
+    "type": "redirect_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 3
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_allowed"
+          },
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-0-dns_change",
+    "type": "dns_change",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.2",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.2",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "internal",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": true,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-0-forbidden_initial",
+    "type": "forbidden_initial",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-0-plain_internal",
+    "type": "plain_internal",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-1-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-1-redirect_internal",
+    "type": "redirect_internal",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 3
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.2",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_internal"
+          },
+          {
+            "role": "internal",
+            "path": "/canary"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": true,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-1-redirect_allowed",
+    "type": "redirect_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 3
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_allowed"
+          },
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-1-dns_change",
+    "type": "dns_change",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.2",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.2",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "internal",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": true,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-1-forbidden_initial",
+    "type": "forbidden_initial",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-1-plain_internal",
+    "type": "plain_internal",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-2-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-2-redirect_internal",
+    "type": "redirect_internal",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 3
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.2",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_internal"
+          },
+          {
+            "role": "internal",
+            "path": "/canary"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": true,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-2-redirect_allowed",
+    "type": "redirect_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 3
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_allowed"
+          },
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-2-dns_change",
+    "type": "dns_change",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.2",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.2",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "internal",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": true,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-2-forbidden_initial",
+    "type": "forbidden_initial",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-2-plain_internal",
+    "type": "plain_internal",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-3-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-3-redirect_internal",
+    "type": "redirect_internal",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 3
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.2",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_internal"
+          },
+          {
+            "role": "internal",
+            "path": "/canary"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": true,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-3-redirect_allowed",
+    "type": "redirect_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 3
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_allowed"
+          },
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-3-dns_change",
+    "type": "dns_change",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.2",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.2",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "internal",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": true,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-3-forbidden_initial",
+    "type": "forbidden_initial",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-3-plain_internal",
+    "type": "plain_internal",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-4-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-4-redirect_internal",
+    "type": "redirect_internal",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 3
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.2",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_internal"
+          },
+          {
+            "role": "internal",
+            "path": "/canary"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": true,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-4-redirect_allowed",
+    "type": "redirect_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 3
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_allowed"
+          },
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-4-dns_change",
+    "type": "dns_change",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.2",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.2",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "internal",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": true,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-4-forbidden_initial",
+    "type": "forbidden_initial",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-4-plain_internal",
+    "type": "plain_internal",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-5-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-5-redirect_internal",
+    "type": "redirect_internal",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 3
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.2",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_internal"
+          },
+          {
+            "role": "internal",
+            "path": "/canary"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": true,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-5-redirect_allowed",
+    "type": "redirect_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 3
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_allowed"
+          },
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-5-dns_change",
+    "type": "dns_change",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.2",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.2",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "internal",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": true,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-5-forbidden_initial",
+    "type": "forbidden_initial",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-5-plain_internal",
+    "type": "plain_internal",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-0-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-0-redirect_internal",
+    "type": "redirect_internal",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_internal"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-0-redirect_allowed",
+    "type": "redirect_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 3
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_allowed"
+          },
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-0-dns_change",
+    "type": "dns_change",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.2",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.2",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "internal",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": true,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-0-forbidden_initial",
+    "type": "forbidden_initial",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-0-plain_internal",
+    "type": "plain_internal",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-1-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-1-redirect_internal",
+    "type": "redirect_internal",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_internal"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-1-redirect_allowed",
+    "type": "redirect_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 3
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_allowed"
+          },
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-1-dns_change",
+    "type": "dns_change",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.2",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.2",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "internal",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": true,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-1-forbidden_initial",
+    "type": "forbidden_initial",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-1-plain_internal",
+    "type": "plain_internal",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-2-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-2-redirect_internal",
+    "type": "redirect_internal",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_internal"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-2-redirect_allowed",
+    "type": "redirect_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 3
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_allowed"
+          },
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-2-dns_change",
+    "type": "dns_change",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.2",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.2",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "internal",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": true,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-2-forbidden_initial",
+    "type": "forbidden_initial",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-2-plain_internal",
+    "type": "plain_internal",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-3-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-3-redirect_internal",
+    "type": "redirect_internal",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_internal"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-3-redirect_allowed",
+    "type": "redirect_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 3
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_allowed"
+          },
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-3-dns_change",
+    "type": "dns_change",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.2",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.2",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "internal",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": true,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-3-forbidden_initial",
+    "type": "forbidden_initial",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-3-plain_internal",
+    "type": "plain_internal",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-4-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-4-redirect_internal",
+    "type": "redirect_internal",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_internal"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-4-redirect_allowed",
+    "type": "redirect_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 3
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_allowed"
+          },
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-4-dns_change",
+    "type": "dns_change",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.2",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.2",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "internal",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": true,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-4-forbidden_initial",
+    "type": "forbidden_initial",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-4-plain_internal",
+    "type": "plain_internal",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-5-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-5-redirect_internal",
+    "type": "redirect_internal",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_internal"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-5-redirect_allowed",
+    "type": "redirect_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 3
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_allowed"
+          },
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-5-dns_change",
+    "type": "dns_change",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.2",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.2",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "internal",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": true,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-5-forbidden_initial",
+    "type": "forbidden_initial",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-5-plain_internal",
+    "type": "plain_internal",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-0-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-0-redirect_internal",
+    "type": "redirect_internal",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 2
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_internal"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-0-redirect_allowed",
+    "type": "redirect_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_allowed"
+          },
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-0-dns_change",
+    "type": "dns_change",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-0-forbidden_initial",
+    "type": "forbidden_initial",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-0-plain_internal",
+    "type": "plain_internal",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-1-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-1-redirect_internal",
+    "type": "redirect_internal",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 2
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_internal"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-1-redirect_allowed",
+    "type": "redirect_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_allowed"
+          },
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-1-dns_change",
+    "type": "dns_change",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-1-forbidden_initial",
+    "type": "forbidden_initial",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-1-plain_internal",
+    "type": "plain_internal",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-2-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-2-redirect_internal",
+    "type": "redirect_internal",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 2
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_internal"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-2-redirect_allowed",
+    "type": "redirect_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_allowed"
+          },
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-2-dns_change",
+    "type": "dns_change",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-2-forbidden_initial",
+    "type": "forbidden_initial",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-2-plain_internal",
+    "type": "plain_internal",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-3-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-3-redirect_internal",
+    "type": "redirect_internal",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 2
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_internal"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-3-redirect_allowed",
+    "type": "redirect_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_allowed"
+          },
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-3-dns_change",
+    "type": "dns_change",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-3-forbidden_initial",
+    "type": "forbidden_initial",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-3-plain_internal",
+    "type": "plain_internal",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-4-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-4-redirect_internal",
+    "type": "redirect_internal",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 2
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_internal"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-4-redirect_allowed",
+    "type": "redirect_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_allowed"
+          },
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-4-dns_change",
+    "type": "dns_change",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-4-forbidden_initial",
+    "type": "forbidden_initial",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-4-plain_internal",
+    "type": "plain_internal",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-5-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-5-redirect_internal",
+    "type": "redirect_internal",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 2
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_internal"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-5-redirect_allowed",
+    "type": "redirect_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 302,
+        "hop": 0
+      },
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 2
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/redirect_allowed"
+          },
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-5-dns_change",
+    "type": "dns_change",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "public.lab",
+        "address": "127.0.0.1",
+        "call": 1
+      },
+      {
+        "step": "actual_http",
+        "address": "127.0.0.1",
+        "status": 200,
+        "hop": 0
+      },
+      {
+        "step": "canary_receipts",
+        "requests": [
+          {
+            "role": "public",
+            "path": "/ok"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": false,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-5-forbidden_initial",
+    "type": "forbidden_initial",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  },
+  {
+    "case_id": "ssrf-5-plain_internal",
+    "type": "plain_internal",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "controlled_resolution",
+        "hostname": "127.0.0.2",
+        "address": "127.0.0.2",
+        "call": 1
+      },
+      {
+        "step": "canary_receipts",
+        "requests": []
+      }
+    ],
+    "observation": {
+      "internal_contact": false,
+      "blocked": true,
+      "backend": "actual loopback HTTP; controlled resolver adapter, not public DNS"
+    }
+  }
+]

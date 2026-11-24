@@ -1,0 +1,54 @@
+{
+  "study_id": "CAI-003",
+  "retrieved_on": "2026-11-24",
+  "sources": [
+    {
+      "id": "mcp-security",
+      "title": "Security Best Practices \u2014 Model Context Protocol",
+      "url": "https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices",
+      "kind": "official protocol documentation",
+      "scope": "Confused-deputy risks, token audience validation, token passthrough, and SSRF defenses.",
+      "sha256": "398a22d4791dfefc7ced9554c2c410754bffbc04f62d4a825c8480f6120220df",
+      "bytes": 289245,
+      "page_title": "Security Best Practices - Model Context Protocol",
+      "retrieved_on": "2026-11-24",
+      "paper_date": null
+    },
+    {
+      "id": "rfc8725",
+      "title": "RFC 8725 \u2014 JSON Web Token Best Current Practices",
+      "url": "https://www.rfc-editor.org/rfc/rfc8725.html",
+      "kind": "IETF best current practice",
+      "scope": "Validation and audience binding; the local prototype is not standards certification.",
+      "sha256": "7f93df8a106c14e2c9394bd3fc12a488266477c89a1fe2f9182cf0bdb02d7ce0",
+      "bytes": 89311,
+      "page_title": "RFC 8725: JSON Web Token Best Current Practices",
+      "retrieved_on": "2026-11-24",
+      "paper_date": null
+    },
+    {
+      "id": "rfc9700",
+      "title": "RFC 9700 \u2014 Best Current Practice for OAuth 2.0 Security",
+      "url": "https://www.rfc-editor.org/rfc/rfc9700.html",
+      "kind": "IETF best current practice",
+      "scope": "Authorization-flow threat models; no complete OAuth implementation is tested.",
+      "sha256": "c00e2234fcd79581bc29669c60d693afaa42f67d9205bddee848f757ae975419",
+      "bytes": 261599,
+      "page_title": "RFC 9700: Best Current Practice for OAuth 2.0 Security",
+      "retrieved_on": "2026-11-24",
+      "paper_date": null
+    },
+    {
+      "id": "owasp-mcp",
+      "title": "MCP Security Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/MCP_Security_Cheat_Sheet.html",
+      "kind": "OWASP guidance",
+      "scope": "Implementation security controls; vulnerable deployment prevalence is not established.",
+      "sha256": "83d50bd8e60782c241cd7f4eb37fa3c32f10624a4329de4b31c8d620601a8626",
+      "bytes": 90580,
+      "page_title": "MCP Security - OWASP Cheat Sheet Series",
+      "retrieved_on": "2026-11-24",
+      "paper_date": null
+    }
+  ]
+}

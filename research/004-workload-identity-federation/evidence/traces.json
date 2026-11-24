@@ -1,0 +1,3854 @@
+[
+  {
+    "case_id": "wif-0-trusted",
+    "type": "trusted",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-0",
+          "repository_id": "repo-id-0",
+          "owner_id": "owner-id-0"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-0"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-0-renamed",
+    "type": "renamed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-0-renamed",
+          "repository_id": "repo-id-0",
+          "owner_id": "owner-id-0"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": false
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-0-wrong_issuer",
+    "type": "wrong_issuer",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "other-issuer",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-0",
+          "repository_id": "repo-id-0",
+          "owner_id": "owner-id-0"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": false,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-0-recreated_name",
+    "type": "recreated_name",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-0",
+          "repository_id": "replacement-id-0",
+          "owner_id": "owner-id-0"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-0"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-0-transferred_org",
+    "type": "transferred_org",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-0",
+          "repository_id": "repo-id-0",
+          "owner_id": "new-owner-0"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-0"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-0-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "other-audience",
+          "repository": "lab/repo-0",
+          "repository_id": "repo-id-0",
+          "owner_id": "owner-id-0"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": false,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-1-trusted",
+    "type": "trusted",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-1",
+          "repository_id": "repo-id-1",
+          "owner_id": "owner-id-1"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-1"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-1-renamed",
+    "type": "renamed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-1-renamed",
+          "repository_id": "repo-id-1",
+          "owner_id": "owner-id-1"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": false
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-1-wrong_issuer",
+    "type": "wrong_issuer",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "other-issuer",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-1",
+          "repository_id": "repo-id-1",
+          "owner_id": "owner-id-1"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": false,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-1-recreated_name",
+    "type": "recreated_name",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-1",
+          "repository_id": "replacement-id-1",
+          "owner_id": "owner-id-1"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-1"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-1-transferred_org",
+    "type": "transferred_org",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-1",
+          "repository_id": "repo-id-1",
+          "owner_id": "new-owner-1"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-1"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-1-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "other-audience",
+          "repository": "lab/repo-1",
+          "repository_id": "repo-id-1",
+          "owner_id": "owner-id-1"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": false,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-2-trusted",
+    "type": "trusted",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-2",
+          "repository_id": "repo-id-2",
+          "owner_id": "owner-id-2"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-2"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-2-renamed",
+    "type": "renamed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-2-renamed",
+          "repository_id": "repo-id-2",
+          "owner_id": "owner-id-2"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": false
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-2-wrong_issuer",
+    "type": "wrong_issuer",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "other-issuer",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-2",
+          "repository_id": "repo-id-2",
+          "owner_id": "owner-id-2"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": false,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-2-recreated_name",
+    "type": "recreated_name",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-2",
+          "repository_id": "replacement-id-2",
+          "owner_id": "owner-id-2"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-2"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-2-transferred_org",
+    "type": "transferred_org",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-2",
+          "repository_id": "repo-id-2",
+          "owner_id": "new-owner-2"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-2"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-2-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "other-audience",
+          "repository": "lab/repo-2",
+          "repository_id": "repo-id-2",
+          "owner_id": "owner-id-2"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": false,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-3-trusted",
+    "type": "trusted",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-3",
+          "repository_id": "repo-id-3",
+          "owner_id": "owner-id-3"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-3"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-3-renamed",
+    "type": "renamed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-3-renamed",
+          "repository_id": "repo-id-3",
+          "owner_id": "owner-id-3"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": false
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-3-wrong_issuer",
+    "type": "wrong_issuer",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "other-issuer",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-3",
+          "repository_id": "repo-id-3",
+          "owner_id": "owner-id-3"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": false,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-3-recreated_name",
+    "type": "recreated_name",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-3",
+          "repository_id": "replacement-id-3",
+          "owner_id": "owner-id-3"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-3"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-3-transferred_org",
+    "type": "transferred_org",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-3",
+          "repository_id": "repo-id-3",
+          "owner_id": "new-owner-3"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-3"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-3-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "other-audience",
+          "repository": "lab/repo-3",
+          "repository_id": "repo-id-3",
+          "owner_id": "owner-id-3"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": false,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-4-trusted",
+    "type": "trusted",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-4",
+          "repository_id": "repo-id-4",
+          "owner_id": "owner-id-4"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-4"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-4-renamed",
+    "type": "renamed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-4-renamed",
+          "repository_id": "repo-id-4",
+          "owner_id": "owner-id-4"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": false
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-4-wrong_issuer",
+    "type": "wrong_issuer",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "other-issuer",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-4",
+          "repository_id": "repo-id-4",
+          "owner_id": "owner-id-4"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": false,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-4-recreated_name",
+    "type": "recreated_name",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-4",
+          "repository_id": "replacement-id-4",
+          "owner_id": "owner-id-4"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-4"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-4-transferred_org",
+    "type": "transferred_org",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-4",
+          "repository_id": "repo-id-4",
+          "owner_id": "new-owner-4"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-4"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-4-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "other-audience",
+          "repository": "lab/repo-4",
+          "repository_id": "repo-id-4",
+          "owner_id": "owner-id-4"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": false,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-5-trusted",
+    "type": "trusted",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-5",
+          "repository_id": "repo-id-5",
+          "owner_id": "owner-id-5"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-5"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-5-renamed",
+    "type": "renamed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-5-renamed",
+          "repository_id": "repo-id-5",
+          "owner_id": "owner-id-5"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": false
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-5-wrong_issuer",
+    "type": "wrong_issuer",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "other-issuer",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-5",
+          "repository_id": "repo-id-5",
+          "owner_id": "owner-id-5"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": false,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-5-recreated_name",
+    "type": "recreated_name",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-5",
+          "repository_id": "replacement-id-5",
+          "owner_id": "owner-id-5"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-5"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-5-transferred_org",
+    "type": "transferred_org",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-5",
+          "repository_id": "repo-id-5",
+          "owner_id": "new-owner-5"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-5"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-5-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "other-audience",
+          "repository": "lab/repo-5",
+          "repository_id": "repo-id-5",
+          "owner_id": "owner-id-5"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": false,
+          "mutable_name": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-0-trusted",
+    "type": "trusted",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-0",
+          "repository_id": "repo-id-0",
+          "owner_id": "owner-id-0"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-0"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-0-renamed",
+    "type": "renamed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-0-renamed",
+          "repository_id": "repo-id-0",
+          "owner_id": "owner-id-0"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": false,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-0-wrong_issuer",
+    "type": "wrong_issuer",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "other-issuer",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-0",
+          "repository_id": "repo-id-0",
+          "owner_id": "owner-id-0"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": false,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-0-recreated_name",
+    "type": "recreated_name",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-0",
+          "repository_id": "replacement-id-0",
+          "owner_id": "owner-id-0"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-0"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-0-transferred_org",
+    "type": "transferred_org",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-0",
+          "repository_id": "repo-id-0",
+          "owner_id": "new-owner-0"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": false
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-0-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "other-audience",
+          "repository": "lab/repo-0",
+          "repository_id": "repo-id-0",
+          "owner_id": "owner-id-0"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": false,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-1-trusted",
+    "type": "trusted",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-1",
+          "repository_id": "repo-id-1",
+          "owner_id": "owner-id-1"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-1"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-1-renamed",
+    "type": "renamed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-1-renamed",
+          "repository_id": "repo-id-1",
+          "owner_id": "owner-id-1"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": false,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-1-wrong_issuer",
+    "type": "wrong_issuer",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "other-issuer",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-1",
+          "repository_id": "repo-id-1",
+          "owner_id": "owner-id-1"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": false,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-1-recreated_name",
+    "type": "recreated_name",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-1",
+          "repository_id": "replacement-id-1",
+          "owner_id": "owner-id-1"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-1"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-1-transferred_org",
+    "type": "transferred_org",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-1",
+          "repository_id": "repo-id-1",
+          "owner_id": "new-owner-1"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": false
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-1-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "other-audience",
+          "repository": "lab/repo-1",
+          "repository_id": "repo-id-1",
+          "owner_id": "owner-id-1"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": false,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-2-trusted",
+    "type": "trusted",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-2",
+          "repository_id": "repo-id-2",
+          "owner_id": "owner-id-2"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-2"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-2-renamed",
+    "type": "renamed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-2-renamed",
+          "repository_id": "repo-id-2",
+          "owner_id": "owner-id-2"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": false,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-2-wrong_issuer",
+    "type": "wrong_issuer",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "other-issuer",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-2",
+          "repository_id": "repo-id-2",
+          "owner_id": "owner-id-2"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": false,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-2-recreated_name",
+    "type": "recreated_name",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-2",
+          "repository_id": "replacement-id-2",
+          "owner_id": "owner-id-2"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-2"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-2-transferred_org",
+    "type": "transferred_org",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-2",
+          "repository_id": "repo-id-2",
+          "owner_id": "new-owner-2"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": false
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-2-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "other-audience",
+          "repository": "lab/repo-2",
+          "repository_id": "repo-id-2",
+          "owner_id": "owner-id-2"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": false,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-3-trusted",
+    "type": "trusted",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-3",
+          "repository_id": "repo-id-3",
+          "owner_id": "owner-id-3"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-3"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-3-renamed",
+    "type": "renamed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-3-renamed",
+          "repository_id": "repo-id-3",
+          "owner_id": "owner-id-3"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": false,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-3-wrong_issuer",
+    "type": "wrong_issuer",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "other-issuer",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-3",
+          "repository_id": "repo-id-3",
+          "owner_id": "owner-id-3"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": false,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-3-recreated_name",
+    "type": "recreated_name",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-3",
+          "repository_id": "replacement-id-3",
+          "owner_id": "owner-id-3"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-3"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-3-transferred_org",
+    "type": "transferred_org",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-3",
+          "repository_id": "repo-id-3",
+          "owner_id": "new-owner-3"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": false
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-3-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "other-audience",
+          "repository": "lab/repo-3",
+          "repository_id": "repo-id-3",
+          "owner_id": "owner-id-3"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": false,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-4-trusted",
+    "type": "trusted",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-4",
+          "repository_id": "repo-id-4",
+          "owner_id": "owner-id-4"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-4"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-4-renamed",
+    "type": "renamed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-4-renamed",
+          "repository_id": "repo-id-4",
+          "owner_id": "owner-id-4"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": false,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-4-wrong_issuer",
+    "type": "wrong_issuer",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "other-issuer",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-4",
+          "repository_id": "repo-id-4",
+          "owner_id": "owner-id-4"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": false,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-4-recreated_name",
+    "type": "recreated_name",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-4",
+          "repository_id": "replacement-id-4",
+          "owner_id": "owner-id-4"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-4"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-4-transferred_org",
+    "type": "transferred_org",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-4",
+          "repository_id": "repo-id-4",
+          "owner_id": "new-owner-4"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": false
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-4-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "other-audience",
+          "repository": "lab/repo-4",
+          "repository_id": "repo-id-4",
+          "owner_id": "owner-id-4"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": false,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-5-trusted",
+    "type": "trusted",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-5",
+          "repository_id": "repo-id-5",
+          "owner_id": "owner-id-5"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-5"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-5-renamed",
+    "type": "renamed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-5-renamed",
+          "repository_id": "repo-id-5",
+          "owner_id": "owner-id-5"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": false,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-5-wrong_issuer",
+    "type": "wrong_issuer",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "other-issuer",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-5",
+          "repository_id": "repo-id-5",
+          "owner_id": "owner-id-5"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": false,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-5-recreated_name",
+    "type": "recreated_name",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-5",
+          "repository_id": "replacement-id-5",
+          "owner_id": "owner-id-5"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-5"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-5-transferred_org",
+    "type": "transferred_org",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-5",
+          "repository_id": "repo-id-5",
+          "owner_id": "new-owner-5"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "mutable_name": true,
+          "stable_owner": false
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-5-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "other-audience",
+          "repository": "lab/repo-5",
+          "repository_id": "repo-id-5",
+          "owner_id": "owner-id-5"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": false,
+          "mutable_name": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-0-trusted",
+    "type": "trusted",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-0",
+          "repository_id": "repo-id-0",
+          "owner_id": "owner-id-0"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-0"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-0-renamed",
+    "type": "renamed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-0-renamed",
+          "repository_id": "repo-id-0",
+          "owner_id": "owner-id-0"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-0"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-0-wrong_issuer",
+    "type": "wrong_issuer",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "other-issuer",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-0",
+          "repository_id": "repo-id-0",
+          "owner_id": "owner-id-0"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": false,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-0-recreated_name",
+    "type": "recreated_name",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-0",
+          "repository_id": "replacement-id-0",
+          "owner_id": "owner-id-0"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": false,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-0-transferred_org",
+    "type": "transferred_org",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-0",
+          "repository_id": "repo-id-0",
+          "owner_id": "new-owner-0"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": false
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-0-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "other-audience",
+          "repository": "lab/repo-0",
+          "repository_id": "repo-id-0",
+          "owner_id": "owner-id-0"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": false,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-1-trusted",
+    "type": "trusted",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-1",
+          "repository_id": "repo-id-1",
+          "owner_id": "owner-id-1"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-1"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-1-renamed",
+    "type": "renamed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-1-renamed",
+          "repository_id": "repo-id-1",
+          "owner_id": "owner-id-1"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-1"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-1-wrong_issuer",
+    "type": "wrong_issuer",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "other-issuer",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-1",
+          "repository_id": "repo-id-1",
+          "owner_id": "owner-id-1"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": false,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-1-recreated_name",
+    "type": "recreated_name",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-1",
+          "repository_id": "replacement-id-1",
+          "owner_id": "owner-id-1"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": false,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-1-transferred_org",
+    "type": "transferred_org",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-1",
+          "repository_id": "repo-id-1",
+          "owner_id": "new-owner-1"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": false
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-1-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "other-audience",
+          "repository": "lab/repo-1",
+          "repository_id": "repo-id-1",
+          "owner_id": "owner-id-1"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": false,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-2-trusted",
+    "type": "trusted",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-2",
+          "repository_id": "repo-id-2",
+          "owner_id": "owner-id-2"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-2"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-2-renamed",
+    "type": "renamed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-2-renamed",
+          "repository_id": "repo-id-2",
+          "owner_id": "owner-id-2"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-2"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-2-wrong_issuer",
+    "type": "wrong_issuer",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "other-issuer",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-2",
+          "repository_id": "repo-id-2",
+          "owner_id": "owner-id-2"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": false,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-2-recreated_name",
+    "type": "recreated_name",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-2",
+          "repository_id": "replacement-id-2",
+          "owner_id": "owner-id-2"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": false,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-2-transferred_org",
+    "type": "transferred_org",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-2",
+          "repository_id": "repo-id-2",
+          "owner_id": "new-owner-2"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": false
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-2-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "other-audience",
+          "repository": "lab/repo-2",
+          "repository_id": "repo-id-2",
+          "owner_id": "owner-id-2"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": false,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-3-trusted",
+    "type": "trusted",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-3",
+          "repository_id": "repo-id-3",
+          "owner_id": "owner-id-3"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-3"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-3-renamed",
+    "type": "renamed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-3-renamed",
+          "repository_id": "repo-id-3",
+          "owner_id": "owner-id-3"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-3"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-3-wrong_issuer",
+    "type": "wrong_issuer",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "other-issuer",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-3",
+          "repository_id": "repo-id-3",
+          "owner_id": "owner-id-3"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": false,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-3-recreated_name",
+    "type": "recreated_name",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-3",
+          "repository_id": "replacement-id-3",
+          "owner_id": "owner-id-3"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": false,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-3-transferred_org",
+    "type": "transferred_org",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-3",
+          "repository_id": "repo-id-3",
+          "owner_id": "new-owner-3"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": false
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-3-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "other-audience",
+          "repository": "lab/repo-3",
+          "repository_id": "repo-id-3",
+          "owner_id": "owner-id-3"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": false,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-4-trusted",
+    "type": "trusted",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-4",
+          "repository_id": "repo-id-4",
+          "owner_id": "owner-id-4"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-4"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-4-renamed",
+    "type": "renamed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-4-renamed",
+          "repository_id": "repo-id-4",
+          "owner_id": "owner-id-4"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-4"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-4-wrong_issuer",
+    "type": "wrong_issuer",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "other-issuer",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-4",
+          "repository_id": "repo-id-4",
+          "owner_id": "owner-id-4"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": false,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-4-recreated_name",
+    "type": "recreated_name",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-4",
+          "repository_id": "replacement-id-4",
+          "owner_id": "owner-id-4"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": false,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-4-transferred_org",
+    "type": "transferred_org",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-4",
+          "repository_id": "repo-id-4",
+          "owner_id": "new-owner-4"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": false
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-4-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "other-audience",
+          "repository": "lab/repo-4",
+          "repository_id": "repo-id-4",
+          "owner_id": "owner-id-4"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": false,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-5-trusted",
+    "type": "trusted",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-5",
+          "repository_id": "repo-id-5",
+          "owner_id": "owner-id-5"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-5"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-5-renamed",
+    "type": "renamed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-5-renamed",
+          "repository_id": "repo-id-5",
+          "owner_id": "owner-id-5"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": "cloud-role-5"
+      }
+    ],
+    "observation": {
+      "principal_mapped": true,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-5-wrong_issuer",
+    "type": "wrong_issuer",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "other-issuer",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-5",
+          "repository_id": "repo-id-5",
+          "owner_id": "owner-id-5"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": false,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-5-recreated_name",
+    "type": "recreated_name",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-5",
+          "repository_id": "replacement-id-5",
+          "owner_id": "owner-id-5"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": false,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-5-transferred_org",
+    "type": "transferred_org",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "cloud-lab",
+          "repository": "lab/repo-5",
+          "repository_id": "repo-id-5",
+          "owner_id": "new-owner-5"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": true,
+          "stable_repository": true,
+          "stable_owner": false
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  },
+  {
+    "case_id": "wif-5-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "evaluate_trust",
+        "claims": {
+          "iss": "issuer-lab",
+          "aud": "other-audience",
+          "repository": "lab/repo-5",
+          "repository_id": "repo-id-5",
+          "owner_id": "owner-id-5"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "audience": false,
+          "stable_repository": true,
+          "stable_owner": true
+        }
+      },
+      {
+        "step": "principal_mapping",
+        "principal": null
+      }
+    ],
+    "observation": {
+      "principal_mapped": false,
+      "backend": "local claim-policy evaluator; no external issuer or cloud STS"
+    }
+  }
+]

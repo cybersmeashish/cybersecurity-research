@@ -1,0 +1,2810 @@
+[
+  {
+    "case_id": "cache-0-own_warm",
+    "type": "own_warm",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 459
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-0-own_cold",
+    "type": "own_cold",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 362957
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-0-cross_shared",
+    "type": "cross_shared",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 250
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-0-chosen_salt",
+    "type": "chosen_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 125
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-0-unknown_prefix",
+    "type": "unknown_prefix",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 354416
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-0-different_salt",
+    "type": "different_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 125
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-1-own_warm",
+    "type": "own_warm",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 125
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-1-own_cold",
+    "type": "own_cold",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 348250
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-1-cross_shared",
+    "type": "cross_shared",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 84
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-1-chosen_salt",
+    "type": "chosen_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 125
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-1-unknown_prefix",
+    "type": "unknown_prefix",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 357333
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-1-different_salt",
+    "type": "different_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 83
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-2-own_warm",
+    "type": "own_warm",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 83
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-2-own_cold",
+    "type": "own_cold",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 351583
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-2-cross_shared",
+    "type": "cross_shared",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 125
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-2-chosen_salt",
+    "type": "chosen_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 125
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-2-unknown_prefix",
+    "type": "unknown_prefix",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 353707
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-2-different_salt",
+    "type": "different_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 833
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-3-own_warm",
+    "type": "own_warm",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 208
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-3-own_cold",
+    "type": "own_cold",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 359791
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-3-cross_shared",
+    "type": "cross_shared",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 167
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-3-chosen_salt",
+    "type": "chosen_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 125
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-3-unknown_prefix",
+    "type": "unknown_prefix",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 351333
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-3-different_salt",
+    "type": "different_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 125
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-4-own_warm",
+    "type": "own_warm",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 125
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-4-own_cold",
+    "type": "own_cold",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 374916
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-4-cross_shared",
+    "type": "cross_shared",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 833
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-4-chosen_salt",
+    "type": "chosen_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 167
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-4-unknown_prefix",
+    "type": "unknown_prefix",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 353625
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-4-different_salt",
+    "type": "different_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 125
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-5-own_warm",
+    "type": "own_warm",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 125
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-5-own_cold",
+    "type": "own_cold",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 378125
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-5-cross_shared",
+    "type": "cross_shared",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 167
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-5-chosen_salt",
+    "type": "chosen_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 125
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-5-unknown_prefix",
+    "type": "unknown_prefix",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 377416
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-5-different_salt",
+    "type": "different_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "vulnerable",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 125
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-0-own_warm",
+    "type": "own_warm",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 84
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-0-own_cold",
+    "type": "own_cold",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 358791
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-0-cross_shared",
+    "type": "cross_shared",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 370582
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-0-chosen_salt",
+    "type": "chosen_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 166
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-0-unknown_prefix",
+    "type": "unknown_prefix",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 356457
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-0-different_salt",
+    "type": "different_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 356916
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-1-own_warm",
+    "type": "own_warm",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 708
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-1-own_cold",
+    "type": "own_cold",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 486582
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-1-cross_shared",
+    "type": "cross_shared",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 379166
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-1-chosen_salt",
+    "type": "chosen_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 250
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-1-unknown_prefix",
+    "type": "unknown_prefix",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 360208
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-1-different_salt",
+    "type": "different_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 355041
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-2-own_warm",
+    "type": "own_warm",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 166
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-2-own_cold",
+    "type": "own_cold",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 348750
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-2-cross_shared",
+    "type": "cross_shared",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 358374
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-2-chosen_salt",
+    "type": "chosen_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 125
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-2-unknown_prefix",
+    "type": "unknown_prefix",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 358624
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-2-different_salt",
+    "type": "different_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 358791
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-3-own_warm",
+    "type": "own_warm",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 125
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-3-own_cold",
+    "type": "own_cold",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 355249
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-3-cross_shared",
+    "type": "cross_shared",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 360749
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-3-chosen_salt",
+    "type": "chosen_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 125
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-3-unknown_prefix",
+    "type": "unknown_prefix",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 354582
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-3-different_salt",
+    "type": "different_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 359166
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-4-own_warm",
+    "type": "own_warm",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 666
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-4-own_cold",
+    "type": "own_cold",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 385666
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-4-cross_shared",
+    "type": "cross_shared",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 360999
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-4-chosen_salt",
+    "type": "chosen_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 125
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-4-unknown_prefix",
+    "type": "unknown_prefix",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 368791
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-4-different_salt",
+    "type": "different_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 364332
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-5-own_warm",
+    "type": "own_warm",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 167
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-5-own_cold",
+    "type": "own_cold",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 358416
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-5-cross_shared",
+    "type": "cross_shared",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 373790
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-5-chosen_salt",
+    "type": "chosen_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 125
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-5-unknown_prefix",
+    "type": "unknown_prefix",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 376374
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-5-different_salt",
+    "type": "different_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "partial",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 353416
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-0-own_warm",
+    "type": "own_warm",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 583
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-0-own_cold",
+    "type": "own_cold",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 365458
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-0-cross_shared",
+    "type": "cross_shared",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 356708
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-0-chosen_salt",
+    "type": "chosen_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 368333
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-0-unknown_prefix",
+    "type": "unknown_prefix",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 353791
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-0-different_salt",
+    "type": "different_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 358833
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-1-own_warm",
+    "type": "own_warm",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 208
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-1-own_cold",
+    "type": "own_cold",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 358666
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-1-cross_shared",
+    "type": "cross_shared",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 371416
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-1-chosen_salt",
+    "type": "chosen_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 367082
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-1-unknown_prefix",
+    "type": "unknown_prefix",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 354124
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-1-different_salt",
+    "type": "different_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 357041
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-2-own_warm",
+    "type": "own_warm",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 166
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-2-own_cold",
+    "type": "own_cold",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 356541
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-2-cross_shared",
+    "type": "cross_shared",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 353999
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-2-chosen_salt",
+    "type": "chosen_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 354041
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-2-unknown_prefix",
+    "type": "unknown_prefix",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 356708
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-2-different_salt",
+    "type": "different_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 356207
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-3-own_warm",
+    "type": "own_warm",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 209
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-3-own_cold",
+    "type": "own_cold",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 351416
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-3-cross_shared",
+    "type": "cross_shared",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 368416
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-3-chosen_salt",
+    "type": "chosen_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 370666
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-3-unknown_prefix",
+    "type": "unknown_prefix",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 371166
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-3-different_salt",
+    "type": "different_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 355958
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-4-own_warm",
+    "type": "own_warm",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 167
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-4-own_cold",
+    "type": "own_cold",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 353375
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-4-cross_shared",
+    "type": "cross_shared",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 362332
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-4-chosen_salt",
+    "type": "chosen_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 354124
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-4-unknown_prefix",
+    "type": "unknown_prefix",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 353458
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-4-different_salt",
+    "type": "different_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 363582
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-5-own_warm",
+    "type": "own_warm",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": true,
+        "elapsed_ns": 166
+      }
+    ],
+    "observation": {
+      "cache_hit": true,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-5-own_cold",
+    "type": "own_cold",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "A",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 348124
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-5-cross_shared",
+    "type": "cross_shared",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 356749
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-5-chosen_salt",
+    "type": "chosen_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-A"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 356708
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-5-unknown_prefix",
+    "type": "unknown_prefix",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 362750
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  },
+  {
+    "case_id": "cache-5-different_salt",
+    "type": "different_salt",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "server_namespace",
+        "mode": "guarded",
+        "tenant": "B",
+        "salt": "salt-B"
+      },
+      {
+        "step": "actual_cache_lookup",
+        "hit": false,
+        "elapsed_ns": 355916
+      }
+    ],
+    "observation": {
+      "cache_hit": false,
+      "backend": "CPU prefix-cache work sink; not KV tensors or vLLM inference"
+    }
+  }
+]

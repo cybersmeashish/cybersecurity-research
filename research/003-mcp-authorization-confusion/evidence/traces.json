@@ -1,0 +1,4322 @@
+[
+  {
+    "case_id": "mcp-0-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-0",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "owner-0"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-0-expired",
+    "type": "expired",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-0",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 5,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": false
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-0-foreign_subject",
+    "type": "foreign_subject",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-0",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-0"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-0-foreign_client",
+    "type": "foreign_client",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-0",
+          "aud": "resource-A",
+          "azp": "client-B",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-0"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-0-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-0",
+          "aud": "resource-B",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-0"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-0-foreign_handle",
+    "type": "foreign_handle",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-0",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-0"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-1-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-1",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "owner-1"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-1-expired",
+    "type": "expired",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-1",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 5,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": false
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-1-foreign_subject",
+    "type": "foreign_subject",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-1",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-1"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-1-foreign_client",
+    "type": "foreign_client",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-1",
+          "aud": "resource-A",
+          "azp": "client-B",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-1"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-1-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-1",
+          "aud": "resource-B",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-1"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-1-foreign_handle",
+    "type": "foreign_handle",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-1",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-1"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-2-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-2",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "owner-2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-2-expired",
+    "type": "expired",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-2",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 5,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": false
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-2-foreign_subject",
+    "type": "foreign_subject",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-2",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-2-foreign_client",
+    "type": "foreign_client",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-2",
+          "aud": "resource-A",
+          "azp": "client-B",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-2-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-2",
+          "aud": "resource-B",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-2-foreign_handle",
+    "type": "foreign_handle",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-2",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-3-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-3",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "owner-3"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-3-expired",
+    "type": "expired",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-3",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 5,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": false
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-3-foreign_subject",
+    "type": "foreign_subject",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-3",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-3"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-3-foreign_client",
+    "type": "foreign_client",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-3",
+          "aud": "resource-A",
+          "azp": "client-B",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-3"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-3-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-3",
+          "aud": "resource-B",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-3"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-3-foreign_handle",
+    "type": "foreign_handle",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-3",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-3"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-4-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-4",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "owner-4"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-4-expired",
+    "type": "expired",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-4",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 5,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": false
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-4-foreign_subject",
+    "type": "foreign_subject",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-4",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-4"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-4-foreign_client",
+    "type": "foreign_client",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-4",
+          "aud": "resource-A",
+          "azp": "client-B",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-4"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-4-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-4",
+          "aud": "resource-B",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-4"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-4-foreign_handle",
+    "type": "foreign_handle",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-4",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-4"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-5-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-5",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "owner-5"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-5-expired",
+    "type": "expired",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-5",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 5,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": false
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-5-foreign_subject",
+    "type": "foreign_subject",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-5",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-5"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-5-foreign_client",
+    "type": "foreign_client",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-5",
+          "aud": "resource-A",
+          "azp": "client-B",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-5"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-5-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-5",
+          "aud": "resource-B",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-5"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-5-foreign_handle",
+    "type": "foreign_handle",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-5",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-5"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-0-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-0",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "owner-0"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-0-expired",
+    "type": "expired",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-0",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 5,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": false,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-0-foreign_subject",
+    "type": "foreign_subject",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-0",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": false
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-0-foreign_client",
+    "type": "foreign_client",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-0",
+          "aud": "resource-A",
+          "azp": "client-B",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-0"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-0-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-0",
+          "aud": "resource-B",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-0"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-0-foreign_handle",
+    "type": "foreign_handle",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-0",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-0"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-1-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-1",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "owner-1"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-1-expired",
+    "type": "expired",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-1",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 5,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": false,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-1-foreign_subject",
+    "type": "foreign_subject",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-1",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": false
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-1-foreign_client",
+    "type": "foreign_client",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-1",
+          "aud": "resource-A",
+          "azp": "client-B",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-1"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-1-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-1",
+          "aud": "resource-B",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-1"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-1-foreign_handle",
+    "type": "foreign_handle",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-1",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-1"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-2-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-2",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "owner-2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-2-expired",
+    "type": "expired",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-2",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 5,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": false,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-2-foreign_subject",
+    "type": "foreign_subject",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-2",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": false
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-2-foreign_client",
+    "type": "foreign_client",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-2",
+          "aud": "resource-A",
+          "azp": "client-B",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-2-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-2",
+          "aud": "resource-B",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-2-foreign_handle",
+    "type": "foreign_handle",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-2",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-3-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-3",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "owner-3"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-3-expired",
+    "type": "expired",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-3",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 5,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": false,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-3-foreign_subject",
+    "type": "foreign_subject",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-3",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": false
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-3-foreign_client",
+    "type": "foreign_client",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-3",
+          "aud": "resource-A",
+          "azp": "client-B",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-3"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-3-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-3",
+          "aud": "resource-B",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-3"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-3-foreign_handle",
+    "type": "foreign_handle",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-3",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-3"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-4-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-4",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "owner-4"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-4-expired",
+    "type": "expired",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-4",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 5,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": false,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-4-foreign_subject",
+    "type": "foreign_subject",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-4",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": false
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-4-foreign_client",
+    "type": "foreign_client",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-4",
+          "aud": "resource-A",
+          "azp": "client-B",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-4"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-4-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-4",
+          "aud": "resource-B",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-4"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-4-foreign_handle",
+    "type": "foreign_handle",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-4",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-4"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-5-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-5",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "owner-5"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-5-expired",
+    "type": "expired",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-5",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 5,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": false,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-5-foreign_subject",
+    "type": "foreign_subject",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-5",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": false
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-5-foreign_client",
+    "type": "foreign_client",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-5",
+          "aud": "resource-A",
+          "azp": "client-B",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-5"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-5-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-5",
+          "aud": "resource-B",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-5"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-5-foreign_handle",
+    "type": "foreign_handle",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-5",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "user-5"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-0-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-0",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": true,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "owner-0"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-0-expired",
+    "type": "expired",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-0",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 5,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": false,
+          "subject": true,
+          "audience": true,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-0-foreign_subject",
+    "type": "foreign_subject",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-0",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": false,
+          "audience": true,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-0-foreign_client",
+    "type": "foreign_client",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-0",
+          "aud": "resource-A",
+          "azp": "client-B",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": true,
+          "client": false,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-0-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-0",
+          "aud": "resource-B",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": false,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-0-foreign_handle",
+    "type": "foreign_handle",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-0",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": true,
+          "client": true,
+          "handle_owner": false
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-1-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-1",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": true,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "owner-1"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-1-expired",
+    "type": "expired",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-1",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 5,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": false,
+          "subject": true,
+          "audience": true,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-1-foreign_subject",
+    "type": "foreign_subject",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-1",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": false,
+          "audience": true,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-1-foreign_client",
+    "type": "foreign_client",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-1",
+          "aud": "resource-A",
+          "azp": "client-B",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": true,
+          "client": false,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-1-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-1",
+          "aud": "resource-B",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": false,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-1-foreign_handle",
+    "type": "foreign_handle",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-1",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": true,
+          "client": true,
+          "handle_owner": false
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-2-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-2",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": true,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "owner-2"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-2-expired",
+    "type": "expired",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-2",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 5,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": false,
+          "subject": true,
+          "audience": true,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-2-foreign_subject",
+    "type": "foreign_subject",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-2",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": false,
+          "audience": true,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-2-foreign_client",
+    "type": "foreign_client",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-2",
+          "aud": "resource-A",
+          "azp": "client-B",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": true,
+          "client": false,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-2-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-2",
+          "aud": "resource-B",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": false,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-2-foreign_handle",
+    "type": "foreign_handle",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-2",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": true,
+          "client": true,
+          "handle_owner": false
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-3-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-3",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": true,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "owner-3"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-3-expired",
+    "type": "expired",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-3",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 5,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": false,
+          "subject": true,
+          "audience": true,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-3-foreign_subject",
+    "type": "foreign_subject",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-3",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": false,
+          "audience": true,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-3-foreign_client",
+    "type": "foreign_client",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-3",
+          "aud": "resource-A",
+          "azp": "client-B",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": true,
+          "client": false,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-3-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-3",
+          "aud": "resource-B",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": false,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-3-foreign_handle",
+    "type": "foreign_handle",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-3",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": true,
+          "client": true,
+          "handle_owner": false
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-4-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-4",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": true,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "owner-4"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-4-expired",
+    "type": "expired",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-4",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 5,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": false,
+          "subject": true,
+          "audience": true,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-4-foreign_subject",
+    "type": "foreign_subject",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-4",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": false,
+          "audience": true,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-4-foreign_client",
+    "type": "foreign_client",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-4",
+          "aud": "resource-A",
+          "azp": "client-B",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": true,
+          "client": false,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-4-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-4",
+          "aud": "resource-B",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": false,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-4-foreign_handle",
+    "type": "foreign_handle",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-4",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": true,
+          "client": true,
+          "handle_owner": false
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-5-allowed",
+    "type": "allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-5",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": true,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": [
+          {
+            "resource": "resource-A",
+            "operation": "read",
+            "executed_as": "owner-5"
+          }
+        ]
+      }
+    ],
+    "observation": {
+      "accepted": true,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-5-expired",
+    "type": "expired",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-5",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 5,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": false,
+          "subject": true,
+          "audience": true,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-5-foreign_subject",
+    "type": "foreign_subject",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "owner-5",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": false,
+          "audience": true,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-5-foreign_client",
+    "type": "foreign_client",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-5",
+          "aud": "resource-A",
+          "azp": "client-B",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": true,
+          "client": false,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-5-wrong_audience",
+    "type": "wrong_audience",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-5",
+          "aud": "resource-B",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": false,
+          "client": true,
+          "handle_owner": true
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  },
+  {
+    "case_id": "mcp-5-foreign_handle",
+    "type": "foreign_handle",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "validate_signed_artifact",
+        "claims": {
+          "iss": "lab-issuer",
+          "sub": "user-5",
+          "aud": "resource-A",
+          "azp": "client-A",
+          "exp": 200,
+          "handle": "owned-handle"
+        },
+        "checks": {
+          "signature": true,
+          "issuer": true,
+          "expiry": true,
+          "subject": true,
+          "audience": true,
+          "client": true,
+          "handle_owner": false
+        }
+      },
+      {
+        "step": "mock_resource",
+        "effects": []
+      }
+    ],
+    "observation": {
+      "accepted": false,
+      "backend": "HMAC-signed lab artifact and proxy validator; not a complete OAuth/MCP server"
+    }
+  }
+]

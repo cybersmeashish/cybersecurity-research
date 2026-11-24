@@ -1,31 +1,25 @@
-# Proposed tool — Serverless tenant-flow scanner
+# Tool design and implemented local prototype — CAI-009
 
-**Implementation status:** design only. No runnable scanner, installation command, or validated detection coverage is provided.
+## Implemented artifact
 
-## Inputs
+[src/study.py](src/study.py) exposes `evaluate(case, mode)` and returns an observed effect, trace, and backend-specific observation. [The runner](tools/run_study.py) evaluates the published fixtures, exports evidence, and runs behavioral tests. This is an executable research prototype, not a production scanner.
 
-Application source, infrastructure definitions, event schemas, ingress identity mapping, and declared tenant policy.
+## Production tool still proposed
 
-## Minimum analysis workflow
+**Serverless tenant-flow scanner** needs an authorized implementation adapter, a policy-intent contract, versioned identity/resource schemas, and an independent labeled workload. No installable production adapter or detection-coverage claim is provided.
 
-1. Trace tenant identity across ingress, queue, consumer, and storage.
-2. Identify authorization relying on unbound payload fields.
-3. Report missing context instead of asserting an exploit from broad IAM alone.
+## Boundary to enforce
 
-Reject missing context explicitly. A permissive configuration alone does not prove exploitability.
+`Read(event, tenant) implies ValidEnvelope(event) AND tenant=AuthenticatedTenant(event) AND RequestedTenant=AuthenticatedTenant(event).`
 
-## Findings and outputs
+## Proposed input and output contract
 
-Source-to-resource paths, binding gaps, and synthetic counterexamples.
+Require authenticated principal/tenant context, target version, expected policy, relevant state revision, and sanitized observations. Reject missing context as inconclusive. Findings should report verified preconditions, actual effect, configuration/source hashes, confidence, and remediation. A broad role, absent label, or model sentence alone is not proof of exploitability.
 
-Include target/tool version, declared policy, verified preconditions, provenance, confidence, and remediation. Distinguish static possibilities, synthetic observations, and actual implementation behavior.
+## Detection and remediation workflow
 
-## Evaluation and milestones
+Trace the untrusted input to the endpoint, identify the missing binding, reproduce it with a negative and positive control, and compare a corrected gate. Measure false positives and legitimate workflow loss before deployment. Trace one owned API-to-queue-to-function workflow, including dead-letter paths, retry context, and storage authorization.
 
-Use the [experiment plan](EXPERIMENT-PLAN.md) with flawed and corrected fixtures. Measure false positives, labeled false negatives, and legitimate-workflow success. Publish unsupported cases as limitations.
+## Coverage limits
 
-1. Define adapter contracts and evidence schema.
-2. Implement one synthetic fixture and corrected control.
-3. Extend to all planned cases and missing-context handling.
-4. Add an implementation adapter after separate scope authorization.
-5. Obtain independent reproduction before a vulnerability claim.
+The queue is a local Python Queue; there is no cloud event service, distributed delivery, producer IAM assessment, replay-attack prevention, or exactly-once claim. Cryptographic fixtures are not a production messaging format.

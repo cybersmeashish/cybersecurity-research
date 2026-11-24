@@ -1,0 +1,41 @@
+{
+  "study_id": "CAI-011",
+  "claims": [
+    {
+      "id": "CAI-011-E1",
+      "claim": "The seeded permissive profile produced 18 forbidden effects in 18 authored adversarial cases.",
+      "stage": "direct local synthetic observation",
+      "evidence": [
+        "evidence/results.csv",
+        "evidence/traces.json"
+      ],
+      "not_established": "Prevalence, novel vulnerability class, or a defect in any named product."
+    },
+    {
+      "id": "CAI-011-E2",
+      "claim": "The guarded profile matched all 36 declared policy labels and preserved 6 positive effects.",
+      "stage": "bounded local control result",
+      "evidence": [
+        "evidence/summary.json",
+        "evidence/tests.txt"
+      ],
+      "not_established": "Universal correctness, production utility, or performance."
+    },
+    {
+      "id": "CAI-011-E3",
+      "claim": "The partial profile retained 18 forbidden effects.",
+      "stage": "local control comparison",
+      "evidence": [
+        "evidence/results.csv"
+      ],
+      "not_established": "Performance of an untested vendor mitigation."
+    },
+    {
+      "id": "CAI-011-H1",
+      "claim": "Per-request limits fail to bound aggregate task consumption when reasoning, retries, fan-out, and delegation are charged independently without a shared task budget.",
+      "stage": "original research hypothesis; only stated local subclaim evaluated",
+      "evidence": [],
+      "not_established": "Units are declared synthetic costs, not dollars, tokens, cloud billing, or actual reasoning effort. Node costs are known before admission. There is no live autonomous planner, probabilistic usage estimator, mid-flight cancellation, or distributed ledger race."
+    }
+  ]
+}

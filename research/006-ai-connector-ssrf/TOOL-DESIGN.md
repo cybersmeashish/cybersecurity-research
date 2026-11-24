@@ -1,31 +1,25 @@
-# Proposed tool — AI connector egress test suite
+# Tool design and implemented local prototype — CAI-006
 
-**Implementation status:** design only. No runnable scanner, installation command, or validated detection coverage is provided.
+## Implemented artifact
 
-## Inputs
+[src/study.py](src/study.py) exposes `evaluate(case, mode)` and returns an observed effect, trace, and backend-specific observation. [The runner](tools/run_study.py) evaluates the published fixtures, exports evidence, and runs behavioral tests. This is an executable research prototype, not a production scanner.
 
-Connector adapter, destination policy, controlled resolver, redirect fixtures, and canary endpoint.
+## Production tool still proposed
 
-## Minimum analysis workflow
+**AI connector egress test suite** needs an authorized implementation adapter, a policy-intent contract, versioned identity/resource schemas, and an independent labeled workload. No installable production adapter or detection-coverage claim is provided.
 
-1. Record actual connected destinations at every hop.
-2. Test content fetching and metadata discovery.
-3. Distinguish attempted requests from actual internal contact.
+## Boundary to enforce
 
-Reject missing context explicitly. A permissive configuration alone does not prove exploitability.
+`Every connection uses a canonical destination approved for that hop; a validated address is pinned to the connection.`
 
-## Findings and outputs
+## Proposed input and output contract
 
-Destination-chain traces tied to the explicit egress policy.
+Require authenticated principal/tenant context, target version, expected policy, relevant state revision, and sanitized observations. Reject missing context as inconclusive. Findings should report verified preconditions, actual effect, configuration/source hashes, confidence, and remediation. A broad role, absent label, or model sentence alone is not proof of exploitability.
 
-Include target/tool version, declared policy, verified preconditions, provenance, confidence, and remediation. Distinguish static possibilities, synthetic observations, and actual implementation behavior.
+## Detection and remediation workflow
 
-## Evaluation and milestones
+Trace the untrusted input to the endpoint, identify the missing binding, reproduce it with a negative and positive control, and compare a corrected gate. Measure false positives and legitimate workflow loss before deployment. Extend the owned test harness to IPv6, HTTPS redirects, proxy behavior, and a selected connector, with synthetic metadata responses only.
 
-Use the [experiment plan](EXPERIMENT-PLAN.md) with flawed and corrected fixtures. Measure false positives, labeled false negatives, and legitimate-workflow success. Publish unsupported cases as limitations.
+## Coverage limits
 
-1. Define adapter contracts and evidence schema.
-2. Implement one synthetic fixture and corrected control.
-3. Extend to all planned cases and missing-context handling.
-4. Add an implementation adapter after separate scope authorization.
-5. Obtain independent reproduction before a vulnerability claim.
+Both endpoints are loopback fixtures; public DNS rebinding, IPv6, HTTPS certificate binding, proxies, metadata credential extraction, and a production connector were not tested. Resolution changes are adapter-controlled. The harness forbids destinations outside its two loopback addresses and port.

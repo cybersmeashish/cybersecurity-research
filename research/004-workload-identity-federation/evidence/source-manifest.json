@@ -1,0 +1,7 @@
+{
+  "src/common.py": "f425121d200b1095cb027fb533d381fe6216509880ba028df2f8a11406fcaeba",
+  "src/study.py": "6a28d7e25e8bfa7da4e64dc2302c0aff0319db4379aef62ef83cf20326f2c564",
+  "tests/test_study.py": "26e52530359fb70bbc234c72cc80668aa0a4d3d7f7ac68f7f084c3477a0c0ffa",
+  "tools/run_study.py": "f14f9b6c338f056ae8cb45cbd1b59df0595098f2c118825631332b7e72a78804",
+  "lab/fixtures.json": "e8632b579e1d5568743eea3157b03ff92e96dd9dd1dcd12cea530240c919f26f"
+}

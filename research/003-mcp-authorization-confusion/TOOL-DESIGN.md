@@ -1,31 +1,25 @@
-# Proposed tool — MCP authorization conformance suite
+# Tool design and implemented local prototype — CAI-003
 
-**Implementation status:** design only. No runnable scanner, installation command, or validated detection coverage is provided.
+## Implemented artifact
 
-## Inputs
+[src/study.py](src/study.py) exposes `evaluate(case, mode)` and returns an observed effect, trace, and backend-specific observation. [The runner](tools/run_study.py) evaluates the published fixtures, exports evidence, and runs behavioral tests. This is an executable research prototype, not a production scanner.
 
-Protocol version, user/client fixtures, mock issuer, resource audiences, and intended delegation policy.
+## Production tool still proposed
 
-## Minimum analysis workflow
+**MCP authorization conformance suite** needs an authorized implementation adapter, a policy-intent contract, versioned identity/resource schemas, and an independent labeled workload. No installable production adapter or detection-coverage claim is provided.
 
-1. Validate user, client, audience, and handle ownership at each step.
-2. Exercise consent cache, expiry, logout, and revocation.
-3. Separate intended delegation from principal substitution.
+## Boundary to enforce
 
-Reject missing context explicitly. A permissive configuration alone does not prove exploitability.
+`Accept implies ValidSignature AND IntendedIssuer AND Fresh AND SubjectMatchesCaller AND ClientMatches AND AudienceMatches AND HandleOwnerMatches.`
 
-## Findings and outputs
+## Proposed input and output contract
 
-Conformance matrix and sanitized replay traces, without token values.
+Require authenticated principal/tenant context, target version, expected policy, relevant state revision, and sanitized observations. Reject missing context as inconclusive. Findings should report verified preconditions, actual effect, configuration/source hashes, confidence, and remediation. A broad role, absent label, or model sentence alone is not proof of exploitability.
 
-Include target/tool version, declared policy, verified preconditions, provenance, confidence, and remediation. Distinguish static possibilities, synthetic observations, and actual implementation behavior.
+## Detection and remediation workflow
 
-## Evaluation and milestones
+Trace the untrusted input to the endpoint, identify the missing binding, reproduce it with a negative and positive control, and compare a corrected gate. Measure false positives and legitimate workflow loss before deployment. Run protocol-conformant authorization cases against a scoped proxy with real resource indicators, consent lifecycle, and protocol-version requirements.
 
-Use the [experiment plan](EXPERIMENT-PLAN.md) with flawed and corrected fixtures. Measure false positives, labeled false negatives, and legitimate-workflow success. Publish unsupported cases as limitations.
+## Coverage limits
 
-1. Define adapter contracts and evidence schema.
-2. Implement one synthetic fixture and corrected control.
-3. Extend to all planned cases and missing-context handling.
-4. Add an implementation adapter after separate scope authorization.
-5. Obtain independent reproduction before a vulnerability claim.
+The artifact is a two-part HMAC-signed JSON fixture, not an interoperable JWT. There is no browser OAuth flow, complete MCP server, consent UI, token endpoint, PKCE test, or third-party proxy assessment. Intended delegation requires a distinct documented contract.

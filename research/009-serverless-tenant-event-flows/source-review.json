@@ -1,0 +1,30 @@
+{
+  "study_id": "CAI-009",
+  "retrieved_on": "2026-11-24",
+  "sources": [
+    {
+      "id": "cloudflow",
+      "title": "CloudFlow: Identifying Security-sensitive Data Flows in Serverless Applications",
+      "url": "https://www.usenix.org/conference/usenixsecurity25/presentation/raffa",
+      "kind": "peer-reviewed conference research",
+      "scope": "Security-sensitive data flows across serverless components.",
+      "sha256": "34ce34926674a6a80751a305e03ddf01fea99a00e6fa6d748c199fe14b35aa38",
+      "bytes": 40351,
+      "page_title": "CloudFlow: Identifying Security-sensitive Data Flows in Serverless Applications | USENIX",
+      "retrieved_on": "2026-11-24",
+      "paper_date": null
+    },
+    {
+      "id": "rfc8725",
+      "title": "RFC 8725 \u2014 JSON Web Token Best Current Practices",
+      "url": "https://www.rfc-editor.org/rfc/rfc8725.html",
+      "kind": "IETF best current practice",
+      "scope": "Validation and audience binding; the local prototype is not standards certification.",
+      "sha256": "7f93df8a106c14e2c9394bd3fc12a488266477c89a1fe2f9182cf0bdb02d7ce0",
+      "bytes": 89311,
+      "page_title": "RFC 8725: JSON Web Token Best Current Practices",
+      "retrieved_on": "2026-11-24",
+      "paper_date": null
+    }
+  ]
+}

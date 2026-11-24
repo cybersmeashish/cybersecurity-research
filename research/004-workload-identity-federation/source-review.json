@@ -1,0 +1,30 @@
+{
+  "study_id": "CAI-004",
+  "retrieved_on": "2026-11-24",
+  "sources": [
+    {
+      "id": "google-wif",
+      "title": "Best practices for using Workload Identity Federation",
+      "url": "https://docs.cloud.google.com/iam/docs/best-practices-for-using-workload-identity-federation",
+      "kind": "official documentation",
+      "scope": "Subject mappings, stable identifiers, issuer restrictions, and identity reuse.",
+      "sha256": "44dad58a4981944caa1ec9d0cf4644d9dfc311ff8e661c8f758eed48b9a27441",
+      "bytes": 214615,
+      "page_title": "Best practices for using Workload Identity Federation \u00a0|\u00a0 Identity and Access Management (IAM) \u00a0|\u00a0 Google Cloud Documentation",
+      "retrieved_on": "2026-11-24",
+      "paper_date": null
+    },
+    {
+      "id": "rfc8725",
+      "title": "RFC 8725 \u2014 JSON Web Token Best Current Practices",
+      "url": "https://www.rfc-editor.org/rfc/rfc8725.html",
+      "kind": "IETF best current practice",
+      "scope": "Validation and audience binding; the local prototype is not standards certification.",
+      "sha256": "7f93df8a106c14e2c9394bd3fc12a488266477c89a1fe2f9182cf0bdb02d7ce0",
+      "bytes": 89311,
+      "page_title": "RFC 8725: JSON Web Token Best Current Practices",
+      "retrieved_on": "2026-11-24",
+      "paper_date": null
+    }
+  ]
+}

@@ -1,53 +1,30 @@
-# Experiment plan — CAI-005
+# Experiment execution record — CAI-005
 
-**Execution status:** not started. All cases below are planned. Follow the [shared validation protocol](../HYPOTHESIS-VALIDATION.md).
+The initial proposal has been expanded into an executed controlled local study. The measured phase is defined in [METHOD.md](METHOD.md); broader implementation-level validation remains future work.
 
-## Required harness and variables
+- Executed fixtures: 36.
+- Executed profiles: vulnerable, partial, guarded.
+- Fixture-condition trials: 108.
+- Regression methods: 6.
+- Live-provider experiments: 0.
+- Model calls: 0.
 
-Two users, user policies, a shared role, a mock cloud API, a tool gateway, and an audit recorder.
+- **vulnerable:** Shared service authority without caller authorization.
+- **partial:** Read-only tool allowlist without resource ownership checks.
+- **guarded:** Caller action/resource authorization at the gateway.
 
-**Independent variables:** Caller, action, resource, tool allowlist, policy intersection, and delegation depth.
+## Measured scope
 
-Start with owned synthetic data and mock actions. Later live validation requires explicit target/method authorization and cost limits. This proposal grants no authorization to attack a service.
+A correctly privileged workload must also enforce the initiating user policy on the final action and resource in a user-bound execution contract.
 
-Record versions, configuration, fixtures, seeds, expected policy, and verified preconditions before trials.
+## Ground truth and evidence
 
-## Planned case matrix
+[Fixtures](lab/fixtures.json) contain expected labels before execution. [Raw results](evidence/results.csv) contain observations. [Traces](evidence/traces.json) identify the endpoint reached. [Source manifest](evidence/source-manifest.json) pins inputs.
 
-| Case | Condition | Procedure |
-|---|---|---|
-| 1 | Direct denial | Confirm the low-privilege user cannot perform the target action directly. |
-| 2 | Agent request | Request the same action through the shared-role agent. |
-| 3 | Indirect request | Submit a task whose selected tool action crosses the user boundary. |
-| 4 | Delegation | Check user scope through a mock sub-agent handoff. |
-| 5 | Mitigation | Evaluate user and workload rights on the final action and resource before execution. |
+## Original hypothesis status
 
-## Measurements
+Constructed local mechanism supported; implementation-level and population claims not established.
 
-- Forbidden mock API actions actually executed
-- Authorized task-completion rate
-- Caller and resource-scope propagation
-- Policy-evaluation latency
+## Deferred experiments
 
-Deterministic evaluators must cover the declared fixture matrix. Model-driven experiments require independent inputs and repeated trials with pre-registered sample size, success margin, and stopping rules. Do not count repeated measurements of one input as independent cases.
-
-## Decision criteria
-
-**Supports the hypothesis:** An action denied by the user policy executes through the workload role.
-
-**Evidence against it:** All forbidden actions are blocked before execution and permitted tasks succeed.
-
-Negative results apply only to tested versions and conditions. Synthetic behavior does not establish provider behavior.
-
-## Confounders
-
-Explicit delegation, intended service-account operations, differing resource scopes, and policy simulation inaccuracies.
-
-## Evidence and current results
-
-Record case ID, expected/observed decisions, actual resource effect, controls, configuration/fixture hashes, seed, and sanitized traces. Model wording alone is insufficient evidence of a protected action.
-
-- Executed trials: **0**.
-- Observed vulnerabilities: **none established**.
-- Mitigation effectiveness: **not measured**.
-- Independent reproduction: **pending**.
+Instrument one authorized agent framework so caller identity, task ID, final action, and resource scope can be evaluated at the tool boundary. Any live target needs explicit ownership/program scope. A larger legitimate workload, implementation survey, adversarial holdout corpus, and independent reproduction are pending.

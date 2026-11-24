@@ -1,26 +1,37 @@
 {
   "id": "CAI-004",
   "title": "Identity lifecycle hazards in workload federation policies",
-  "version": "0.1",
-  "status": "proposed",
+  "version": "0.2",
+  "status": "controlled local synthetic study",
   "prepared_on": "2026-11-24",
   "area": "Cloud",
   "priority": 3,
   "hypothesis": "A trust policy authorizing mutable or reusable identity names without equivalent stable-ID restrictions can map a distinct post-lifecycle workload to the previously trusted cloud principal.",
   "null_hypothesis": "Only the intended stable workload maps to the principal before and after the tested lifecycle events.",
   "path": "research/004-workload-identity-federation/README.md",
-  "experiments_executed": 0,
+  "experiments_executed": 108,
   "provider_vulnerabilities_confirmed": 0,
-  "novelty_review": "pending",
+  "novelty_review": "known-class local mechanism study; exhaustive survey pending",
   "independent_review": "pending",
   "tool": {
     "name": "OIDC trust-policy lifecycle auditor",
-    "status": "design only"
+    "status": "local prototype implemented; production adapter pending"
   },
   "sources": [
     {
       "id": "google-wif",
       "url": "https://docs.cloud.google.com/iam/docs/best-practices-for-using-workload-identity-federation"
+    },
+    {
+      "id": "rfc8725",
+      "url": "https://www.rfc-editor.org/rfc/rfc8725.html"
     }
-  ]
+  ],
+  "fixture_cases": 36,
+  "regression_methods": 6,
+  "local_hypothesis": "A valid issuer and audience combined with a reusable repository name can map a replacement identity to the intended cloud principal; stable repository and owner IDs avoid that mapping in the declared fixture model.",
+  "hypothesis_evaluation": "Constructed local mechanism supported; implementation-level and population claims not established.",
+  "paper_path": "research/004-workload-identity-federation/PAPER.md",
+  "evidence_path": "research/004-workload-identity-federation/evidence/summary.json",
+  "model_calls": 0
 }

@@ -1,53 +1,30 @@
-# Experiment plan — CAI-011
+# Experiment execution record — CAI-011
 
-**Execution status:** not started. All cases below are planned. Follow the [shared validation protocol](../HYPOTHESIS-VALIDATION.md).
+The initial proposal has been expanded into an executed controlled local study. The measured phase is defined in [METHOD.md](METHOD.md); broader implementation-level validation remains future work.
 
-## Required harness and variables
+- Executed fixtures: 36.
+- Executed profiles: vulnerable, partial, guarded.
+- Fixture-condition trials: 108.
+- Regression methods: 6.
+- Live-provider experiments: 0.
+- Model calls: 0.
 
-A deterministic execution-graph simulator, normalized cost units, configurable retries/fan-out, and an atomic budget ledger.
+- **vulnerable:** Per-call cap with independent node attribution.
+- **partial:** Per-call cap and parent task attribution, without aggregate enforcement.
+- **guarded:** Atomic parent-task budget reservation and local cap.
 
-**Independent variables:** Depth, fan-out, retry policy, local cap, task attribution, concurrency, and cancellation.
+## Measured scope
 
-Start with owned synthetic data and mock actions. Later live validation requires explicit target/method authorization and cost limits. This proposal grants no authorization to attack a service.
+Independent per-call caps cannot bound aggregate task work; an atomic shared budget prevents the constructed retry and fan-out workloads from exceeding their declared allowance.
 
-Record versions, configuration, fixtures, seeds, expected policy, and verified preconditions before trials.
+## Ground truth and evidence
 
-## Planned case matrix
+[Fixtures](lab/fixtures.json) contain expected labels before execution. [Raw results](evidence/results.csv) contain observations. [Traces](evidence/traces.json) identify the endpoint reached. [Source manifest](evidence/source-manifest.json) pins inputs.
 
-| Case | Condition | Procedure |
-|---|---|---|
-| 1 | Bounded baseline | Run a normal graph with known total usage. |
-| 2 | Independent caps | Build repeated or nested work with each call below its own cap. |
-| 3 | Concurrent fan-out | Measure reservation races across branches. |
-| 4 | Timeout/retry | Ensure timed-out and retried work is charged to the originating task. |
-| 5 | Mitigation | Reserve budget atomically and stop unstarted work at the aggregate limit. |
+## Original hypothesis status
 
-## Measurements
+Local accounting mechanism supported; reasoning-driven cost amplification and currency impact not measured.
 
-- Total cost units divided by task budget
-- Overshoot versus allowed in-flight reservation
-- Legitimate task success
-- Unattributed work and cancellation delay
+## Deferred experiments
 
-Deterministic evaluators must cover the declared fixture matrix. Model-driven experiments require independent inputs and repeated trials with pre-registered sample size, success margin, and stopping rules. Do not count repeated measurements of one input as independent cases.
-
-## Decision criteria
-
-**Supports the hypothesis:** Total usage exceeds the declared aggregate allowance while each call obeys its local cap; the shared ledger prevents excess on matched work.
-
-**Evidence against it:** Consumption remains within the task budget and explicit in-flight allowance across the matrix.
-
-Negative results apply only to tested versions and conditions. Synthetic behavior does not establish provider behavior.
-
-## Confounders
-
-Incomplete telemetry, delayed billing, price changes, intentionally unbounded tasks, and uncounted committed work.
-
-## Evidence and current results
-
-Record case ID, expected/observed decisions, actual resource effect, controls, configuration/fixture hashes, seed, and sanitized traces. Model wording alone is insufficient evidence of a protected action.
-
-- Executed trials: **0**.
-- Observed vulnerabilities: **none established**.
-- Mitigation effectiveness: **not measured**.
-- Independent reproduction: **pending**.
+Integrate conservative reservations with an owned agent runtime and reconcile observed tokens/tool charges, including committed work and cancellation. Any live target needs explicit ownership/program scope. A larger legitimate workload, implementation survey, adversarial holdout corpus, and independent reproduction are pending.

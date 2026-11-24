@@ -1,53 +1,30 @@
-# Experiment plan — CAI-002
+# Experiment execution record — CAI-002
 
-**Execution status:** not started. All cases below are planned. Follow the [shared validation protocol](../HYPOTHESIS-VALIDATION.md).
+The initial proposal has been expanded into an executed controlled local study. The measured phase is defined in [METHOD.md](METHOD.md); broader implementation-level validation remains future work.
 
-## Required harness and variables
+- Executed fixtures: 36.
+- Executed profiles: vulnerable, partial, guarded.
+- Fixture-condition trials: 108.
+- Regression methods: 6.
+- Live-provider experiments: 0.
+- Model calls: 0.
 
-Two tenant identities, document ACLs, unique fake markers, an instrumented retriever, a summary store, and a controllable answer cache.
+- **vulnerable:** Initial source ACL only; artifacts served without current lineage checks.
+- **partial:** Principal-scoped answer cache; summaries and same-principal revocation remain unchecked.
+- **guarded:** Current source ACL checked before all artifact delivery.
 
-**Independent variables:** Caller, source ACL, cache key, artifact lineage, permission revision, and invalidation state.
+## Measured scope
 
-Start with owned synthetic data and mock actions. Later live validation requires explicit target/method authorization and cost limits. This proposal grants no authorization to attack a service.
+A derived artifact must be authorized at serving time against its current source permissions, not only against the permissions used when creating it.
 
-Record versions, configuration, fixtures, seeds, expected policy, and verified preconditions before trials.
+## Ground truth and evidence
 
-## Planned case matrix
+[Fixtures](lab/fixtures.json) contain expected labels before execution. [Raw results](evidence/results.csv) contain observations. [Traces](evidence/traces.json) identify the endpoint reached. [Source manifest](evidence/source-manifest.json) pins inputs.
 
-| Case | Condition | Procedure |
-|---|---|---|
-| 1 | Positive baseline | An allowed user retrieves a document and its derived answer. |
-| 2 | Cross-principal cache | Prime the answer cache as user A, then query as denied user B. |
-| 3 | Derived summary | Query a summary derived from sources with different access groups. |
-| 4 | Revocation | Revoke access, confirm enforcement and documented propagation completion, then reuse cached or summarized artifacts. |
-| 5 | Mitigation | Scope artifacts by identity and recheck source lineage before serving. |
+## Original hypothesis status
 
-## Measurements
+Constructed local mechanism supported; implementation-level and population claims not established.
 
-- Forbidden-marker disclosure rate by response path
-- Authorized-answer success rate
-- Enforcement latency beyond the documented propagation window
-- Added authorization latency and cache-hit-rate change
+## Deferred experiments
 
-Deterministic evaluators must cover the declared fixture matrix. Model-driven experiments require independent inputs and repeated trials with pre-registered sample size, success margin, and stopping rules. Do not count repeated measurements of one input as independent cases.
-
-## Decision criteria
-
-**Supports the hypothesis:** A reproducible protected marker is served to a denied principal, with the ACL state and bypassed path verified.
-
-**Evidence against it:** Every denied response path remains blocked while allowed queries succeed.
-
-Negative results apply only to tested versions and conditions. Synthetic behavior does not establish provider behavior.
-
-## Confounders
-
-Eventual consistency, previously downloaded data, intentionally public sources, model memorization, and summaries containing only public facts.
-
-## Evidence and current results
-
-Record case ID, expected/observed decisions, actual resource effect, controls, configuration/fixture hashes, seed, and sanitized traces. Model wording alone is insufficient evidence of a protected action.
-
-- Executed trials: **0**.
-- Observed vulnerabilities: **none established**.
-- Mitigation effectiveness: **not measured**.
-- Independent reproduction: **pending**.
+Validate permission propagation and derived-artifact lineage in one explicitly authorized RAG stack, including its documented update interval. Any live target needs explicit ownership/program scope. A larger legitimate workload, implementation survey, adversarial holdout corpus, and independent reproduction are pending.

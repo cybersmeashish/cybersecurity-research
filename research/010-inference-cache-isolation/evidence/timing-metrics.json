@@ -1,0 +1,35 @@
+{
+  "vulnerable": {
+    "held_out_prefixes": 64,
+    "roc_auc": 1.0,
+    "auc_bootstrap_95_interval": [
+      1.0,
+      1.0
+    ],
+    "balanced_accuracy": 1.0,
+    "cross_tenant_cache_hits": 32,
+    "unit": "independent synthetic prefix; one first probe per prefix"
+  },
+  "partial": {
+    "held_out_prefixes": 64,
+    "roc_auc": 1.0,
+    "auc_bootstrap_95_interval": [
+      1.0,
+      1.0
+    ],
+    "balanced_accuracy": 1.0,
+    "cross_tenant_cache_hits": 32,
+    "unit": "independent synthetic prefix; one first probe per prefix"
+  },
+  "guarded": {
+    "held_out_prefixes": 64,
+    "roc_auc": 0.64013671875,
+    "auc_bootstrap_95_interval": [
+      0.48486328125,
+      0.763671875
+    ],
+    "balanced_accuracy": 0.5,
+    "cross_tenant_cache_hits": 0,
+    "unit": "independent synthetic prefix; one first probe per prefix"
+  }
+}

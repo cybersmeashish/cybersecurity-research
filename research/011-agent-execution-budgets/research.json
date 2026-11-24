@@ -1,26 +1,37 @@
 {
   "id": "CAI-011",
   "title": "End-to-end budget enforcement across agent execution graphs",
-  "version": "0.1",
-  "status": "proposed",
+  "version": "0.2",
+  "status": "controlled local synthetic study",
   "prepared_on": "2026-11-24",
   "area": "Cloud + AI",
   "priority": 10,
   "hypothesis": "Per-request limits fail to bound aggregate task consumption when reasoning, retries, fan-out, and delegation are charged independently without a shared task budget.",
   "null_hypothesis": "All task-linked work stays within one budget plus a pre-specified maximum in-flight allowance.",
   "path": "research/011-agent-execution-budgets/README.md",
-  "experiments_executed": 0,
+  "experiments_executed": 108,
   "provider_vulnerabilities_confirmed": 0,
-  "novelty_review": "pending",
+  "novelty_review": "known-class local mechanism study; exhaustive survey pending",
   "independent_review": "pending",
   "tool": {
     "name": "Agent execution-budget controller",
-    "status": "design only"
+    "status": "local prototype implemented; production adapter pending"
   },
   "sources": [
     {
       "id": "overthink",
       "url": "https://arxiv.org/abs/2502.02542"
+    },
+    {
+      "id": "owasp-agents",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html"
     }
-  ]
+  ],
+  "fixture_cases": 36,
+  "regression_methods": 6,
+  "local_hypothesis": "Independent per-call caps cannot bound aggregate task work; an atomic shared budget prevents the constructed retry and fan-out workloads from exceeding their declared allowance.",
+  "hypothesis_evaluation": "Local accounting mechanism supported; reasoning-driven cost amplification and currency impact not measured.",
+  "paper_path": "research/011-agent-execution-budgets/PAPER.md",
+  "evidence_path": "research/011-agent-execution-budgets/evidence/summary.json",
+  "model_calls": 0
 }

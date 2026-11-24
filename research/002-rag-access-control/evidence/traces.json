@@ -1,0 +1,2714 @@
+[
+  {
+    "case_id": "rag-0-direct_allowed",
+    "type": "direct_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-0",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-0-direct_denied",
+    "type": "direct_denied",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-0",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-0-cached_foreign",
+    "type": "cached_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-0",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-0-summary_foreign",
+    "type": "summary_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-0",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "summary",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-0-revoked_cache",
+    "type": "revoked_cache",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-0",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-0-cached_allowed",
+    "type": "cached_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-0",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-1-direct_allowed",
+    "type": "direct_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-1",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-1-direct_denied",
+    "type": "direct_denied",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-1",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-1-cached_foreign",
+    "type": "cached_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-1",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-1-summary_foreign",
+    "type": "summary_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-1",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "summary",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-1-revoked_cache",
+    "type": "revoked_cache",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-1",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-1-cached_allowed",
+    "type": "cached_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-1",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-2-direct_allowed",
+    "type": "direct_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-2",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-2-direct_denied",
+    "type": "direct_denied",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-2",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-2-cached_foreign",
+    "type": "cached_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-2",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-2-summary_foreign",
+    "type": "summary_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-2",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "summary",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-2-revoked_cache",
+    "type": "revoked_cache",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-2",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-2-cached_allowed",
+    "type": "cached_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-2",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-3-direct_allowed",
+    "type": "direct_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-3",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-3-direct_denied",
+    "type": "direct_denied",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-3",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-3-cached_foreign",
+    "type": "cached_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-3",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-3-summary_foreign",
+    "type": "summary_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-3",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "summary",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-3-revoked_cache",
+    "type": "revoked_cache",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-3",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-3-cached_allowed",
+    "type": "cached_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-3",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-4-direct_allowed",
+    "type": "direct_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-4",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-4-direct_denied",
+    "type": "direct_denied",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-4",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-4-cached_foreign",
+    "type": "cached_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-4",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-4-summary_foreign",
+    "type": "summary_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-4",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "summary",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-4-revoked_cache",
+    "type": "revoked_cache",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-4",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-4-cached_allowed",
+    "type": "cached_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-4",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-5-direct_allowed",
+    "type": "direct_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-5",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-5-direct_denied",
+    "type": "direct_denied",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-5",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-5-cached_foreign",
+    "type": "cached_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-5",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-5-summary_foreign",
+    "type": "summary_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-5",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "summary",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-5-revoked_cache",
+    "type": "revoked_cache",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-5",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-5-cached_allowed",
+    "type": "cached_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "vulnerable",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-5",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-0-direct_allowed",
+    "type": "direct_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-0",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-0-direct_denied",
+    "type": "direct_denied",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-0",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-0-cached_foreign",
+    "type": "cached_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-0",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "principal_cache_key",
+        "decision": "miss"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-0-summary_foreign",
+    "type": "summary_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-0",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "summary",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-0-revoked_cache",
+    "type": "revoked_cache",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-0",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-0-cached_allowed",
+    "type": "cached_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-0",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-1-direct_allowed",
+    "type": "direct_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-1",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-1-direct_denied",
+    "type": "direct_denied",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-1",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-1-cached_foreign",
+    "type": "cached_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-1",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "principal_cache_key",
+        "decision": "miss"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-1-summary_foreign",
+    "type": "summary_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-1",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "summary",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-1-revoked_cache",
+    "type": "revoked_cache",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-1",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-1-cached_allowed",
+    "type": "cached_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-1",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-2-direct_allowed",
+    "type": "direct_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-2",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-2-direct_denied",
+    "type": "direct_denied",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-2",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-2-cached_foreign",
+    "type": "cached_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-2",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "principal_cache_key",
+        "decision": "miss"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-2-summary_foreign",
+    "type": "summary_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-2",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "summary",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-2-revoked_cache",
+    "type": "revoked_cache",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-2",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-2-cached_allowed",
+    "type": "cached_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-2",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-3-direct_allowed",
+    "type": "direct_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-3",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-3-direct_denied",
+    "type": "direct_denied",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-3",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-3-cached_foreign",
+    "type": "cached_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-3",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "principal_cache_key",
+        "decision": "miss"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-3-summary_foreign",
+    "type": "summary_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-3",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "summary",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-3-revoked_cache",
+    "type": "revoked_cache",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-3",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-3-cached_allowed",
+    "type": "cached_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-3",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-4-direct_allowed",
+    "type": "direct_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-4",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-4-direct_denied",
+    "type": "direct_denied",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-4",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-4-cached_foreign",
+    "type": "cached_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-4",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "principal_cache_key",
+        "decision": "miss"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-4-summary_foreign",
+    "type": "summary_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-4",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "summary",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-4-revoked_cache",
+    "type": "revoked_cache",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-4",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-4-cached_allowed",
+    "type": "cached_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-4",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-5-direct_allowed",
+    "type": "direct_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-5",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-5-direct_denied",
+    "type": "direct_denied",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-5",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-5-cached_foreign",
+    "type": "cached_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-5",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "principal_cache_key",
+        "decision": "miss"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-5-summary_foreign",
+    "type": "summary_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-5",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "summary",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-5-revoked_cache",
+    "type": "revoked_cache",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": false,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-5",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-5-cached_allowed",
+    "type": "cached_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "partial",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-5",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-0-direct_allowed",
+    "type": "direct_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-0",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-0-direct_denied",
+    "type": "direct_denied",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-0",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-0-cached_foreign",
+    "type": "cached_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-0",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "lineage_gate",
+        "decision": "deny"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-0-summary_foreign",
+    "type": "summary_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-0",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "lineage_gate",
+        "decision": "deny"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-0-revoked_cache",
+    "type": "revoked_cache",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-0",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "lineage_gate",
+        "decision": "deny"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-0-cached_allowed",
+    "type": "cached_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-0",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-1-direct_allowed",
+    "type": "direct_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-1",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-1-direct_denied",
+    "type": "direct_denied",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-1",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-1-cached_foreign",
+    "type": "cached_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-1",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "lineage_gate",
+        "decision": "deny"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-1-summary_foreign",
+    "type": "summary_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-1",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "lineage_gate",
+        "decision": "deny"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-1-revoked_cache",
+    "type": "revoked_cache",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-1",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "lineage_gate",
+        "decision": "deny"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-1-cached_allowed",
+    "type": "cached_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-1",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-2-direct_allowed",
+    "type": "direct_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-2",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-2-direct_denied",
+    "type": "direct_denied",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-2",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-2-cached_foreign",
+    "type": "cached_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-2",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "lineage_gate",
+        "decision": "deny"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-2-summary_foreign",
+    "type": "summary_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-2",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "lineage_gate",
+        "decision": "deny"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-2-revoked_cache",
+    "type": "revoked_cache",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-2",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "lineage_gate",
+        "decision": "deny"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-2-cached_allowed",
+    "type": "cached_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-2",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-3-direct_allowed",
+    "type": "direct_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-3",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-3-direct_denied",
+    "type": "direct_denied",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-3",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-3-cached_foreign",
+    "type": "cached_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-3",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "lineage_gate",
+        "decision": "deny"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-3-summary_foreign",
+    "type": "summary_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-3",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "lineage_gate",
+        "decision": "deny"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-3-revoked_cache",
+    "type": "revoked_cache",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-3",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "lineage_gate",
+        "decision": "deny"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-3-cached_allowed",
+    "type": "cached_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-3",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-4-direct_allowed",
+    "type": "direct_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-4",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-4-direct_denied",
+    "type": "direct_denied",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-4",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-4-cached_foreign",
+    "type": "cached_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-4",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "lineage_gate",
+        "decision": "deny"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-4-summary_foreign",
+    "type": "summary_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-4",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "lineage_gate",
+        "decision": "deny"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-4-revoked_cache",
+    "type": "revoked_cache",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-4",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "lineage_gate",
+        "decision": "deny"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-4-cached_allowed",
+    "type": "cached_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-4",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-5-direct_allowed",
+    "type": "direct_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-5",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-5-direct_denied",
+    "type": "direct_denied",
+    "kind": "negative_control",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-5",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-5-cached_foreign",
+    "type": "cached_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-5",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "lineage_gate",
+        "decision": "deny"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-5-summary_foreign",
+    "type": "summary_foreign",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "user-5",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "lineage_gate",
+        "decision": "deny"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-5-revoked_cache",
+    "type": "revoked_cache",
+    "kind": "adversarial",
+    "expected_effect": false,
+    "mode": "guarded",
+    "observed_effect": false,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-5",
+        "allowed": false,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "lineage_gate",
+        "decision": "deny"
+      }
+    ],
+    "observation": {
+      "marker_returned": false,
+      "source_acl_allowed": false,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  },
+  {
+    "case_id": "rag-5-cached_allowed",
+    "type": "cached_allowed",
+    "kind": "positive",
+    "expected_effect": true,
+    "mode": "guarded",
+    "observed_effect": true,
+    "expectation_match": true,
+    "trace": [
+      {
+        "step": "source_acl",
+        "principal": "owner-5",
+        "allowed": true,
+        "propagation": "immediate local transaction"
+      },
+      {
+        "step": "serve_artifact",
+        "kind": "cache",
+        "source": "doc"
+      }
+    ],
+    "observation": {
+      "marker_returned": true,
+      "source_acl_allowed": true,
+      "backend": "SQLite ACL and artifact store; no vector retriever or LLM"
+    }
+  }
+]

@@ -1,26 +1,41 @@
 {
   "id": "CAI-007",
   "title": "Action-level impact of adversarial logs on SOC agents",
-  "version": "0.1",
-  "status": "proposed",
+  "version": "0.2",
+  "status": "controlled local synthetic study",
   "prepared_on": "2026-11-24",
   "area": "Cloud + AI",
   "priority": 6,
   "hypothesis": "Attacker-controlled log text can cause a SOC agent to suppress a seeded incident or execute forbidden mock remediation even when its output conforms to a required schema.",
   "null_hypothesis": "Adversarial log fields do not alter protected handling beyond factual event content and pre-registered baseline variability.",
   "path": "research/007-soc-log-prompt-injection/README.md",
-  "experiments_executed": 0,
+  "experiments_executed": 108,
   "provider_vulnerabilities_confirmed": 0,
-  "novelty_review": "pending",
+  "novelty_review": "known-class local mechanism study; exhaustive survey pending",
   "independent_review": "pending",
   "tool": {
     "name": "SOC-agent adversarial regression suite",
-    "status": "design only"
+    "status": "local prototype implemented; production adapter pending"
   },
   "sources": [
     {
       "id": "soc-logs",
       "url": "https://arxiv.org/abs/2605.24421"
+    },
+    {
+      "id": "owasp-prompt",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html"
+    },
+    {
+      "id": "owasp-agents",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html"
     }
-  ]
+  ],
+  "fixture_cases": 36,
+  "regression_methods": 6,
+  "local_hypothesis": "A schema-valid but unauthorized candidate action can change incident state unless an independent action policy rejects it.",
+  "hypothesis_evaluation": "Downstream action control supported; LLM log-to-action susceptibility not evaluated.",
+  "paper_path": "research/007-soc-log-prompt-injection/PAPER.md",
+  "evidence_path": "research/007-soc-log-prompt-injection/evidence/summary.json",
+  "model_calls": 0
 }

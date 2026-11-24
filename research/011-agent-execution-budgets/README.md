@@ -1,38 +1,30 @@
 # CAI-011 — End-to-end budget enforcement across agent execution graphs
 
-**Status:** proposed research, version 0.1. **Area:** Cloud + AI. **Priority:** 10/10. **Prepared:** 2026-11-24.
+**Actual scheduled local work with normalized task cost units**
 
-No experiments have been run for this proposal and no tool is implemented. No new vulnerability, provider defect, global novelty, or independent validation is claimed.
+Version 0.2 · Author: Ashish Srivastava · Prepared 2026-11-24 · Evidence: controlled local synthetic study.
 
-## Testable hypothesis
+Local accounting mechanism supported; reasoning-driven cost amplification and currency impact not measured. This package contains executed code and measured local evidence. It does not claim a new provider vulnerability, peer review, or a production scanner.
 
-Per-request limits fail to bound aggregate task consumption when reasoning, retries, fan-out, and delegation are charged independently without a shared task budget.
+## Main result
 
-**Null hypothesis:** All task-linked work stays within one budget plus a pre-specified maximum in-flight allowance.
+The intentionally permissive profile produced **18/18** forbidden effects. The guarded profile produced **0/18**, retained **6/6** legitimate effects, and matched all 36 fixture policy labels. These are authored boundary cases, not deployment prevalence estimates.
 
-## Threat model
+## Research components
 
-- **Protected assets:** Compute, tokens, tool capacity, and task-attributed spending.
-- **Attacker capability:** A legitimate requester controlling task content or retrieved text, without budget-administration rights.
-- **Security boundary:** One authorized task does not create unaccounted work through retries or delegation.
+| Component | Read or run |
+|---|---|
+| Full research paper | [PAPER.md](PAPER.md) |
+| Executive decision brief | [EXECUTIVE-BRIEF.md](EXECUTIVE-BRIEF.md) |
+| Threat model and formal boundary | [THREAT-MODEL.md](THREAT-MODEL.md) |
+| Methods and experiment plan | [METHOD.md](METHOD.md) · [EXPERIMENT-PLAN.md](EXPERIMENT-PLAN.md) |
+| Measured results and interpretation | [RESULTS.md](RESULTS.md) · [DISCUSSION.md](DISCUSSION.md) |
+| Claim-to-evidence register | [CLAIM-EVIDENCE.md](CLAIM-EVIDENCE.md) · [Raw evidence](evidence/README.md) |
+| Runnable local prototype | [Source](src/study.py) · [Runner](tools/run_study.py) · [Fixtures](lab/fixtures.json) · [Tests](tests/test_study.py) |
+| Reproduction | [REPRODUCIBILITY.md](REPRODUCIBILITY.md) · [Lab instructions](lab/README.md) |
+| Related work and novelty | [RELATED-WORK.md](RELATED-WORK.md) · [SOURCES.md](SOURCES.md) · [NOVELTY.md](NOVELTY.md) |
+| Limits and future validation | [LIMITATIONS.md](LIMITATIONS.md) · [VALIDATION-PROTOCOL.md](VALIDATION-PROTOCOL.md) |
+| Tool engineering and roadmap | [TOOL-DESIGN.md](TOOL-DESIGN.md) · [RESEARCH-ROADMAP.md](RESEARCH-ROADMAP.md) |
+| Provenance and citation | [PROVENANCE.md](PROVENANCE.md) · [CITATION.cff](CITATION.cff) · [Metadata](research.json) |
 
-## Proposed contribution and prior art
-
-Extend reasoning-cost research to accounting across execution graphs; use cost units before currency claims.
-
-[Primary prior work](SOURCES.md) motivates the threat model; it does not establish this hypothesis in a selected implementation. Prior-art survey and version selection remain pending.
-
-## Intended deliverables
-
-1. A reproducible controlled test harness and bounded evidence.
-2. A prototype **Agent execution-budget controller**, evaluated for false positives and legitimate-workflow utility.
-3. A scoped finding or negative result identifying tested versions and limitations.
-
-## Research documents
-
-- [Experiment plan](EXPERIMENT-PLAN.md)
-- [Proposed tool design](TOOL-DESIGN.md)
-- [Sources](SOURCES.md)
-- [Machine-readable record](research.json)
-- [Shared validation protocol](../HYPOTHESIS-VALIDATION.md)
-- [Research portfolio](../CLOUD-AI-SECURITY-HYPOTHESES.md)
+[Portfolio index](../CLOUD-AI-SECURITY-HYPOTHESES.md). Runtime source and fixtures are self-contained in this folder. Shared references are navigation only.
